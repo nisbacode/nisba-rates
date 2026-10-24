@@ -105,6 +105,23 @@ def performance(rows, fx=None) -> dict:
     return out
 
 
+def history_gbp(rows, fx=None, weeks=53):
+    """About a year of weekly values in pounds (USD funds converted), oldest first, as [date, value]."""
+    end = rows[0][0]
+    out = []
+    for w in range(weeks - 1, -1, -1):
+        d, v = value_on_or_before(rows, end - dt.timedelta(days=7 * w))
+        if d is None or (out and out[-1][0] == d.isoformat()):
+            continue
+        if fx is not None:
+            _, f = value_on_or_before(fx, d)
+            if not f:
+                continue
+            v = v * f
+        out.append([d.isoformat(), round(v, 4)])
+    return out
+
+
 def main() -> int:
     seed = json.loads(SEED.read_text())["funds"]
     prev = {}
@@ -147,6 +164,7 @@ def main() -> int:
             else:
                 perf_gbp = {k: None for k in perf}
             fresh[f["ticker"]] = {"as_of": rows[0][0].isoformat(), "perf": perf, "perf_gbp": perf_gbp,
+                                  "hist_gbp": history_gbp(rows, fx if f["currency"] == "USD" else None),
                                   "updated_at": now.isoformat()}
         except AVError as e:
             if "Note" in str(e) or "rate limit" in str(e).lower() or "25 requests" in str(e):
@@ -166,6 +184,7 @@ def main() -> int:
         rec["perf"] = src.get("perf")
         rec["perf_gbp"] = src.get("perf_gbp")
         rec["updated_at"] = src.get("updated_at")
+        rec["hist_gbp"] = src.get("hist_gbp")
         rec["data_source"] = "Alpha Vantage" if f.get("alpha_vantage_ticker") else None
         if f.get("proxy"):
             # Another trading line of the same fund (e.g. the USD line of a GBP-quoted ETF).
@@ -174,6 +193,7 @@ def main() -> int:
             rec["perf_gbp"] = p.get("perf_gbp")
             rec["perf"] = p.get("perf_gbp") if f["currency"] == "GBP" else p.get("perf")
             rec["updated_at"] = p.get("updated_at")
+            rec["hist_gbp"] = p.get("hist_gbp")
             rec["data_source"] = f"Alpha Vantage (via {f['proxy']})"
         if rec["as_of"]:
             age = (today - dt.date.fromisoformat(rec["as_of"])).days
