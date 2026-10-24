@@ -1,9 +1,8 @@
 """Refresh fund performance from Alpha Vantage and write docs/funds.json.
 
-The free Alpha Vantage plan allows 25 calls a day, so each run refreshes the
-funds whose data is oldest, up to DAILY_FUND_CALLS, plus one USD/GBP call.
-Every fund is refreshed every couple of days. Returns are worked out from
-weekly closing prices (adjusted for distributions where available).
+Nisba has a premium Alpha Vantage key, so every fund is refreshed every run
+using full daily price history (adjusted for distributions), plus one USD/GBP
+call. DAILY_FUND_CALLS caps calls per run as a safety limit.
 """
 
 from __future__ import annotations
@@ -23,8 +22,8 @@ OUT = ROOT / "docs" / "funds.json"
 REPORT = ROOT / "funds-report.md"
 
 KEY = os.environ.get("ALPHA_VANTAGE_API_KEY", "").strip()
-DAILY_FUND_CALLS = int(os.environ.get("DAILY_FUND_CALLS", "20"))
-PAUSE = 13  # seconds between calls, keeps us under the per-minute limit
+DAILY_FUND_CALLS = int(os.environ.get("DAILY_FUND_CALLS", "100"))
+PAUSE = 1.5  # seconds between calls; premium plans allow 75 a minute
 STALE_DAYS = 7
 
 
@@ -43,18 +42,16 @@ def av(params: dict) -> dict:
     return j
 
 
-def weekly_series(symbol: str) -> list[tuple[dt.date, float]]:
-    """Weekly closes, newest first. Adjusted close when the endpoint allows it."""
+def price_series(symbol: str) -> list[tuple[dt.date, float]]:
+    """Daily closes, newest first, adjusted for distributions where available."""
     try:
-        j = av({"function": "TIME_SERIES_WEEKLY_ADJUSTED", "symbol": symbol})
-        data = j["Weekly Adjusted Time Series"]
+        j = av({"function": "TIME_SERIES_DAILY_ADJUSTED", "symbol": symbol, "outputsize": "full"})
+        data = j["Time Series (Daily)"]
         field = "5. adjusted close"
-    except (AVError, KeyError) as e:
-        if "premium" not in str(e).lower() and not isinstance(e, KeyError):
-            raise
+    except (AVError, KeyError):
         time.sleep(PAUSE)
-        j = av({"function": "TIME_SERIES_WEEKLY", "symbol": symbol})
-        data = j["Weekly Time Series"]
+        j = av({"function": "TIME_SERIES_DAILY", "symbol": symbol, "outputsize": "full"})
+        data = j["Time Series (Daily)"]
         field = "4. close"
     rows = [(dt.date.fromisoformat(d), float(v[field])) for d, v in data.items()]
     rows.sort(reverse=True)
@@ -64,9 +61,9 @@ def weekly_series(symbol: str) -> list[tuple[dt.date, float]]:
 
 
 def fx_series() -> list[tuple[dt.date, float]]:
-    """GBP per 1 USD, weekly, newest first."""
-    j = av({"function": "FX_WEEKLY", "from_symbol": "USD", "to_symbol": "GBP"})
-    data = j["Time Series FX (Weekly)"]
+    """GBP per 1 USD, daily, newest first."""
+    j = av({"function": "FX_DAILY", "from_symbol": "USD", "to_symbol": "GBP", "outputsize": "full"})
+    data = j["Time Series FX (Daily)"]
     rows = [(dt.date.fromisoformat(d), float(v["4. close"])) for d, v in data.items()]
     rows.sort(reverse=True)
     return rows
@@ -83,6 +80,7 @@ def performance(rows, fx=None) -> dict:
     """Returns in % for standard periods. fx converts a USD series into GBP terms."""
     end_d, end_v = rows[0]
     targets = {
+        "1d": rows[1][0] if len(rows) > 1 else end_d,
         "1w": end_d - dt.timedelta(days=7),
         "1m": end_d - dt.timedelta(days=30),
         "6m": end_d - dt.timedelta(days=182),
@@ -92,7 +90,7 @@ def performance(rows, fx=None) -> dict:
     out = {}
     for k, day in targets.items():
         d0, v0 = value_on_or_before(rows, day)
-        if v0 is None or v0 == 0 or (day - d0).days > 10:
+        if v0 is None or v0 == 0 or (day - d0).days > 7:
             out[k] = None
             continue
         r = end_v / v0
@@ -140,7 +138,7 @@ def main() -> int:
         time.sleep(PAUSE)
         sym = f["alpha_vantage_ticker"].replace("﻿", "").strip()
         try:
-            rows = weekly_series(sym)
+            rows = price_series(sym)
             perf = performance(rows)
             if f["currency"] == "USD" and fx:
                 perf_gbp = performance(rows, fx)

@@ -2,13 +2,13 @@ name: Daily fund check
 
 on:
   schedule:
-    - cron: "20 6 * * *"   # after the savings check; refreshes the oldest funds within the free Alpha Vantage limit
+    - cron: "20 6 * * *"   # 6:20am UK in winter, 7:20am in summer; refreshes every fund daily (premium Alpha Vantage key)
   workflow_dispatch:
     inputs:
       calls:
-        description: "How many funds to refresh this run (max about 22 on the free plan)"
+        description: "Safety cap on funds refreshed this run"
         required: false
-        default: "20"
+        default: "100"
 
 permissions:
   contents: write
@@ -31,7 +31,7 @@ jobs:
         id: run
         env:
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
-          DAILY_FUND_CALLS: ${{ github.event.inputs.calls || '20' }}
+          DAILY_FUND_CALLS: ${{ github.event.inputs.calls || '100' }}
         run: |
           set +e
           python funds/update_funds.py
