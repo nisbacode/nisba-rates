@@ -1,1 +1,37 @@
 # nisba-rates
+
+The daily check behind the Islamic savings accounts table on [nisba.co.uk/savings-accounts](https://www.nisba.co.uk/savings-accounts).
+
+## What it does
+
+Every morning at about 6 to 7am UK time, GitHub runs `scraper/scrape.py`. It:
+
+1. Opens each bank's own pages (Al Rayan, BLME, Gatehouse, Habib Bank Zurich) and Raisin (for Al Rayan, QIB and KFH accounts sold there).
+2. Reads the current rate for every account listed in `accounts.json`.
+3. Checks each figure makes sense. If a rate can't be found, looks wrong, or jumps by more than 1.5 points overnight, it keeps the last confirmed figure and marks that account as not confirmed today.
+4. Writes everything to `docs/rates.json`, which the website reads live on every visit.
+5. If anything needs a human, opens a GitHub issue called **Savings rates need a look** (you get an email). The issue closes itself once everything reads fine again. New accounts that appear on Raisin are listed there too.
+
+The website file is here:
+`https://raw.githubusercontent.com/nisbacode/nisba-rates/main/docs/rates.json`
+
+## Common jobs
+
+**Add an account:** copy a similar entry in `accounts.json`, give it a new `id`, and fill in the details. The `source` block says where to read it:
+
+| kind | how it finds the rate |
+|---|---|
+| `gatehouse` | `match` is a pattern for the product name on gatehousebank.com/personal/savings |
+| `alrayan` | `page` is the listing page, `match` a pattern for the account name |
+| `blme_premier` | uses `term_months` to pick the row from the Premier Deposit table |
+| `blme_notice` | reads the "Gross AER" figure on the notice account page |
+| `habib_sirat` | uses `term_months` to pick the HBZ Sirat eDeposit term |
+| `raisin` | `bank_slug` and `product` are from the Raisin URL, e.g. raisin.co.uk/bank/qib/**QIB001** |
+
+**Remove an account:** delete its entry from `accounts.json`.
+
+**Run it now:** Actions tab, "Daily rate check", Run workflow.
+
+**See what the scraper read:** open a run in the Actions tab and download the `debug` file at the bottom.
+
+Rates are for information only and are not personalised financial advice.

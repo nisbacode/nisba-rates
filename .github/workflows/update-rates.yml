@@ -1,0 +1,73 @@
+name: Daily rate check
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 06:00 UTC = 6am UK in winter, 7am in summer (GitHub can start it a little late)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: rates
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Read every bank's rates
+        id: scrape
+        run: |
+          set +e
+          python scraper/scrape.py
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Publish rates.json
+        run: |
+          git config user.name "nisba-rates bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "Rates checked $(date -u +%F)" || echo "nothing to commit"
+          git push
+
+      - name: Raise or update an issue if anything needs a look
+        if: steps.scrape.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create rate-check --color FF8E0F --force >/dev/null 2>&1 || true
+          existing=$(gh issue list --label rate-check --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file report.md
+          else
+            gh issue create --title "Savings rates need a look" --label rate-check --body-file report.md
+          fi
+
+      - name: Close the issue once everything reads fine again
+        if: steps.scrape.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --label rate-check --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "All rates read fine on $(date -u +%F)."
+          done
+
+      - name: Keep the page text for debugging
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug
+          path: |
+            debug/
+            report.md
+          retention-days: 14
