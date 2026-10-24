@@ -106,7 +106,7 @@ root.innerHTML="<div id=\"nr-app\" class=\"nr\">\n  <div class=\"nr-head\">\n   
       if (a.stale) note = '<span class="nr-stale">Rate last confirmed ' + (a.last_verified ? new Date(a.last_verified).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : 'recently') + '. Check with the provider.</span>';
       else if (a.checked_by_hand) note = '<span class="nr-stale">Checked by hand on ' + new Date(a.last_verified).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) + '</span>';
       return '<div class="nr-card' + (why ? ' off' : '') + (best ? ' best' : '') + '">' +
-        '<div class="nr-logo">' + (b.logo ? '<img loading="lazy" alt="' + esc(b.name) + '" src="' + ASSETS + esc(b.logo) + '">' : '') + '</div>' +
+        '<div class="nr-logo">' + (b.logo ? '<img loading="lazy" alt="' + esc(b.name) + '" src="' + (/^https?:/.test(b.logo) ? '' : ASSETS) + esc(b.logo) + '">' : '') + '</div>' +
         '<div class="nr-name"><p class="nr-bank">' + esc(b.name) + '</p><p class="nr-acc">' + esc(a.name) + '</p><div class="nr-tags">' + tags + '</div></div>' +
         '<div class="nr-rate"><b>' + a.rate.toFixed(2) + '%</b><span>Expected profit rate (AER)</span>' + note + '</div>' +
         '<div class="nr-profit">' + (why ? '<b>Not available</b><span class="nr-why">' + why + '</span>' : '<b>' + gbp(p.value) + '</b><span>Est. profit ' + p.label + '</span>') +

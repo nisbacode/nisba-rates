@@ -329,6 +329,8 @@ def main() -> int:
 
 def fetch_logos(cfg: dict) -> None:
     for b in cfg["banks"].values():
+        if b["logo"].startswith("http"):
+            continue  # hosted elsewhere (e.g. Kajabi media library)
         dest = ROOT / "docs" / b["logo"]
         if dest.exists() or not b.get("logo_src"):
             continue
