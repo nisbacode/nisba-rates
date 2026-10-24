@@ -26,6 +26,7 @@ REPORT = ROOT / "report.md"
 DEBUG = ROOT / "debug"
 
 MIN_RATE, MAX_RATE = 0.1, 10.0      # anything outside this is treated as a misread
+MANUAL_MAX_AGE = 14                 # days before a hand-checked rate is flagged
 MAX_JUMP = 1.5                      # percentage points in one day before we ask a human
 
 UA = (
@@ -98,6 +99,7 @@ GATEHOUSE_URL = "https://www.gatehousebank.com/personal/savings"
 
 def parse_gatehouse() -> dict[str, float]:
     html = fetch(GATEHOUSE_URL)
+    save_debug("gatehouse-page", "\n".join(text_lines(html))[:20000])
     found: dict[str, float] = {}
     candidates = row_texts(html) + text_lines(html)
     # Also try joining consecutive short lines, in case cells render on separate lines.
@@ -257,6 +259,17 @@ def main() -> int:
         rec["stale"] = False
         rec["stale_since"] = None
         error = None
+        if acc["source"]["kind"] == "manual":
+            rec["rate"] = acc["rate"]
+            rec["last_verified"] = acc["source"]["checked"] + "T00:00:00+00:00"
+            rec["checked_by_hand"] = True
+            age = (now.date() - dt.date.fromisoformat(acc["source"]["checked"])).days
+            if age > MANUAL_MAX_AGE:
+                rec["stale"] = True
+                rec["stale_since"] = acc["source"]["checked"]
+                problems.append(f"- **{cfg['banks'][acc['bank']]['name']} ({acc['platform']}) {acc['name']}** `{acc['id']}`: checked by hand {age} days ago. Check {acc['link']} and update `rate` and `checked` in accounts.json")
+            out_accounts.append(rec)
+            continue
         try:
             rate = read_rate(acc, raisin_pages)
             if rate is None:
@@ -283,7 +296,7 @@ def main() -> int:
         out_accounts.append(rec)
 
     # New products on Raisin that we do not list yet.
-    known = {a["source"]["product"].upper() for a in cfg["accounts"] if a["source"]["kind"] == "raisin"}
+    known = {a["source"].get("product", "").upper() for a in cfg["accounts"]}
     for slug, offers in raisin_pages.items():
         for pid, o in offers.items():
             if pid not in known:

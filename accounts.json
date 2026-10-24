@@ -1,72 +1,958 @@
 {
-  "_comment": "Master list of Islamic savings accounts tracked by the daily check. 'rate' is the last confirmed figure and is updated by the scraper. 'source' says which page to read and how to find this account on it.",
-  "banks": {
-    "al-rayan": {"name": "Al Rayan Bank", "logo": "logos/al_rayan.svg", "logo_src": "https://tools.nisba.co.uk/bank_logos/al_rayan.svg"},
-    "blme": {"name": "BLME", "logo": "logos/blme.svg", "logo_src": "https://tools.nisba.co.uk/bank_logos/blme.svg"},
-    "gatehouse": {"name": "Gatehouse Bank", "logo": "logos/gatehouse.svg", "logo_src": "https://tools.nisba.co.uk/bank_logos/gatehouse.svg"},
-    "habib": {"name": "Habib Bank Zurich", "logo": "logos/habib_zurich.svg", "logo_src": "https://tools.nisba.co.uk/bank_logos/habib_zurich.svg"},
-    "qib": {"name": "QIB (UK)", "logo": "logos/QIB.svg", "logo_src": "https://tools.nisba.co.uk/bank_logos/QIB.svg"},
-    "kfh": {"name": "Kuwait Finance House", "logo": "logos/kfh.png", "logo_src": "https://tools.nisba.co.uk/bank_logos/kfh.png"}
+ "_comment": "Master list of Islamic savings accounts tracked by the daily check. 'rate' is the last confirmed figure and is updated by the scraper. 'source' says which page to read and how to find this account on it.",
+ "banks": {
+  "al-rayan": {
+   "name": "Al Rayan Bank",
+   "logo": "logos/al_rayan.svg",
+   "logo_src": "https://tools.nisba.co.uk/bank_logos/al_rayan.svg"
   },
-  "accounts": [
-    {"id": "alr-12m", "bank": "al-rayan", "platform": "Direct", "name": "12 Month Fixed Term Deposit", "type": "fixed", "term_months": 12, "isa": false, "min": 10000, "max": 1000000, "rate": 5.15, "link": "https://www.alrayanbank.co.uk/savings/fixed-term", "source": {"kind": "alrayan", "page": "https://www.alrayanbank.co.uk/savings/fixed-term", "match": "^12 Month Fixed Term Deposit"}},
-    {"id": "alr-24m", "bank": "al-rayan", "platform": "Direct", "name": "24 Month Fixed Term Deposit", "type": "fixed", "term_months": 24, "isa": false, "min": 10000, "max": 1000000, "rate": 4.43, "link": "https://www.alrayanbank.co.uk/savings/fixed-term", "source": {"kind": "alrayan", "page": "https://www.alrayanbank.co.uk/savings/fixed-term", "match": "^24 Month Fixed Term Deposit"}},
-    {"id": "alr-36m-eac", "bank": "al-rayan", "platform": "Direct", "name": "Educate A Child International 36 Month Fixed Term Deposit", "type": "fixed", "term_months": 36, "isa": false, "min": 10000, "max": 1000000, "rate": 4.55, "link": "https://www.alrayanbank.co.uk/savings/fixed-term", "source": {"kind": "alrayan", "page": "https://www.alrayanbank.co.uk/savings/fixed-term", "match": "Educate A Child.*36 Month"}},
-    {"id": "alr-everyday", "bank": "al-rayan", "platform": "Direct", "name": "Everyday Saver", "type": "easy", "term_months": 0, "isa": false, "min": 10000, "max": 1000000, "rate": 2.75, "link": "https://www.alrayanbank.co.uk/savings/instant-access", "source": {"kind": "alrayan", "page": "https://www.alrayanbank.co.uk/savings/instant-access", "match": "^Everyday Saver"}},
-
-    {"id": "blme-90n", "bank": "blme", "platform": "Direct", "name": "90 Day Notice Account", "type": "notice", "term_months": 3, "notice_days": 90, "isa": false, "min": 10000, "max": 1000000, "rate": 4.58, "link": "https://www.blme.com/products-and-services/savings/notice-account/", "source": {"kind": "blme_notice", "page": "https://www.blme.com/products-and-services/savings/notice-account/"}},
-    {"id": "blme-pd-3m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 3 Month", "type": "fixed", "term_months": 3, "isa": false, "min": 1000, "max": 1000000, "rate": 4.01, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-6m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 6 Month", "type": "fixed", "term_months": 6, "isa": false, "min": 1000, "max": 1000000, "rate": 4.24, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-12m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 1 Year", "type": "fixed", "term_months": 12, "isa": false, "min": 1000, "max": 1000000, "rate": 5.00, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-18m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 18 Month", "type": "fixed", "term_months": 18, "isa": false, "min": 1000, "max": 1000000, "rate": 4.80, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-24m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 2 Year", "type": "fixed", "term_months": 24, "isa": false, "min": 1000, "max": 1000000, "rate": 4.90, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-36m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 3 Year", "type": "fixed", "term_months": 36, "isa": false, "min": 1000, "max": 1000000, "rate": 4.55, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-48m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 4 Year", "type": "fixed", "term_months": 48, "isa": false, "min": 1000, "max": 1000000, "rate": 4.35, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-60m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 5 Year", "type": "fixed", "term_months": 60, "isa": false, "min": 1000, "max": 1000000, "rate": 4.35, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-    {"id": "blme-pd-84m", "bank": "blme", "platform": "Direct", "name": "Premier Deposit 7 Year", "type": "fixed", "term_months": 84, "isa": false, "min": 1000, "max": 1000000, "rate": 4.00, "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/", "source": {"kind": "blme_premier", "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"}},
-
-    {"id": "gh-wood-6m", "bank": "gatehouse", "platform": "Direct", "name": "6 Month Woodland Saver", "type": "fixed", "term_months": 6, "isa": false, "min": 1000, "max": 1000000, "rate": 3.75, "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings", "source": {"kind": "gatehouse", "match": "^6 Month.*Woodland Saver"}},
-    {"id": "gh-wood-12m", "bank": "gatehouse", "platform": "Direct", "name": "1 Year Woodland Saver", "type": "fixed", "term_months": 12, "isa": false, "min": 1000, "max": 1000000, "rate": 4.20, "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings", "source": {"kind": "gatehouse", "match": "^(1 Year|12 Month).*Woodland Saver"}},
-    {"id": "gh-wood-18m", "bank": "gatehouse", "platform": "Direct", "name": "18 Month Woodland Saver", "type": "fixed", "term_months": 18, "isa": false, "min": 1000, "max": 1000000, "rate": 3.85, "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings", "source": {"kind": "gatehouse", "match": "^18 Month.*Woodland Saver"}},
-    {"id": "gh-wood-24m", "bank": "gatehouse", "platform": "Direct", "name": "2 Year Woodland Saver", "type": "fixed", "term_months": 24, "isa": false, "min": 1000, "max": 1000000, "rate": 3.85, "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings", "source": {"kind": "gatehouse", "match": "^2 Year.*Woodland Saver"}},
-    {"id": "gh-wood-36m", "bank": "gatehouse", "platform": "Direct", "name": "3 Year Woodland Saver", "type": "fixed", "term_months": 36, "isa": false, "min": 1000, "max": 1000000, "rate": 3.85, "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings", "source": {"kind": "gatehouse", "match": "^3 Year.*Woodland Saver"}},
-    {"id": "gh-wood-48m", "bank": "gatehouse", "platform": "Direct", "name": "4 Year Woodland Saver", "type": "fixed", "term_months": 48, "isa": false, "min": 1000, "max": 1000000, "rate": 3.90, "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings", "source": {"kind": "gatehouse", "match": "^4 Year.*Woodland Saver"}},
-    {"id": "gh-wood-60m", "bank": "gatehouse", "platform": "Direct", "name": "5 Year Woodland Saver", "type": "fixed", "term_months": 60, "isa": false, "min": 1000, "max": 1000000, "rate": 3.90, "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings", "source": {"kind": "gatehouse", "match": "^5 Year.*Woodland Saver"}},
-    {"id": "gh-community-12m", "bank": "gatehouse", "platform": "Direct", "name": "1 Year Community Saver", "type": "fixed", "term_months": 12, "isa": false, "min": 1000, "max": 1000000, "rate": 4.15, "link": "https://www.gatehousebank.com/personal/savings", "source": {"kind": "gatehouse", "match": "Community Saver"}},
-    {"id": "gh-easy", "bank": "gatehouse", "platform": "Direct", "name": "Easy Access Account", "type": "easy", "term_months": 0, "isa": false, "min": 1, "max": 250000, "rate": 2.65, "link": "https://www.gatehousebank.com/personal/savings/easy-access-savings", "source": {"kind": "gatehouse", "match": "^Easy Access Account"}},
-    {"id": "gh-95n", "bank": "gatehouse", "platform": "Direct", "name": "95 Day Notice Account", "type": "notice", "term_months": 3, "notice_days": 95, "isa": false, "min": 500, "max": 1000000, "rate": 3.40, "link": "https://www.gatehousebank.com/personal/savings/notice-savings", "source": {"kind": "gatehouse", "match": "^95 Day Notice"}},
-    {"id": "gh-120n", "bank": "gatehouse", "platform": "Direct", "name": "120 Day Notice Account", "type": "notice", "term_months": 4, "notice_days": 120, "isa": false, "min": 500, "max": 1000000, "rate": 3.50, "link": "https://www.gatehousebank.com/personal/savings/notice-savings", "source": {"kind": "gatehouse", "match": "^120 Day Notice"}},
-    {"id": "gh-isa-easy", "bank": "gatehouse", "platform": "Direct", "name": "Easy Access Cash ISA", "type": "easy", "term_months": 0, "isa": true, "min": 1, "max": 250000, "rate": 2.60, "link": "https://www.gatehousebank.com/personal/savings/cash-isa", "source": {"kind": "gatehouse", "match": "^Easy Access Cash ISA"}},
-    {"id": "gh-isa-12m", "bank": "gatehouse", "platform": "Direct", "name": "1 Year Woodland Cash ISA", "type": "fixed", "term_months": 12, "isa": true, "min": 1000, "max": 1000000, "rate": 3.75, "link": "https://www.gatehousebank.com/personal/savings/cash-isa", "source": {"kind": "gatehouse", "match": "^(1 Year|12 Month).*Woodland Cash ISA"}},
-    {"id": "gh-isa-18m", "bank": "gatehouse", "platform": "Direct", "name": "18 Month Woodland Cash ISA", "type": "fixed", "term_months": 18, "isa": true, "min": 1000, "max": 1000000, "rate": 3.60, "link": "https://www.gatehousebank.com/personal/savings/cash-isa", "source": {"kind": "gatehouse", "match": "^18 Month.*Woodland Cash ISA"}},
-    {"id": "gh-isa-24m", "bank": "gatehouse", "platform": "Direct", "name": "2 Year Woodland Cash ISA", "type": "fixed", "term_months": 24, "isa": true, "min": 1000, "max": 1000000, "rate": 3.60, "link": "https://www.gatehousebank.com/personal/savings/cash-isa", "source": {"kind": "gatehouse", "match": "^2 Year.*Woodland Cash ISA"}},
-    {"id": "gh-isa-36m", "bank": "gatehouse", "platform": "Direct", "name": "3 Year Woodland Cash ISA", "type": "fixed", "term_months": 36, "isa": true, "min": 1000, "max": 1000000, "rate": 3.65, "link": "https://www.gatehousebank.com/personal/savings/cash-isa", "source": {"kind": "gatehouse", "match": "^3 Year.*Woodland Cash ISA"}},
-    {"id": "gh-isa-48m", "bank": "gatehouse", "platform": "Direct", "name": "4 Year Woodland Cash ISA", "type": "fixed", "term_months": 48, "isa": true, "min": 1000, "max": 1000000, "rate": 3.65, "link": "https://www.gatehousebank.com/personal/savings/cash-isa", "source": {"kind": "gatehouse", "match": "^4 Year.*Woodland Cash ISA"}},
-    {"id": "gh-isa-60m", "bank": "gatehouse", "platform": "Direct", "name": "5 Year Woodland Cash ISA", "type": "fixed", "term_months": 60, "isa": true, "min": 1000, "max": 1000000, "rate": 3.75, "link": "https://www.gatehousebank.com/personal/savings/cash-isa", "source": {"kind": "gatehouse", "match": "^5 Year.*Woodland Cash ISA"}},
-
-    {"id": "hbz-6m", "bank": "habib", "platform": "Direct", "name": "HBZ Sirat eDeposit 6 Month", "type": "fixed", "term_months": 6, "isa": false, "min": 5000, "max": 1000000, "rate": 4.25, "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/", "source": {"kind": "habib_sirat"}},
-    {"id": "hbz-12m", "bank": "habib", "platform": "Direct", "name": "HBZ Sirat eDeposit 1 Year", "type": "fixed", "term_months": 12, "isa": false, "min": 5000, "max": 1000000, "rate": 4.75, "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/", "source": {"kind": "habib_sirat"}},
-    {"id": "hbz-24m", "bank": "habib", "platform": "Direct", "name": "HBZ Sirat eDeposit 2 Year", "type": "fixed", "term_months": 24, "isa": false, "min": 5000, "max": 1000000, "rate": 4.10, "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/", "source": {"kind": "habib_sirat"}},
-    {"id": "hbz-36m", "bank": "habib", "platform": "Direct", "name": "HBZ Sirat eDeposit 3 Year", "type": "fixed", "term_months": 36, "isa": false, "min": 5000, "max": 1000000, "rate": 4.05, "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/", "source": {"kind": "habib_sirat"}},
-    {"id": "hbz-60m", "bank": "habib", "platform": "Direct", "name": "HBZ Sirat eDeposit 5 Year", "type": "fixed", "term_months": 60, "isa": false, "min": 5000, "max": 1000000, "rate": 4.00, "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/", "source": {"kind": "habib_sirat"}},
-
-    {"id": "rz-ALR006", "bank": "al-rayan", "platform": "Raisin", "name": "6 Month Fixed Term Deposit", "type": "fixed", "term_months": 6, "isa": false, "min": 1000, "max": 120000, "rate": 4.37, "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR006/", "source": {"kind": "raisin", "bank_slug": "al-rayan-bank", "product": "ALR006"}},
-    {"id": "rz-ALR007", "bank": "al-rayan", "platform": "Raisin", "name": "9 Month Fixed Term Deposit", "type": "fixed", "term_months": 9, "isa": false, "min": 1000, "max": 120000, "rate": 4.35, "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR007/", "source": {"kind": "raisin", "bank_slug": "al-rayan-bank", "product": "ALR007"}},
-    {"id": "rz-ALR001", "bank": "al-rayan", "platform": "Raisin", "name": "12 Month Fixed Term Deposit", "type": "fixed", "term_months": 12, "isa": false, "min": 1000, "max": 120000, "rate": 4.85, "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR001/", "source": {"kind": "raisin", "bank_slug": "al-rayan-bank", "product": "ALR001"}},
-    {"id": "rz-ALR002", "bank": "al-rayan", "platform": "Raisin", "name": "24 Month Fixed Term Deposit", "type": "fixed", "term_months": 24, "isa": false, "min": 1000, "max": 120000, "rate": 4.43, "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR002/", "source": {"kind": "raisin", "bank_slug": "al-rayan-bank", "product": "ALR002"}},
-    {"id": "rz-ALR003", "bank": "al-rayan", "platform": "Raisin", "name": "36 Month Fixed Term Deposit", "type": "fixed", "term_months": 36, "isa": false, "min": 1000, "max": 120000, "rate": 4.55, "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR003/", "source": {"kind": "raisin", "bank_slug": "al-rayan-bank", "product": "ALR003"}},
-    {"id": "rz-ALR005", "bank": "al-rayan", "platform": "Raisin", "name": "60 Month Fixed Term Deposit", "type": "fixed", "term_months": 60, "isa": false, "min": 1000, "max": 120000, "rate": 4.25, "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR005/", "source": {"kind": "raisin", "bank_slug": "al-rayan-bank", "product": "ALR005"}},
-
-    {"id": "rz-QIB199", "bank": "qib", "platform": "Raisin", "name": "Easy Access Account", "type": "easy", "term_months": 0, "isa": false, "min": 1000, "max": 120000, "rate": 3.90, "link": "https://www.raisin.co.uk/bank/qib/QIB199/", "source": {"kind": "raisin", "bank_slug": "qib", "product": "QIB199"}},
-    {"id": "rz-QIB125", "bank": "qib", "platform": "Raisin", "name": "31 Day Notice Account", "type": "notice", "term_months": 1, "notice_days": 31, "isa": false, "min": 1000, "max": 120000, "rate": 4.20, "link": "https://www.raisin.co.uk/bank/qib/QIB125/", "source": {"kind": "raisin", "bank_slug": "qib", "product": "QIB125"}},
-    {"id": "rz-QIB122", "bank": "qib", "platform": "Raisin", "name": "95 Day Notice Account", "type": "notice", "term_months": 3, "notice_days": 95, "isa": false, "min": 1000, "max": 120000, "rate": 4.30, "link": "https://www.raisin.co.uk/bank/qib/QIB122/", "source": {"kind": "raisin", "bank_slug": "qib", "product": "QIB122"}},
-    {"id": "rz-QIB007", "bank": "qib", "platform": "Raisin", "name": "3 Month Fixed Term Deposit", "type": "fixed", "term_months": 3, "isa": false, "min": 1000, "max": 120000, "rate": 3.90, "link": "https://www.raisin.co.uk/bank/qib/QIB007/", "source": {"kind": "raisin", "bank_slug": "qib", "product": "QIB007"}},
-    {"id": "rz-QIB003", "bank": "qib", "platform": "Raisin", "name": "6 Month Fixed Term Deposit", "type": "fixed", "term_months": 6, "isa": false, "min": 1000, "max": 120000, "rate": 4.55, "link": "https://www.raisin.co.uk/bank/qib/QIB003/", "source": {"kind": "raisin", "bank_slug": "qib", "product": "QIB003"}},
-    {"id": "rz-QIB001", "bank": "qib", "platform": "Raisin", "name": "12 Month Fixed Term Deposit", "type": "fixed", "term_months": 12, "isa": false, "min": 1000, "max": 120000, "rate": 4.95, "link": "https://www.raisin.co.uk/bank/qib/QIB001/", "source": {"kind": "raisin", "bank_slug": "qib", "product": "QIB001"}},
-    {"id": "rz-QIB002", "bank": "qib", "platform": "Raisin", "name": "24 Month Fixed Term Deposit", "type": "fixed", "term_months": 24, "isa": false, "min": 1000, "max": 120000, "rate": 4.00, "link": "https://www.raisin.co.uk/bank/qib/QIB002/", "source": {"kind": "raisin", "bank_slug": "qib", "product": "QIB002"}},
-
-    {"id": "rz-AHL004", "bank": "kfh", "platform": "Raisin", "name": "6 Month Fixed Term Deposit", "type": "fixed", "term_months": 6, "isa": false, "min": 1000, "max": 120000, "rate": 4.42, "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL004/", "source": {"kind": "raisin", "bank_slug": "kuwait-finance-house-plc", "product": "AHL004"}},
-    {"id": "rz-AHL009", "bank": "kfh", "platform": "Raisin", "name": "9 Month Fixed Term Deposit", "type": "fixed", "term_months": 9, "isa": false, "min": 1000, "max": 120000, "rate": 4.47, "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL009/", "source": {"kind": "raisin", "bank_slug": "kuwait-finance-house-plc", "product": "AHL009"}},
-    {"id": "rz-AHL001", "bank": "kfh", "platform": "Raisin", "name": "12 Month Fixed Term Deposit", "type": "fixed", "term_months": 12, "isa": false, "min": 1000, "max": 120000, "rate": 4.86, "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL001/", "source": {"kind": "raisin", "bank_slug": "kuwait-finance-house-plc", "product": "AHL001"}}
-  ]
+  "blme": {
+   "name": "BLME",
+   "logo": "logos/blme.svg",
+   "logo_src": "https://tools.nisba.co.uk/bank_logos/blme.svg"
+  },
+  "gatehouse": {
+   "name": "Gatehouse Bank",
+   "logo": "logos/gatehouse.svg",
+   "logo_src": "https://tools.nisba.co.uk/bank_logos/gatehouse.svg"
+  },
+  "habib": {
+   "name": "Habib Bank Zurich",
+   "logo": "logos/habib_zurich.svg",
+   "logo_src": "https://tools.nisba.co.uk/bank_logos/habib_zurich.svg"
+  },
+  "qib": {
+   "name": "QIB (UK)",
+   "logo": "logos/QIB.svg",
+   "logo_src": "https://tools.nisba.co.uk/bank_logos/QIB.svg"
+  },
+  "kfh": {
+   "name": "Kuwait Finance House",
+   "logo": "logos/kfh.png",
+   "logo_src": "https://tools.nisba.co.uk/bank_logos/kfh.png"
+  }
+ },
+ "accounts": [
+  {
+   "id": "alr-12m",
+   "bank": "al-rayan",
+   "platform": "Direct",
+   "name": "12 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 10000,
+   "max": 1000000,
+   "rate": 5.15,
+   "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
+   "source": {
+    "kind": "alrayan",
+    "page": "https://www.alrayanbank.co.uk/savings/fixed-term",
+    "match": "^12 Month Fixed Term Deposit"
+   }
+  },
+  {
+   "id": "alr-24m",
+   "bank": "al-rayan",
+   "platform": "Direct",
+   "name": "24 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 10000,
+   "max": 1000000,
+   "rate": 4.43,
+   "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
+   "source": {
+    "kind": "alrayan",
+    "page": "https://www.alrayanbank.co.uk/savings/fixed-term",
+    "match": "^24 Month Fixed Term Deposit"
+   }
+  },
+  {
+   "id": "alr-36m-eac",
+   "bank": "al-rayan",
+   "platform": "Direct",
+   "name": "Educate A Child International 36 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": false,
+   "min": 10000,
+   "max": 1000000,
+   "rate": 4.55,
+   "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
+   "source": {
+    "kind": "alrayan",
+    "page": "https://www.alrayanbank.co.uk/savings/fixed-term",
+    "match": "Educate A Child.*36 Month"
+   }
+  },
+  {
+   "id": "alr-everyday",
+   "bank": "al-rayan",
+   "platform": "Direct",
+   "name": "Everyday Saver",
+   "type": "easy",
+   "term_months": 0,
+   "isa": false,
+   "min": 10000,
+   "max": 1000000,
+   "rate": 2.75,
+   "link": "https://www.alrayanbank.co.uk/savings/instant-access",
+   "source": {
+    "kind": "alrayan",
+    "page": "https://www.alrayanbank.co.uk/savings/instant-access",
+    "match": "^Everyday Saver"
+   }
+  },
+  {
+   "id": "blme-90n",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "90 Day Notice Account",
+   "type": "notice",
+   "term_months": 3,
+   "notice_days": 90,
+   "isa": false,
+   "min": 10000,
+   "max": 1000000,
+   "rate": 4.58,
+   "link": "https://www.blme.com/products-and-services/savings/notice-account/",
+   "source": {
+    "kind": "blme_notice",
+    "page": "https://www.blme.com/products-and-services/savings/notice-account/"
+   }
+  },
+  {
+   "id": "blme-pd-3m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 3 Month",
+   "type": "fixed",
+   "term_months": 3,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.01,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-6m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 6 Month",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.24,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-12m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 1 Year",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 5.0,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-18m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 18 Month",
+   "type": "fixed",
+   "term_months": 18,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.8,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-24m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 2 Year",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.9,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-36m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 3 Year",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.55,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-48m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 4 Year",
+   "type": "fixed",
+   "term_months": 48,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.35,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-60m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 5 Year",
+   "type": "fixed",
+   "term_months": 60,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.35,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "blme-pd-84m",
+   "bank": "blme",
+   "platform": "Direct",
+   "name": "Premier Deposit 7 Year",
+   "type": "fixed",
+   "term_months": 84,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.0,
+   "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
+   "source": {
+    "kind": "blme_premier",
+    "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
+   }
+  },
+  {
+   "id": "gh-wood-6m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "6 Month Woodland Saver",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.75,
+   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^6 Month.*Woodland Saver"
+   }
+  },
+  {
+   "id": "gh-wood-12m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "1 Year Woodland Saver",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.2,
+   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^(1 Year|12 Month).*Woodland Saver"
+   }
+  },
+  {
+   "id": "gh-wood-18m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "18 Month Woodland Saver",
+   "type": "fixed",
+   "term_months": 18,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.85,
+   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^18 Month.*Woodland Saver"
+   }
+  },
+  {
+   "id": "gh-wood-24m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "2 Year Woodland Saver",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.85,
+   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^2 Year.*Woodland Saver"
+   }
+  },
+  {
+   "id": "gh-wood-36m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "3 Year Woodland Saver",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.85,
+   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^3 Year.*Woodland Saver"
+   }
+  },
+  {
+   "id": "gh-wood-48m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "4 Year Woodland Saver",
+   "type": "fixed",
+   "term_months": 48,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.9,
+   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^4 Year.*Woodland Saver"
+   }
+  },
+  {
+   "id": "gh-wood-60m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "5 Year Woodland Saver",
+   "type": "fixed",
+   "term_months": 60,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.9,
+   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^5 Year.*Woodland Saver"
+   }
+  },
+  {
+   "id": "gh-community-12m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "1 Year Community Saver",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.15,
+   "link": "https://www.gatehousebank.com/personal/savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "Community Saver"
+   }
+  },
+  {
+   "id": "gh-easy",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "Easy Access Account",
+   "type": "easy",
+   "term_months": 0,
+   "isa": false,
+   "min": 1,
+   "max": 250000,
+   "rate": 2.65,
+   "link": "https://www.gatehousebank.com/personal/savings/easy-access-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^Easy Access Account"
+   }
+  },
+  {
+   "id": "gh-95n",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "95 Day Notice Account",
+   "type": "notice",
+   "term_months": 3,
+   "notice_days": 95,
+   "isa": false,
+   "min": 500,
+   "max": 1000000,
+   "rate": 3.4,
+   "link": "https://www.gatehousebank.com/personal/savings/notice-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^95 Day Notice"
+   }
+  },
+  {
+   "id": "gh-120n",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "120 Day Notice Account",
+   "type": "notice",
+   "term_months": 4,
+   "notice_days": 120,
+   "isa": false,
+   "min": 500,
+   "max": 1000000,
+   "rate": 3.5,
+   "link": "https://www.gatehousebank.com/personal/savings/notice-savings",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^120 Day Notice"
+   }
+  },
+  {
+   "id": "gh-isa-easy",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "Easy Access Cash ISA",
+   "type": "easy",
+   "term_months": 0,
+   "isa": true,
+   "min": 1,
+   "max": 250000,
+   "rate": 2.6,
+   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^Easy Access Cash ISA"
+   }
+  },
+  {
+   "id": "gh-isa-12m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "1 Year Woodland Cash ISA",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": true,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.75,
+   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^(1 Year|12 Month).*Woodland Cash ISA"
+   }
+  },
+  {
+   "id": "gh-isa-18m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "18 Month Woodland Cash ISA",
+   "type": "fixed",
+   "term_months": 18,
+   "isa": true,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.6,
+   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^18 Month.*Woodland Cash ISA"
+   }
+  },
+  {
+   "id": "gh-isa-24m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "2 Year Woodland Cash ISA",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": true,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.6,
+   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^2 Year.*Woodland Cash ISA"
+   }
+  },
+  {
+   "id": "gh-isa-36m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "3 Year Woodland Cash ISA",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": true,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.65,
+   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^3 Year.*Woodland Cash ISA"
+   }
+  },
+  {
+   "id": "gh-isa-48m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "4 Year Woodland Cash ISA",
+   "type": "fixed",
+   "term_months": 48,
+   "isa": true,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.65,
+   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^4 Year.*Woodland Cash ISA"
+   }
+  },
+  {
+   "id": "gh-isa-60m",
+   "bank": "gatehouse",
+   "platform": "Direct",
+   "name": "5 Year Woodland Cash ISA",
+   "type": "fixed",
+   "term_months": 60,
+   "isa": true,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.75,
+   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "source": {
+    "kind": "gatehouse",
+    "match": "^5 Year.*Woodland Cash ISA"
+   }
+  },
+  {
+   "id": "hbz-6m",
+   "bank": "habib",
+   "platform": "Direct",
+   "name": "HBZ Sirat eDeposit 6 Month",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 5000,
+   "max": 1000000,
+   "rate": 4.25,
+   "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
+   "source": {
+    "kind": "habib_sirat"
+   }
+  },
+  {
+   "id": "hbz-12m",
+   "bank": "habib",
+   "platform": "Direct",
+   "name": "HBZ Sirat eDeposit 1 Year",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 5000,
+   "max": 1000000,
+   "rate": 4.75,
+   "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
+   "source": {
+    "kind": "habib_sirat"
+   }
+  },
+  {
+   "id": "hbz-24m",
+   "bank": "habib",
+   "platform": "Direct",
+   "name": "HBZ Sirat eDeposit 2 Year",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 5000,
+   "max": 1000000,
+   "rate": 4.1,
+   "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
+   "source": {
+    "kind": "habib_sirat"
+   }
+  },
+  {
+   "id": "hbz-36m",
+   "bank": "habib",
+   "platform": "Direct",
+   "name": "HBZ Sirat eDeposit 3 Year",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": false,
+   "min": 5000,
+   "max": 1000000,
+   "rate": 4.05,
+   "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
+   "source": {
+    "kind": "habib_sirat"
+   }
+  },
+  {
+   "id": "hbz-60m",
+   "bank": "habib",
+   "platform": "Direct",
+   "name": "HBZ Sirat eDeposit 5 Year",
+   "type": "fixed",
+   "term_months": 60,
+   "isa": false,
+   "min": 5000,
+   "max": 1000000,
+   "rate": 4.0,
+   "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
+   "source": {
+    "kind": "habib_sirat"
+   }
+  },
+  {
+   "id": "rz-ALR006",
+   "bank": "al-rayan",
+   "platform": "Raisin",
+   "name": "6 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.37,
+   "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR006/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "ALR006"
+   }
+  },
+  {
+   "id": "rz-ALR007",
+   "bank": "al-rayan",
+   "platform": "Raisin",
+   "name": "9 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 9,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.35,
+   "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR007/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "ALR007"
+   }
+  },
+  {
+   "id": "rz-ALR001",
+   "bank": "al-rayan",
+   "platform": "Raisin",
+   "name": "12 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.85,
+   "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR001/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "ALR001"
+   }
+  },
+  {
+   "id": "rz-ALR002",
+   "bank": "al-rayan",
+   "platform": "Raisin",
+   "name": "24 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.43,
+   "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR002/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "ALR002"
+   }
+  },
+  {
+   "id": "rz-ALR003",
+   "bank": "al-rayan",
+   "platform": "Raisin",
+   "name": "36 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.55,
+   "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR003/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "ALR003"
+   }
+  },
+  {
+   "id": "rz-ALR005",
+   "bank": "al-rayan",
+   "platform": "Raisin",
+   "name": "60 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 60,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.25,
+   "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR005/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "ALR005"
+   }
+  },
+  {
+   "id": "rz-QIB199",
+   "bank": "qib",
+   "platform": "Raisin",
+   "name": "Easy Access Account",
+   "type": "easy",
+   "term_months": 0,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 3.9,
+   "link": "https://www.raisin.co.uk/bank/qib/QIB199/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "QIB199"
+   }
+  },
+  {
+   "id": "rz-QIB125",
+   "bank": "qib",
+   "platform": "Raisin",
+   "name": "31 Day Notice Account",
+   "type": "notice",
+   "term_months": 1,
+   "notice_days": 31,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.2,
+   "link": "https://www.raisin.co.uk/bank/qib/QIB125/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "QIB125"
+   }
+  },
+  {
+   "id": "rz-QIB122",
+   "bank": "qib",
+   "platform": "Raisin",
+   "name": "95 Day Notice Account",
+   "type": "notice",
+   "term_months": 3,
+   "notice_days": 95,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.3,
+   "link": "https://www.raisin.co.uk/bank/qib/QIB122/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "QIB122"
+   }
+  },
+  {
+   "id": "rz-QIB007",
+   "bank": "qib",
+   "platform": "Raisin",
+   "name": "3 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 3,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 3.9,
+   "link": "https://www.raisin.co.uk/bank/qib/QIB007/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "QIB007"
+   }
+  },
+  {
+   "id": "rz-QIB003",
+   "bank": "qib",
+   "platform": "Raisin",
+   "name": "6 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.55,
+   "link": "https://www.raisin.co.uk/bank/qib/QIB003/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "QIB003"
+   }
+  },
+  {
+   "id": "rz-QIB001",
+   "bank": "qib",
+   "platform": "Raisin",
+   "name": "12 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.95,
+   "link": "https://www.raisin.co.uk/bank/qib/QIB001/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "QIB001"
+   }
+  },
+  {
+   "id": "rz-QIB002",
+   "bank": "qib",
+   "platform": "Raisin",
+   "name": "24 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.0,
+   "link": "https://www.raisin.co.uk/bank/qib/QIB002/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "QIB002"
+   }
+  },
+  {
+   "id": "rz-AHL004",
+   "bank": "kfh",
+   "platform": "Raisin",
+   "name": "6 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.42,
+   "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL004/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "AHL004"
+   }
+  },
+  {
+   "id": "rz-AHL009",
+   "bank": "kfh",
+   "platform": "Raisin",
+   "name": "9 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 9,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.47,
+   "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL009/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "AHL009"
+   }
+  },
+  {
+   "id": "rz-AHL001",
+   "bank": "kfh",
+   "platform": "Raisin",
+   "name": "12 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 120000,
+   "rate": 4.86,
+   "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL001/",
+   "source": {
+    "kind": "manual",
+    "checked": "2026-10-24",
+    "product": "AHL001"
+   }
+  }
+ ]
 }
