@@ -1,7 +1,7 @@
 {
- "checked_at": "2026-10-24T18:11:50+00:00",
+ "checked_at": "2026-10-24T18:18:46+00:00",
  "account_count": 53,
- "stale_count": 33,
+ "stale_count": 17,
  "banks": {
   "al-rayan": {
    "name": "Al Rayan Bank",
@@ -41,7 +41,7 @@
    "max": 1000000,
    "rate": 5.15,
    "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -58,7 +58,7 @@
    "max": 1000000,
    "rate": 4.43,
    "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -75,7 +75,7 @@
    "max": 1000000,
    "rate": 4.55,
    "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -92,7 +92,7 @@
    "max": 1000000,
    "rate": 2.75,
    "link": "https://www.alrayanbank.co.uk/savings/instant-access",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -110,7 +110,7 @@
    "max": 1000000,
    "rate": 4.58,
    "link": "https://www.blme.com/products-and-services/savings/notice-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -127,7 +127,7 @@
    "max": 1000000,
    "rate": 4.01,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -144,7 +144,7 @@
    "max": 1000000,
    "rate": 4.24,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -161,7 +161,7 @@
    "max": 1000000,
    "rate": 5.0,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -178,7 +178,7 @@
    "max": 1000000,
    "rate": 4.8,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -195,7 +195,7 @@
    "max": 1000000,
    "rate": 4.9,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -212,7 +212,7 @@
    "max": 1000000,
    "rate": 4.55,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -229,7 +229,7 @@
    "max": 1000000,
    "rate": 4.35,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -246,7 +246,7 @@
    "max": 1000000,
    "rate": 4.35,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -263,7 +263,7 @@
    "max": 1000000,
    "rate": 4.0,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -399,7 +399,7 @@
    "max": 1000000,
    "rate": 4.15,
    "link": "https://www.gatehousebank.com/personal/savings",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -588,7 +588,7 @@
    "max": 1000000,
    "rate": 4.25,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -605,7 +605,7 @@
    "max": 1000000,
    "rate": 4.75,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -622,7 +622,7 @@
    "max": 1000000,
    "rate": 4.1,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -639,7 +639,7 @@
    "max": 1000000,
    "rate": 4.05,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -656,7 +656,7 @@
    "max": 1000000,
    "rate": 4.0,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-10-24T18:11:50+00:00",
+   "last_verified": "2026-10-24T18:18:46+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -673,10 +673,11 @@
    "max": 120000,
    "rate": 4.37,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR006/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-ALR007",
@@ -690,10 +691,11 @@
    "max": 120000,
    "rate": 4.35,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR007/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-ALR001",
@@ -707,10 +709,11 @@
    "max": 120000,
    "rate": 4.85,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR001/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-ALR002",
@@ -724,10 +727,11 @@
    "max": 120000,
    "rate": 4.43,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR002/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-ALR003",
@@ -741,10 +745,11 @@
    "max": 120000,
    "rate": 4.55,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR003/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-ALR005",
@@ -758,10 +763,11 @@
    "max": 120000,
    "rate": 4.25,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR005/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-QIB199",
@@ -775,10 +781,11 @@
    "max": 120000,
    "rate": 3.9,
    "link": "https://www.raisin.co.uk/bank/qib/QIB199/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-QIB125",
@@ -793,10 +800,11 @@
    "max": 120000,
    "rate": 4.2,
    "link": "https://www.raisin.co.uk/bank/qib/QIB125/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-QIB122",
@@ -811,10 +819,11 @@
    "max": 120000,
    "rate": 4.3,
    "link": "https://www.raisin.co.uk/bank/qib/QIB122/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-QIB007",
@@ -828,10 +837,11 @@
    "max": 120000,
    "rate": 3.9,
    "link": "https://www.raisin.co.uk/bank/qib/QIB007/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-QIB003",
@@ -845,10 +855,11 @@
    "max": 120000,
    "rate": 4.55,
    "link": "https://www.raisin.co.uk/bank/qib/QIB003/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-QIB001",
@@ -862,10 +873,11 @@
    "max": 120000,
    "rate": 4.95,
    "link": "https://www.raisin.co.uk/bank/qib/QIB001/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-QIB002",
@@ -879,10 +891,11 @@
    "max": 120000,
    "rate": 4.0,
    "link": "https://www.raisin.co.uk/bank/qib/QIB002/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-AHL004",
@@ -896,10 +909,11 @@
    "max": 120000,
    "rate": 4.42,
    "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL004/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-AHL009",
@@ -913,10 +927,11 @@
    "max": 120000,
    "rate": 4.47,
    "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL009/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   },
   {
    "id": "rz-AHL001",
@@ -930,10 +945,11 @@
    "max": 120000,
    "rate": 4.86,
    "link": "https://www.raisin.co.uk/bank/kuwait-finance-house-plc/AHL001/",
-   "last_verified": null,
+   "last_verified": "2026-10-24T00:00:00+00:00",
    "rate_changed": null,
-   "stale": true,
-   "stale_since": "2026-10-24"
+   "stale": false,
+   "stale_since": null,
+   "checked_by_hand": true
   }
  ]
 }
