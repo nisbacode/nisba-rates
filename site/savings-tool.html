@@ -130,7 +130,7 @@
 .nr-small{font-size:12px;color:var(--mut);margin:20px 4px 0;line-height:1.6}
 .nr-more{align-self:center;margin-top:6px;border:1px solid var(--ink);background:transparent;border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer}
 @media (max-width:860px){
-  .nr-card{grid-template-columns:56px minmax(0,1fr) auto;grid-template-areas:"logo name name" "rate profit profit" "cta cta cta";gap:14px 16px;padding:16px}
+  .nr-card{grid-template-columns:56px minmax(0,1fr) minmax(0,1fr);grid-template-areas:"logo name name" "rate rate profit" "cta cta cta";gap:14px 16px;padding:16px}
   .nr-logo{grid-area:logo;width:56px}.nr-logo img{max-width:56px}
   .nr-name{grid-area:name}.nr-rate{grid-area:rate}.nr-profit{grid-area:profit}
   .nr-cta{grid-area:cta;width:100%}
