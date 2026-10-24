@@ -35,3 +35,7 @@ The website file is here:
 **See what the scraper read:** open a run in the Actions tab and download the `debug` file at the bottom.
 
 Rates are for information only and are not personalised financial advice.
+
+## The website tool
+
+The comparison table on the savings page is `site/savings-tool.html`. After editing it, run `python site/build.py` and commit both files. Kajabi only holds a small loader that pulls `site/savings-tool.js` from jsDelivr, so changes go live without touching Kajabi (jsDelivr can take up to 12 hours to refresh unless purged at `https://purge.jsdelivr.net/gh/nisbacode/nisba-rates@main/site/savings-tool.js`).
