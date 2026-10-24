@@ -1,0 +1,845 @@
+{
+ "_comment": "Curated Shariah-compliant funds, copied from the old tools.nisba.co.uk funds tool on 2026-10-24. Fee is the ongoing charge in %. Prices are not stored here.",
+ "funds": [
+  {
+   "ticker": "IB1T.L",
+   "name": "iShares Bitcoin ETP",
+   "category": "ETP",
+   "alpha_vantage_ticker": "IB1T.LON",
+   "yahoo_finance_ticker": "IB1T.L",
+   "asset_class": "Crypto",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.15,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "Trading212",
+    "AjBell"
+   ]
+  },
+  {
+   "ticker": "HINS",
+   "name": "HSBC FTSE EPRA Nareit Developed Islamic UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HINS.LON",
+   "yahoo_finance_ticker": "HINS.L",
+   "asset_class": "REIT",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.35,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "HSGEIBG",
+   "name": "HSBC Islamic International Equity Index Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001IVNK.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.62,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "HL",
+    "BestInvest"
+   ]
+  },
+  {
+   "ticker": "HIND",
+   "name": "HSBC FTSE EPRA Nareit Developed Islamic UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIND.LON",
+   "yahoo_finance_ticker": "HIND.L",
+   "asset_class": "REIT",
+   "currency": "USD",
+   "currency_denomination": "Pound",
+   "fee": 0.35,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell"
+   ]
+  },
+  {
+   "ticker": "HSGSBCG",
+   "name": "HSBC International Funds ICAV - Shariah Multi Asset Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001RPVA.L",
+   "asset_class": "Mix",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.85,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "HIWS",
+   "name": "HSBC MSCI World Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIWS.LON",
+   "yahoo_finance_ticker": "HIWS.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "Trading212",
+    "BestInvest"
+   ]
+  },
+  {
+   "ticker": "OCGIGFA",
+   "name": "OGM Oasis Crescent International Income Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001L6UA.L",
+   "asset_class": "Mix",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.66,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "No",
+   "platforms": [
+    "InvestEngine"
+   ]
+  },
+  {
+   "ticker": "FTGSIAU",
+   "name": "Franklin International Sukuk Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001FKZR",
+   "asset_class": "Sukuk",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.9,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "IG"
+   ]
+  },
+  {
+   "ticker": "SKUK",
+   "name": "iShares $ Sukuk UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "SKUK.AMS",
+   "yahoo_finance_ticker": "SKUK.AS",
+   "asset_class": "Sukuk",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.4,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "N/A",
+   "platforms": []
+  },
+  {
+   "ticker": "HBKS",
+   "name": "HSBC International Funds ICAV - International Sukuk UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HBKS.LON",
+   "yahoo_finance_ticker": "HBKS.L",
+   "asset_class": "Sukuk",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.4,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "HL"
+   ]
+  },
+  {
+   "ticker": "HIES",
+   "name": "HSBC MSCI Emerging Markets Islamic Screened Capped UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIES.LON",
+   "yahoo_finance_ticker": "HIES.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.35,
+   "geo_focus": "Emerging Markets",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "BestInvest"
+   ]
+  },
+  {
+   "ticker": "HSBAGIC",
+   "name": "HSBC Islamic International Equity Index Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001A2BJ",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.62,
+   "geo_focus": "International",
+   "accumulation_income": "Both",
+   "purification": "Yes",
+   "platforms": [
+    "IG"
+   ]
+  },
+  {
+   "ticker": "AMAL",
+   "name": "Saturna Al-Kawthar International Focused Equity UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "AMAL.LON",
+   "yahoo_finance_ticker": "AMAL.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.75,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "No",
+   "platforms": []
+  },
+  {
+   "ticker": "ISDW",
+   "name": "iShares MSCI World Islamic UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "ISDW.LON",
+   "yahoo_finance_ticker": "ISDW.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "Yes",
+   "platforms": [
+    "Trading212",
+    "IG"
+   ]
+  },
+  {
+   "ticker": "ISWD",
+   "name": "iShares MSCI World Islamic UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "ISWD.LON",
+   "yahoo_finance_ticker": "ISWD.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Coin",
+   "fee": 0.3,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "Fidelity",
+    "Saxo",
+    "InvestEngine"
+   ]
+  },
+  {
+   "ticker": "HIWO",
+   "name": "HSBC MSCI World Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIWO.LON",
+   "yahoo_finance_ticker": "HIWO.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "Trading212",
+    "IG",
+    "Saxo"
+   ]
+  },
+  {
+   "ticker": "BPIHIPA",
+   "name": "BNP Paribas Islamic Fund - Hilal Income",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001INNU",
+   "asset_class": "Sukuk",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.72,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell",
+    "HL"
+   ]
+  },
+  {
+   "ticker": "HBKU",
+   "name": "HSBC International Funds ICAV - International Sukuk UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001DXPD",
+   "asset_class": "Sukuk",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.4,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell",
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "ISDE",
+   "name": "iShares MSCI EM Islamic UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "ISDE.LON",
+   "yahoo_finance_ticker": "ISDE.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.35,
+   "geo_focus": "Emerging Markets",
+   "accumulation_income": "Income",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "IG",
+    "Saxo"
+   ]
+  },
+  {
+   "ticker": "HIEM",
+   "name": "HSBC MSCI Emerging Markets Islamic Screened Capped UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIEM.LON",
+   "yahoo_finance_ticker": "HIEM.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.35,
+   "geo_focus": "Emerging Markets",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "IG",
+    "Saxo"
+   ]
+  },
+  {
+   "ticker": "IGDA",
+   "name": "Invesco Dow Jones Islamic International Developed Markets UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "IGDA.LON",
+   "yahoo_finance_ticker": "IGDA.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.4,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "No",
+   "platforms": [
+    "Trading212",
+    "IG",
+    "Saxo"
+   ]
+  },
+  {
+   "ticker": "HIUA",
+   "name": "HSBC MSCI USA Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIUA.LON",
+   "yahoo_finance_ticker": "HIUA.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "U.S.",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "IG"
+   ]
+  },
+  {
+   "ticker": "HIUS",
+   "name": "HSBC MSCI USA Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIUS.LON",
+   "yahoo_finance_ticker": "HIUS.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "U.S.",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "BestInvest"
+   ]
+  },
+  {
+   "ticker": "SCIGEQG",
+   "name": "Schroder Islamic International Equity Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001LGKQ.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.55,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "BestInvest"
+   ]
+  },
+  {
+   "ticker": "SLVP",
+   "name": "Invesco Physical Silver ETC",
+   "category": "ETC",
+   "alpha_vantage_ticker": "SLVP.LON",
+   "yahoo_finance_ticker": "SLVP.L",
+   "asset_class": "Commodity",
+   "currency": "GBP",
+   "currency_denomination": "Coin",
+   "fee": 0.19,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "HL",
+    "Fidelity",
+    "BestInvest",
+    "IG",
+    "Saxo",
+    "InvestEngine"
+   ]
+  },
+  {
+   "ticker": "HIJP",
+   "name": "HSBC MSCI Japan Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIJP.LON",
+   "yahoo_finance_ticker": "HIJP.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "Japan",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "IG"
+   ]
+  },
+  {
+   "ticker": "RMAP",
+   "name": "Royal Mint Responsibly Sourced Physical Gold ETC",
+   "category": "ETF",
+   "alpha_vantage_ticker": "RMAP.LON",
+   "yahoo_finance_ticker": "RMAP.L",
+   "asset_class": "Commodity",
+   "currency": "GBP",
+   "currency_denomination": "Coin",
+   "fee": 0.25,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "SPUS",
+   "name": "SP Funds S&P 500 Sharia Industry Exclusions ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "SPUS",
+   "yahoo_finance_ticker": "SPUS",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.45,
+   "geo_focus": "U.S.",
+   "accumulation_income": "Income",
+   "purification": "No",
+   "platforms": []
+  },
+  {
+   "ticker": "HIJS",
+   "name": "HSBC MSCI Japan Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIJS.LON",
+   "yahoo_finance_ticker": "HIJS.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "Japan",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "FRFGSWG",
+   "name": "Franklin International Sukuk Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001NSRB.L",
+   "asset_class": "Sukuk",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.9,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell"
+   ]
+  },
+  {
+   "ticker": "HIPS",
+   "name": "HSBC MSCI Europe Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIPS.LON",
+   "yahoo_finance_ticker": "HIPS.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "European Region",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "HL",
+    "BestInvest"
+   ]
+  },
+  {
+   "ticker": "SGLN",
+   "name": "iShares Physical Gold ETC",
+   "category": "ETC",
+   "alpha_vantage_ticker": "SGLN.LON",
+   "yahoo_finance_ticker": "SGLN.L",
+   "asset_class": "Commodity",
+   "currency": "GBP",
+   "currency_denomination": "Coin",
+   "fee": 0.12,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "HL",
+    "Fidelity",
+    "IG",
+    "BestInvest",
+    "Saxo",
+    "InvestEngine"
+   ]
+  },
+  {
+   "ticker": "SSLV",
+   "name": "Invesco Physical Silver ETC",
+   "category": "ETC",
+   "alpha_vantage_ticker": "SSLV.LON",
+   "yahoo_finance_ticker": "SSLV.L",
+   "asset_class": "Commodity",
+   "currency": "USD",
+   "currency_denomination": null,
+   "fee": 0.19,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell",
+    "HL",
+    "Trading212",
+    "BestInvest",
+    "Fidelity",
+    "IG",
+    "Saxo",
+    "InvestEngine"
+   ]
+  },
+  {
+   "ticker": "RMAU",
+   "name": "Royal Mint Responsibly Sourced Physical Gold ETC",
+   "category": "ETC",
+   "alpha_vantage_ticker": "RMAU.LON",
+   "yahoo_finance_ticker": "RMAU.L",
+   "asset_class": "Commodity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.25,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "HIEU",
+   "name": "HSBC MSCI Europe Islamic Screened UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "HIEU.LON",
+   "yahoo_finance_ticker": "HIEU.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "European Region",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "Saxo",
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "ISUS",
+   "name": "iShares MSCI USA Islamic UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "ISUS.LON",
+   "yahoo_finance_ticker": "ISUS.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Coin",
+   "fee": 0.3,
+   "geo_focus": "U.S.",
+   "accumulation_income": "Income",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212",
+    "Fidelity",
+    "BestInvest",
+    "InvestEngine"
+   ]
+  },
+  {
+   "ticker": "PPDX",
+   "name": "WisdomTree Physical Palladium",
+   "category": "ETC",
+   "alpha_vantage_ticker": "PPDX.LON",
+   "yahoo_finance_ticker": "PPDX.L",
+   "asset_class": "Commodity",
+   "currency": "GBP",
+   "currency_denomination": null,
+   "fee": 0.49,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "Trading212",
+    "AjBell",
+    "HL"
+   ]
+  },
+  {
+   "ticker": "PHPT",
+   "name": "WisdomTree Physical Platinum",
+   "category": "ETC",
+   "alpha_vantage_ticker": "PHPT.LON",
+   "yahoo_finance_ticker": "PPTX.L",
+   "asset_class": "Commodity",
+   "currency": "GBP",
+   "currency_denomination": null,
+   "fee": 0.49,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "PHPP",
+   "name": "WisdomTree Physical Precious Metals",
+   "category": "ETC",
+   "alpha_vantage_ticker": "PHPP.LON",
+   "yahoo_finance_ticker": "PHPP.L",
+   "asset_class": "Commodity",
+   "currency": "GBP",
+   "currency_denomination": null,
+   "fee": 0.44,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "MWIM",
+   "name": "Invesco MSCI ACWI Islamic M-Series UCITS ETF Acc",
+   "category": "ETF",
+   "alpha_vantage_ticker": "MWIM.LON",
+   "yahoo_finance_ticker": "MWIM.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.35,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "AjBell",
+    "Trading212"
+   ]
+  },
+  {
+   "ticker": "DJIW",
+   "name": "Wahed Dow Jones Islamic World UCITS ETF USD Acc",
+   "category": "ETF",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "DJIW.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Pound",
+   "fee": 0.49,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "No",
+   "platforms": [
+    "Trading212",
+    "AjBell"
+   ]
+  },
+  {
+   "ticker": "SPWO",
+   "name": "SP Funds S&P World ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "SPWO",
+   "yahoo_finance_ticker": "SPWO",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.55,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "No",
+   "platforms": []
+  },
+  {
+   "ticker": "IE0009TGSLD9",
+   "name": "Baillie Gifford Worldwide Islamic Global Equities Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "0P0001OV22.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Pound",
+   "fee": 0.77,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "HL"
+   ]
+  },
+  {
+   "ticker": "LU3123443510",
+   "name": "Xtrackers II Salam USD Global Aggregate Sukuk ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "XASB.L",
+   "asset_class": "Sukuk",
+   "currency": "USD",
+   "currency_denomination": "Pound",
+   "fee": 0.4,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "N/A",
+   "platforms": []
+  },
+  {
+   "ticker": "MWIX",
+   "name": "Invesco MSCI ACWI Islamic M-Series UCITS ETF Acc (GBP)",
+   "category": "ETF",
+   "alpha_vantage_ticker": "MWIX.LON",
+   "yahoo_finance_ticker": "MWIX.L",
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Pennies",
+   "fee": 0.35,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "Trading212",
+    "AjBell",
+    "IG"
+   ]
+  },
+  {
+   "ticker": "SPWI",
+   "name": "Wahed S&P 500 Shariah ETF USD Acc",
+   "category": "ETF",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": "SPWI.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Pound",
+   "fee": 0.49,
+   "geo_focus": "U.S.",
+   "accumulation_income": "Accumulation",
+   "purification": "Yes",
+   "platforms": [
+    "Trading212"
+   ]
+  }
+ ]
+}
