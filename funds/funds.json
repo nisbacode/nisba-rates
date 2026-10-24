@@ -591,6 +591,26 @@
    }
   },
   {
+   "ticker": "LU3297715396",
+   "name": "Franklin Global Sukuk Ultra Short Duration Fund (GBP hedged)",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": null,
+   "asset_class": "Sukuk",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 0.25,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [],
+   "ft": {
+    "symbol": "LU3297715396:GBP",
+    "xid": "1072298315",
+    "type": "funds"
+   }
+  },
+  {
    "ticker": "HIPS",
    "name": "HSBC MSCI Europe Islamic Screened UCITS ETF",
    "category": "ETF",
