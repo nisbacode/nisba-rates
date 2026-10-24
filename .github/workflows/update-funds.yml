@@ -1,0 +1,63 @@
+name: Daily fund check
+
+on:
+  schedule:
+    - cron: "20 6 * * *"   # after the savings check; refreshes the oldest funds within the free Alpha Vantage limit
+  workflow_dispatch:
+    inputs:
+      calls:
+        description: "How many funds to refresh this run (max about 22 on the free plan)"
+        required: false
+        default: "20"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: rates
+  cancel-in-progress: false
+
+jobs:
+  funds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Refresh fund performance
+        id: run
+        env:
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          DAILY_FUND_CALLS: ${{ github.event.inputs.calls || '20' }}
+        run: |
+          set +e
+          python funds/update_funds.py
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+      - name: Publish funds.json
+        run: |
+          git config user.name "nisba-rates bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase -q origin main || true
+          git add docs/funds.json
+          git commit -m "Funds checked $(date -u +%F)" || echo "nothing to commit"
+          git push
+      - name: Raise or update an issue if anything needs a look
+        if: steps.run.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create fund-check --color 7C3AED --force >/dev/null 2>&1 || true
+          existing=$(gh issue list --label fund-check --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then gh issue comment "$existing" --body-file funds-report.md
+          else gh issue create --title "Fund prices need a look" --label fund-check --body-file funds-report.md; fi
+      - name: Close the issue once everything reads fine again
+        if: steps.run.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --label fund-check --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "All fund prices read fine on $(date -u +%F)."
+          done
