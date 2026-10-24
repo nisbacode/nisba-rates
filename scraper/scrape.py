@@ -111,6 +111,8 @@ def parse_gatehouse() -> dict[str, float]:
         if m:
             label = m.group(1).replace("|", " ").strip()
             label = re.sub(r"\s+", " ", label)
+            label = re.sub(r"^Account Name\s+", "", label, flags=re.I)
+            label = re.sub(r"\s*AER\*?$", "", label, flags=re.I)
             if len(label) < 80 and label not in found:
                 found[label] = float(m.group(2))
     save_debug("gatehouse", found)
