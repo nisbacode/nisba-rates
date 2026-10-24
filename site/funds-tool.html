@@ -1,0 +1,341 @@
+<!-- Nisba halal funds comparison. Source: github.com/nisbacode/nisba-rates (site/funds-tool.html). Prices refreshed every morning. -->
+<div id="nf-app" class="nf">
+  <div class="nf-head">
+    <p class="nf-eyebrow">Live comparison</p>
+    <div class="nf-checked" id="nf-checked"><span class="nf-dot"></span><span>Loading today's prices…</span></div>
+  </div>
+
+  <div class="nf-panel">
+    <div class="nf-top">
+      <input id="nf-q" class="nf-search" type="search" placeholder="Search a fund, ETF or ticker" aria-label="Search funds">
+      <div class="nf-seg" id="nf-ccy" role="group" aria-label="Show returns in">
+        <button type="button" data-v="gbp" class="on">Returns in £</button>
+        <button type="button" data-v="local">Fund currency</button>
+      </div>
+    </div>
+    <div class="nf-row">
+      <span class="nf-label">Asset type</span>
+      <div class="nf-chips" id="nf-asset"></div>
+    </div>
+    <div class="nf-grid">
+      <label class="nf-field"><span class="nf-label">Region</span><select id="nf-geo" class="nf-select"></select></label>
+      <label class="nf-field"><span class="nf-label">Platform</span><select id="nf-plat" class="nf-select"></select></label>
+      <label class="nf-field"><span class="nf-label">Income</span>
+        <select id="nf-acc" class="nf-select"><option value="">Any</option><option value="Accumulation">Accumulation</option><option value="Income">Income</option></select></label>
+      <label class="nf-field"><span class="nf-label">Max yearly fee</span>
+        <select id="nf-fee" class="nf-select"><option value="9">Any</option><option value="0.3">Up to 0.30%</option><option value="0.4">Up to 0.40%</option><option value="0.5">Up to 0.50%</option><option value="0.75">Up to 0.75%</option></select></label>
+    </div>
+  </div>
+
+  <div class="nf-chart-card" id="nf-chart-card">
+    <div class="nf-chart-head">
+      <div>
+        <h3 class="nf-h3">Compare performance</h3>
+        <p class="nf-sub" id="nf-chart-sub">Tick up to 5 funds in the list to compare growth of £100 over the last year.</p>
+      </div>
+      <button type="button" class="nf-clear" id="nf-clear" hidden>Clear</button>
+    </div>
+    <div id="nf-chart" class="nf-chart"></div>
+    <div id="nf-legend" class="nf-legend"></div>
+  </div>
+
+  <div class="nf-summary" id="nf-summary"></div>
+  <div class="nf-table-wrap">
+    <table class="nf-table" id="nf-table">
+      <thead><tr>
+        <th class="nf-c-pick"><span class="nf-sr">Compare</span></th>
+        <th data-s="name">Fund</th>
+        <th data-s="1d" class="nf-num">1D</th>
+        <th data-s="1m" class="nf-num">1M</th>
+        <th data-s="6m" class="nf-num">6M</th>
+        <th data-s="ytd" class="nf-num">YTD</th>
+        <th data-s="1y" class="nf-num on desc">1Y</th>
+        <th data-s="fee" class="nf-num">Fee</th>
+        <th class="nf-c-more">Details</th>
+      </tr></thead>
+      <tbody id="nf-body"></tbody>
+    </table>
+  </div>
+  <p class="nf-small">Returns are price returns from daily closing prices, shown in pounds by default (US dollar funds converted at the daily exchange rate). Fees are the ongoing charge per year. "n/a" means the fund is too new for that period or we do not have a daily price feed for it yet. Past performance is not a guide to future returns. Check the fund's own factsheet and Shariah certification before investing. Education only, not personalised financial advice.</p>
+</div>
+
+<style>
+.nf{--o:#ff8e0f;--od:#e67800;--cream:#fffbf7;--cream2:#fff5de;--ink:#1e1e1e;--mut:#6b6259;--line:#efe4d6;--up:#16804a;--down:#c0392b;font-family:Poppins,system-ui,sans-serif;color:var(--ink);max-width:1180px;margin:0 auto;box-sizing:border-box;text-align:left}
+.nf *{box-sizing:border-box}
+.nf button,.nf input,.nf select{font-family:inherit}
+.nf-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.nf-eyebrow{margin:0;color:var(--o);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.nf-checked{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--mut)}
+.nf-dot{width:8px;height:8px;border-radius:50%;background:#bbb;flex:none}
+.nf-checked.ok .nf-dot{background:#22a35a;box-shadow:0 0 0 4px rgba(34,163,90,.15)}
+.nf-checked.warn .nf-dot{background:#e0a100}
+.nf-panel{background:var(--cream2);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:16px}
+.nf-top{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.nf-search{flex:1 1 320px;min-width:0;border:2px solid var(--line);border-radius:999px;padding:12px 18px;font-size:15px;background:#fff;outline:0}
+.nf-search:focus{border-color:var(--o)}
+.nf-label{font-size:13.5px;font-weight:600;display:block;margin-bottom:8px}
+.nf-chips,.nf-seg{display:flex;flex-wrap:wrap;gap:8px}
+.nf-chips button,.nf-seg button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer}
+.nf-chips button:hover,.nf-seg button:hover{border-color:var(--o)}
+.nf-chips button.on,.nf-seg button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.nf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.nf-field{display:block;min-width:0}
+.nf-select{appearance:none;-webkit-appearance:none;width:100%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231e1e1e' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center;border:1px solid var(--line);border-radius:999px;padding:10px 36px 10px 16px;font-size:14px;color:var(--ink);cursor:pointer}
+.nf-chart-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px 22px;margin-top:16px}
+.nf-chart-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.nf-h3{font-family:'Playfair Display',Georgia,serif;font-size:24px;margin:0 0 4px;color:var(--ink)}
+.nf-sub{margin:0;font-size:13.5px;color:var(--mut)}
+.nf-clear{border:1px solid var(--ink);background:transparent;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
+.nf-chart{margin-top:12px;width:100%}
+.nf-chart svg{display:block;width:100%;height:auto}
+.nf-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px;font-size:13px}
+.nf-legend span{display:inline-flex;align-items:center;gap:6px}
+.nf-legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.nf-summary{margin:20px 4px 10px;font-size:14.5px;color:var(--mut)}
+.nf-summary strong{color:var(--ink)}
+.nf-table-wrap{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.nf-table{width:100%;border-collapse:collapse;font-size:14px}
+.nf-table th{background:var(--cream);text-align:left;font-size:12.5px;font-weight:600;color:var(--mut);padding:12px 10px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+.nf-table th.on{color:var(--ink)}
+.nf-table th.on::after{content:" ▾";font-size:10px}
+.nf-table th.on.asc::after{content:" ▴"}
+.nf-table th.nf-c-pick,.nf-table th.nf-c-more{cursor:default}
+.nf-table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.nf-table tr:last-child td{border-bottom:0}
+.nf-table tbody tr:hover{background:#fffdf9}
+.nf-num{text-align:right!important;white-space:nowrap;font-variant-numeric:tabular-nums}
+.nf-up{color:var(--up);font-weight:600}
+.nf-down{color:var(--down);font-weight:600}
+.nf-na{color:#b4aa9f;font-size:12.5px}
+.nf-fund b{display:block;font-weight:600;font-size:14.5px;line-height:1.3}
+.nf-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.nf-tag{font-size:11px;font-weight:500;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap;color:#4d453d}
+.nf-tag.t-Equity{background:#fff1dc}.nf-tag.t-Sukuk{background:#e7f3ec}.nf-tag.t-Commodity{background:#fff7cc}.nf-tag.t-REIT{background:#e9d4ff}.nf-tag.t-Crypto{background:#e3ecff}.nf-tag.t-Mix{background:#f1e9e0}
+.nf-pick{width:18px;height:18px;accent-color:var(--o);cursor:pointer}
+.nf-more{border:0;background:transparent;color:var(--od);font-weight:600;font-size:13px;cursor:pointer;padding:4px 0;white-space:nowrap}
+.nf-detail td{background:#fffdf9;font-size:13px;color:#4d453d}
+.nf-dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 18px}
+.nf-dl div span{display:block;font-size:11.5px;color:var(--mut)}
+.nf-empty{padding:28px;text-align:center;color:var(--mut)}
+.nf-small{font-size:12px;color:var(--mut);margin:18px 4px 0;line-height:1.6}
+.nf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:900px){
+  .nf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nf-table thead{display:none}
+  .nf-table,.nf-table tbody,.nf-table tr,.nf-table td{display:block;width:100%}
+  .nf-table tr.nf-row-main{display:grid;grid-template-columns:28px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);grid-template-areas:"pick fund fund fund fund" ". m6 ytd y1 fee" ". more more more more";padding:14px 12px 6px;border-bottom:1px solid var(--line);gap:4px 6px}
+  .nf-table tr.nf-row-main td{border:0;padding:2px 0;text-align:left!important}
+  .nf-table td.c-pick{grid-area:pick}.nf-table td.c-fund{grid-area:fund}.nf-table td.c-1d,.nf-table td.c-1m{display:none}
+  .nf-table td.c-6m{grid-area:m6}.nf-table td.c-ytd{grid-area:ytd}.nf-table td.c-1y{grid-area:y1}.nf-table td.c-fee{grid-area:fee}.nf-table td.c-more{grid-area:more}
+  .nf-table td[data-l]::before{content:attr(data-l);display:block;font-size:11px;color:var(--mut);font-weight:500}
+  .nf-dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .nf-panel{padding:16px;border-radius:20px}
+  .nf-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .nf-chart-card{padding:16px}
+}
+</style>
+
+<script>
+(function(){
+  var DATA = [
+    'https://raw.githubusercontent.com/nisbacode/nisba-rates/main/docs/funds.json',
+    'https://cdn.jsdelivr.net/gh/nisbacode/nisba-rates@main/docs/funds.json'
+  ];
+  var COLORS = ['#ff8e0f','#7c3aed','#16804a','#2563eb','#c0392b'];
+  var $ = function(id){ return document.getElementById(id); };
+  var S = { q:'', asset:'', geo:'', plat:'', acc:'', fee:9, ccy:'gbp', sort:'1y', dir:-1, picks:[], open:{} };
+  var data = null, funds = [];
+
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function perf(f){ return (S.ccy === 'gbp' ? f.perf_gbp : f.perf) || {}; }
+  function pct(v){
+    if (v == null || isNaN(v)) return '<span class="nf-na">n/a</span>';
+    var cls = v > 0 ? 'nf-up' : (v < 0 ? 'nf-down' : '');
+    return '<span class="' + cls + '">' + (v > 0 ? '+' : '') + v.toFixed(1) + '%</span>';
+  }
+  function when(iso){
+    var d = new Date(iso), now = new Date();
+    var t = d.toLocaleTimeString('en-GB', {hour:'numeric', minute:'2-digit', hour12:true, timeZone:'Europe/London'}).replace(/\s/g,'').toLowerCase();
+    var same = d.toLocaleDateString('en-GB', {timeZone:'Europe/London'}) === now.toLocaleDateString('en-GB', {timeZone:'Europe/London'});
+    return same ? 'today at ' + t : d.toLocaleDateString('en-GB', {day:'numeric', month:'short', timeZone:'Europe/London'}) + ' at ' + t;
+  }
+  function label(f){ return f.name + (f.currency ? ' (' + f.currency + ')' : ''); }
+
+  function load(i){
+    i = i || 0;
+    if (i >= DATA.length) return fail();
+    fetch(DATA[i] + '?t=' + Math.floor(Date.now()/300000), {cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ data = j; funds = j.funds; ready(); })
+      .catch(function(){ load(i+1); });
+  }
+  function fail(){
+    $('nf-checked').className = 'nf-checked warn';
+    $('nf-checked').lastChild.textContent = 'Prices unavailable right now';
+    $('nf-body').innerHTML = '<tr><td colspan="9" class="nf-empty">We could not load today\'s fund prices. Please refresh in a minute.</td></tr>';
+  }
+  function uniq(key, split){
+    var m = {};
+    funds.forEach(function(f){ var v = f[key]; (split && Array.isArray(v) ? v : [v]).forEach(function(x){ if (x) m[x] = (m[x]||0) + 1; }); });
+    return Object.keys(m).sort();
+  }
+  function ready(){
+    var c = $('nf-checked');
+    c.className = 'nf-checked ok';
+    c.lastChild.textContent = 'Prices updated ' + when(data.checked_at);
+    var assets = uniq('asset_class');
+    $('nf-asset').innerHTML = '<button type="button" data-v="" class="on">All</button>' + assets.map(function(a){ return '<button type="button" data-v="' + esc(a) + '">' + esc(a === 'Mix' ? 'Multi-asset' : a) + '</button>'; }).join('');
+    $('nf-geo').innerHTML = '<option value="">Anywhere</option>' + uniq('geo_focus').map(function(g){ return '<option>' + esc(g) + '</option>'; }).join('');
+    $('nf-plat').innerHTML = '<option value="">Any platform</option>' + uniq('platforms', true).map(function(p){ return '<option>' + esc(p) + '</option>'; }).join('');
+    render();
+  }
+
+  function filtered(){
+    var q = S.q.toLowerCase();
+    return funds.filter(function(f){
+      if (q && (f.name + ' ' + f.ticker).toLowerCase().indexOf(q) < 0) return false;
+      if (S.asset && f.asset_class !== S.asset) return false;
+      if (S.geo && f.geo_focus !== S.geo) return false;
+      if (S.plat && (f.platforms || []).indexOf(S.plat) < 0) return false;
+      if (S.acc && f.accumulation_income !== S.acc && f.accumulation_income !== 'Both') return false;
+      if (f.fee > S.fee) return false;
+      return true;
+    });
+  }
+
+  function render(){
+    if (!data) return;
+    var list = filtered();
+    if (S.sort !== 'name' && S.sort !== 'fee') {
+      list.sort(function(a, b){
+        var x = perf(a)[S.sort], y = perf(b)[S.sort];
+        if (x == null && y == null) return a.name.localeCompare(b.name);
+        if (x == null) return 1; if (y == null) return -1;
+        return S.dir < 0 ? y - x : x - y;
+      });
+    } else if (S.sort === 'fee') {
+      list.sort(function(a, b){ return S.dir < 0 ? b.fee - a.fee : a.fee - b.fee; });
+    } else {
+      list.sort(function(a, b){ return S.dir < 0 ? b.name.localeCompare(a.name) : a.name.localeCompare(b.name); });
+    }
+    var withData = list.filter(function(f){ return perf(f)['1y'] != null; });
+    var best = withData.slice().sort(function(a,b){ return perf(b)['1y'] - perf(a)['1y']; })[0];
+    $('nf-summary').innerHTML = '<strong>' + list.length + ' fund' + (list.length === 1 ? '' : 's') + '</strong> match' + (list.length === 1 ? 'es' : '') +
+      (best ? '. Best 1 year return here: <strong>' + esc(best.name) + '</strong> at <strong>' + (perf(best)['1y'] > 0 ? '+' : '') + perf(best)['1y'].toFixed(1) + '%</strong>' + (S.ccy === 'gbp' ? ' in pounds.' : ' in its own currency.') : '.');
+
+    if (!list.length){ $('nf-body').innerHTML = '<tr><td colspan="9" class="nf-empty">No funds match these filters. Try clearing the search or widening the fee limit.</td></tr>'; drawChart(); return; }
+    $('nf-body').innerHTML = list.map(function(f){
+      var p = perf(f), id = esc(f.ticker), picked = S.picks.indexOf(f.ticker) >= 0;
+      var canPick = f.hist_gbp && f.hist_gbp.length > 2;
+      var row = '<tr class="nf-row-main">' +
+        '<td class="c-pick">' + (canPick ? '<input type="checkbox" class="nf-pick" data-t="' + id + '"' + (picked ? ' checked' : '') + ' aria-label="Compare ' + esc(f.name) + '">' : '') + '</td>' +
+        '<td class="c-fund nf-fund"><b>' + esc(f.name) + '</b><div class="nf-meta">' +
+          '<span class="nf-tag t-' + esc(f.asset_class) + '">' + esc(f.asset_class === 'Mix' ? 'Multi-asset' : f.asset_class) + '</span>' +
+          '<span class="nf-tag">' + esc(f.category) + '</span>' +
+          '<span class="nf-tag">' + esc(f.currency) + '</span>' +
+          '<span class="nf-tag">' + esc(f.ticker) + '</span></div></td>' +
+        '<td class="c-1d nf-num" data-l="1D">' + pct(p['1d']) + '</td>' +
+        '<td class="c-1m nf-num" data-l="1M">' + pct(p['1m']) + '</td>' +
+        '<td class="c-6m nf-num" data-l="6M">' + pct(p['6m']) + '</td>' +
+        '<td class="c-ytd nf-num" data-l="YTD">' + pct(p['ytd']) + '</td>' +
+        '<td class="c-1y nf-num" data-l="1Y">' + pct(p['1y']) + '</td>' +
+        '<td class="c-fee nf-num" data-l="Fee">' + f.fee.toFixed(2) + '%</td>' +
+        '<td class="c-more"><button type="button" class="nf-more" data-t="' + id + '">' + (S.open[f.ticker] ? 'Hide' : 'More') + '</button></td></tr>';
+      if (S.open[f.ticker]) {
+        row += '<tr class="nf-detail"><td colspan="9"><div class="nf-dl">' +
+          '<div><span>Region</span>' + esc(f.geo_focus) + '</div>' +
+          '<div><span>Accumulation or income</span>' + esc(f.accumulation_income) + '</div>' +
+          '<div><span>Purification needed</span>' + esc(f.purification || 'n/a') + '</div>' +
+          '<div><span>Prices as of</span>' + (f.as_of ? new Date(f.as_of).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : 'No daily price feed yet') + '</div>' +
+          '<div style="grid-column:1/-1"><span>Available on</span>' + ((f.platforms||[]).length ? esc(f.platforms.join(', ')) : 'Not listed') + '</div>' +
+          '</div></td></tr>';
+      }
+      return row;
+    }).join('');
+    drawChart();
+  }
+
+  function drawChart(){
+    var picks = S.picks.map(function(t){ return funds.filter(function(f){ return f.ticker === t; })[0]; }).filter(Boolean);
+    $('nf-clear').hidden = !picks.length;
+    if (!picks.length){
+      // Default view: the three largest-return equity funds, so the chart is never empty.
+      picks = funds.filter(function(f){ return f.hist_gbp && f.hist_gbp.length > 40 && f.asset_class === 'Equity' && f.currency === 'GBP'; })
+        .sort(function(a,b){ return (b.perf_gbp||{})['1y'] - (a.perf_gbp||{})['1y']; }).slice(0, 3);
+      $('nf-chart-sub').textContent = 'Growth of £100 over the last year. Tick up to 5 funds in the list to compare your own picks.';
+    } else {
+      $('nf-chart-sub').textContent = 'Growth of £100 over the last year, in pounds.';
+    }
+    var narrow = ($('nf-chart').clientWidth || 900) < 600;
+    var W = narrow ? 420 : 900, H = narrow ? 300 : 300, P = {l:narrow ? 40 : 46, r:10, t:12, b:28};
+    var series = picks.map(function(f){
+      var h = f.hist_gbp, base = h[0][1];
+      return { f:f, pts: h.map(function(r){ return [new Date(r[0]).getTime(), r[1] / base * 100]; }) };
+    });
+    if (!series.length){ $('nf-chart').innerHTML = ''; $('nf-legend').innerHTML = ''; return; }
+    var xs = [], ys = [];
+    series.forEach(function(s){ s.pts.forEach(function(p){ xs.push(p[0]); ys.push(p[1]); }); });
+    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
+    var y0 = Math.min.apply(null, ys.concat([100])), y1 = Math.max.apply(null, ys.concat([100]));
+    var pad = (y1 - y0) * 0.08 || 5; y0 -= pad; y1 += pad;
+    var X = function(v){ return P.l + (v - x0) / (x1 - x0 || 1) * (W - P.l - P.r); };
+    var Y = function(v){ return P.t + (1 - (v - y0) / (y1 - y0)) * (H - P.t - P.b); };
+    var step = Math.pow(10, Math.floor(Math.log10((y1 - y0) / 4))); var nice = [1,2,2.5,5,10].map(function(m){ return m*step; }).filter(function(s){ return (y1-y0)/s <= 6; })[0] || step*10;
+    var g = '';
+    for (var v = Math.ceil(y0 / nice) * nice; v <= y1; v += nice) {
+      g += '<line x1="' + P.l + '" x2="' + (W - P.r) + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="' + (Math.abs(v-100) < 1e-6 ? '#cbbfb2' : '#f0e8de') + '"/>' +
+           '<text x="' + (P.l - 8) + '" y="' + (Y(v) + 4) + '" text-anchor="end" font-size="12" fill="#8a8178">£' + Math.round(v) + '</text>';
+    }
+    var months = [];
+    var d = new Date(x0); d.setDate(1); d.setMonth(d.getMonth() + 1);
+    for (; d.getTime() <= x1; d.setMonth(d.getMonth() + (narrow ? 3 : 2))) months.push(new Date(d));
+    months.forEach(function(m){ g += '<text x="' + X(m.getTime()) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="12" fill="#8a8178">' + m.toLocaleDateString('en-GB',{month:'short'}) + '</text>'; });
+    series.forEach(function(s, i){
+      var dpath = s.pts.map(function(p, k){ return (k ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1); }).join(' ');
+      g += '<path d="' + dpath + '" fill="none" stroke="' + COLORS[i % COLORS.length] + '" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+    });
+    $('nf-chart').innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Growth of £100 over the last year">' + g + '</svg>';
+    $('nf-legend').innerHTML = series.map(function(s, i){
+      var last = s.pts[s.pts.length - 1][1];
+      return '<span><i style="background:' + COLORS[i % COLORS.length] + '"></i>' + esc(label(s.f)) + ': £' + last.toFixed(0) + '</span>';
+    }).join('');
+  }
+
+  // Events
+  $('nf-q').addEventListener('input', function(){ S.q = this.value.trim(); render(); });
+  $('nf-asset').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return;
+    [].forEach.call(this.children, function(x){ x.classList.toggle('on', x === b); }); S.asset = b.dataset.v; render(); });
+  $('nf-ccy').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return;
+    [].forEach.call(this.children, function(x){ x.classList.toggle('on', x === b); }); S.ccy = b.dataset.v; render(); });
+  $('nf-geo').addEventListener('change', function(){ S.geo = this.value; render(); });
+  $('nf-plat').addEventListener('change', function(){ S.plat = this.value; render(); });
+  $('nf-acc').addEventListener('change', function(){ S.acc = this.value; render(); });
+  $('nf-fee').addEventListener('change', function(){ S.fee = Number(this.value); render(); });
+  $('nf-clear').addEventListener('click', function(){ S.picks = []; render(); });
+  var lastW = window.innerWidth;
+  window.addEventListener('resize', function(){ if (Math.abs(window.innerWidth - lastW) > 80) { lastW = window.innerWidth; if (data) drawChart(); } });
+  document.querySelector('#nf-table thead').addEventListener('click', function(e){
+    var th = e.target.closest('th[data-s]'); if (!th) return;
+    var k = th.dataset.s;
+    if (S.sort === k) S.dir = -S.dir; else { S.sort = k; S.dir = (k === 'name' || k === 'fee') ? 1 : -1; }
+    [].forEach.call(this.querySelectorAll('th'), function(x){ x.classList.remove('on','asc','desc'); });
+    th.classList.add('on', S.dir > 0 ? 'asc' : 'desc');
+    render();
+  });
+  $('nf-body').addEventListener('click', function(e){
+    var m = e.target.closest('.nf-more');
+    if (m) { var t = m.dataset.t; S.open[t] = !S.open[t]; render(); return; }
+  });
+  $('nf-body').addEventListener('change', function(e){
+    var c = e.target.closest('.nf-pick'); if (!c) return;
+    var t = c.dataset.t, i = S.picks.indexOf(t);
+    if (c.checked && i < 0) { if (S.picks.length >= 5) { c.checked = false; return; } S.picks.push(t); }
+    if (!c.checked && i >= 0) S.picks.splice(i, 1);
+    drawChart();
+    $('nf-chart-card').scrollIntoView && window.innerWidth < 900 && S.picks.length === 1 && $('nf-chart-card').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  load();
+})();
+</script>
