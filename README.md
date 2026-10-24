@@ -39,3 +39,12 @@ Rates are for information only and are not personalised financial advice.
 ## The website tool
 
 The comparison table on the savings page is `site/savings-tool.html`. After editing it, run `python site/build.py` and commit both files. Kajabi holds a small loader (Site theme, Savings Accounts page, section "Savings comparison (native)") that pulls `site/savings-tool.js` from jsDelivr pinned to a commit, e.g. `https://cdn.jsdelivr.net/gh/nisbacode/nisba-rates@<commit>/site/savings-tool.js`. Update the commit in that loader to publish a new version of the tool. The rates themselves need no Kajabi change: the tool reads `docs/rates.json` live every visit.
+
+## Fund prices
+
+`funds/funds.json` lists the 46 funds on nisba.co.uk/funds. The "Daily fund check" workflow (about 6:20am UK) works out performance for each fund and writes `docs/funds.json`, which the funds page reads live:
+
+- **34 ETFs and ETCs**: daily prices from Alpha Vantage (secret `ALPHA_VANTAGE_API_KEY`, premium plan). MWIX uses its USD twin MWIM.
+- **12 funds** (HSBC, Schroders, Baillie Gifford, Franklin, BNP Paribas, Oasis Crescent, plus DJIW, HBKU and XASB): prices from FT.com, kept in `funds/ft_prices.json`. A Claude scheduled task ("Nisba FT fund price check", 7:52am UK, runs through Ahmad's Chrome) reads the latest prices with `funds/ft_fetch.js`, merges them with `funds/ft_merge.py`, pushes, and reruns the workflow.
+
+Returns are price returns, so income (distributing) share classes understate total return.
