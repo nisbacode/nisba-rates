@@ -167,6 +167,14 @@ def main() -> int:
         rec["perf_gbp"] = src.get("perf_gbp")
         rec["updated_at"] = src.get("updated_at")
         rec["data_source"] = "Alpha Vantage" if f.get("alpha_vantage_ticker") else None
+        if f.get("proxy"):
+            # Another trading line of the same fund (e.g. the USD line of a GBP-quoted ETF).
+            p = fresh.get(f["proxy"]) or prev.get(f["proxy"], {})
+            rec["as_of"] = p.get("as_of")
+            rec["perf_gbp"] = p.get("perf_gbp")
+            rec["perf"] = p.get("perf_gbp") if f["currency"] == "GBP" else p.get("perf")
+            rec["updated_at"] = p.get("updated_at")
+            rec["data_source"] = f"Alpha Vantage (via {f['proxy']})"
         if rec["as_of"]:
             age = (today - dt.date.fromisoformat(rec["as_of"])).days
             rec["stale"] = age > STALE_DAYS
@@ -184,13 +192,13 @@ def main() -> int:
     }
     OUT.write_text(json.dumps(payload, indent=1, ensure_ascii=False) + "\n")
 
-    missing = [f["name"] for f in out_funds if not f.get("alpha_vantage_ticker")]
+    missing = [f["name"] for f in out_funds if not f.get("alpha_vantage_ticker") and not f.get("proxy")]
     report = [f"Fund check {today}: refreshed {len(fresh)} of {len(av_funds)} Alpha Vantage funds today; "
               f"{payload['with_data']} of {len(out_funds)} funds have performance data.\n"]
     if problems:
         report += ["## Needs a look\n", *problems, ""]
     if missing:
-        notes.append(f"- {len(missing)} funds have no Alpha Vantage code and need another price source.")
+        notes.append(f"- {len(missing)} funds have no Alpha Vantage code and have no price source yet and show without performance.")
     if notes:
         report += ["## Notes\n", *notes, ""]
     REPORT.write_text("\n".join(report))
