@@ -18,6 +18,7 @@ import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "funds" / "funds.json"
+FT_PRICES = ROOT / "funds" / "ft_prices.json"
 OUT = ROOT / "docs" / "funds.json"
 REPORT = ROOT / "funds-report.md"
 
@@ -174,6 +175,10 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             problems.append(f"- {f['name']} ({sym}): {e}")
 
+    ft_series = {}
+    if FT_PRICES.exists():
+        ft_series = json.loads(FT_PRICES.read_text()).get("prices", {})
+
     out_funds = []
     for f in seed:
         rec = dict(f)
@@ -186,6 +191,18 @@ def main() -> int:
         rec["updated_at"] = src.get("updated_at")
         rec["hist_gbp"] = src.get("hist_gbp")
         rec["data_source"] = "Alpha Vantage" if f.get("alpha_vantage_ticker") else None
+        if f.get("ft"):
+            # Prices read from FT.com each morning by the scheduled FT fund price check.
+            series = ft_series.get(f["ticker"]) or []
+            rows = sorted(((dt.date.fromisoformat(d), float(v)) for d, v in series), reverse=True)
+            if len(rows) >= 2:
+                usd = f["currency"] == "USD"
+                rec["as_of"] = rows[0][0].isoformat()
+                rec["perf"] = performance(rows)
+                rec["perf_gbp"] = performance(rows, fx) if (usd and fx) else (rec["perf"] if f["currency"] == "GBP" else None)
+                rec["hist_gbp"] = history_gbp(rows, fx if usd else None) if (fx or not usd) else None
+                rec["updated_at"] = now.isoformat()
+                rec["data_source"] = "FT.com"
         if f.get("proxy"):
             # Another trading line of the same fund (e.g. the USD line of a GBP-quoted ETF).
             p = fresh.get(f["proxy"]) or prev.get(f["proxy"], {})
@@ -198,7 +215,7 @@ def main() -> int:
         if rec["as_of"]:
             age = (today - dt.date.fromisoformat(rec["as_of"])).days
             rec["stale"] = age > STALE_DAYS
-            if rec["stale"] and f.get("alpha_vantage_ticker"):
+            if rec["stale"] and (f.get("alpha_vantage_ticker") or f.get("ft")):
                 problems.append(f"- {f['name']}: latest price is from {rec['as_of']}")
         else:
             rec["stale"] = True
@@ -212,7 +229,7 @@ def main() -> int:
     }
     OUT.write_text(json.dumps(payload, indent=1, ensure_ascii=False) + "\n")
 
-    missing = [f["name"] for f in out_funds if not f.get("alpha_vantage_ticker") and not f.get("proxy")]
+    missing = [f["name"] for f in out_funds if not f.get("alpha_vantage_ticker") and not f.get("proxy") and not f.get("ft")]
     report = [f"Fund check {today}: refreshed {len(fresh)} of {len(av_funds)} Alpha Vantage funds today; "
               f"{payload['with_data']} of {len(out_funds)} funds have performance data.\n"]
     if problems:

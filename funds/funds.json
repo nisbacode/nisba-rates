@@ -54,7 +54,12 @@
     "AjBell",
     "HL",
     "BestInvest"
-   ]
+   ],
+   "ft": {
+    "symbol": "LU2092165666:GBP",
+    "xid": "625838090",
+    "type": "funds"
+   }
   },
   {
    "ticker": "HIND",
@@ -89,7 +94,12 @@
    "platforms": [
     "AjBell",
     "Trading212"
-   ]
+   ],
+   "ft": {
+    "symbol": "IE000WNUEVW5:GBP",
+    "xid": "833459078",
+    "type": "funds"
+   }
   },
   {
    "ticker": "HIWS",
@@ -124,7 +134,12 @@
    "purification": "No",
    "platforms": [
     "InvestEngine"
-   ]
+   ],
+   "ft": {
+    "symbol": "GB00BLD0R132:GBP",
+    "xid": "634079145",
+    "type": "funds"
+   }
   },
   {
    "ticker": "FTGSIAU",
@@ -141,7 +156,12 @@
    "purification": "N/A",
    "platforms": [
     "IG"
-   ]
+   ],
+   "ft": {
+    "symbol": "LU0792756115:USD",
+    "xid": "56863306",
+    "type": "funds"
+   }
   },
   {
    "ticker": "SKUK",
@@ -211,7 +231,12 @@
    "purification": "Yes",
    "platforms": [
     "IG"
-   ]
+   ],
+   "ft": {
+    "symbol": "LU0466842654:USD",
+    "xid": "129493107",
+    "type": "funds"
+   }
   },
   {
    "ticker": "AMAL",
@@ -302,7 +327,12 @@
    "platforms": [
     "AjBell",
     "HL"
-   ]
+   ],
+   "ft": {
+    "symbol": "LU1150259296:USD",
+    "xid": "535659578",
+    "type": "funds"
+   }
   },
   {
    "ticker": "HBKU",
@@ -320,7 +350,12 @@
    "platforms": [
     "AjBell",
     "Trading212"
-   ]
+   ],
+   "ft": {
+    "symbol": "HBKU:LSE:USD",
+    "xid": "827212975",
+    "type": "etfs"
+   }
   },
   {
    "ticker": "ISDE",
@@ -434,7 +469,12 @@
    "platforms": [
     "AjBell",
     "BestInvest"
-   ]
+   ],
+   "ft": {
+    "symbol": "GB00BF780Y53:GBP",
+    "xid": "637440141",
+    "type": "funds"
+   }
   },
   {
    "ticker": "SLVP",
@@ -543,7 +583,12 @@
    "purification": "N/A",
    "platforms": [
     "AjBell"
-   ]
+   ],
+   "ft": {
+    "symbol": "LU2407588818:GBP",
+    "xid": "690392117",
+    "type": "funds"
+   }
   },
   {
    "ticker": "HIPS",
@@ -756,7 +801,12 @@
    "platforms": [
     "Trading212",
     "AjBell"
-   ]
+   ],
+   "ft": {
+    "symbol": "DJIW:LSE:USD",
+    "xid": "1044783862",
+    "type": "etfs"
+   }
   },
   {
    "ticker": "SPWO",
@@ -788,7 +838,12 @@
    "purification": "Yes",
    "platforms": [
     "HL"
-   ]
+   ],
+   "ft": {
+    "symbol": "IE0009TGSLD9:GBP",
+    "xid": "725676943",
+    "type": "funds"
+   }
   },
   {
    "ticker": "LU3123443510",
@@ -803,7 +858,12 @@
    "geo_focus": "International",
    "accumulation_income": "Income",
    "purification": "N/A",
-   "platforms": []
+   "platforms": [],
+   "ft": {
+    "symbol": "XASB:LSE:USD",
+    "xid": "1026739337",
+    "type": "etfs"
+   }
   },
   {
    "ticker": "MWIX",
