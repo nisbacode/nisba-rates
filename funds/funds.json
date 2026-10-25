@@ -92,8 +92,7 @@
    "accumulation_income": "Accumulation",
    "purification": "No",
    "platforms": [
-    "AjBell",
-    "Trading212"
+    "AjBell"
    ],
    "ft": {
     "symbol": "IE000WNUEVW5:GBP",
