@@ -115,7 +115,8 @@
    "purification": "No",
    "platforms": [
     "Trading212",
-    "BestInvest"
+    "BestInvest",
+    "AjBell"
    ]
   },
   {
@@ -132,7 +133,8 @@
    "accumulation_income": "Accumulation",
    "purification": "No",
    "platforms": [
-    "InvestEngine"
+    "InvestEngine",
+    "AjBell"
    ],
    "ft": {
     "symbol": "GB00BLD0R132:GBP",
@@ -252,7 +254,9 @@
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
    "purification": "No",
-   "platforms": []
+   "platforms": [
+    "AjBell"
+   ]
   },
   {
    "ticker": "ISDW",
@@ -269,7 +273,8 @@
    "purification": "No",
    "platforms": [
     "Trading212",
-    "IG"
+    "IG",
+    "AjBell"
    ]
   },
   {
@@ -309,7 +314,8 @@
    "platforms": [
     "Trading212",
     "IG",
-    "Saxo"
+    "Saxo",
+    "AjBell"
    ]
   },
   {
@@ -436,7 +442,8 @@
    "platforms": [
     "Trading212",
     "IG",
-    "Saxo"
+    "Saxo",
+    "AjBell"
    ]
   },
   {
@@ -573,7 +580,8 @@
    "accumulation_income": "Accumulation",
    "purification": "No",
    "platforms": [
-    "Trading212"
+    "Trading212",
+    "AjBell"
    ]
   },
   {
@@ -720,7 +728,8 @@
    "purification": "No",
    "platforms": [
     "Saxo",
-    "Trading212"
+    "Trading212",
+    "AjBell"
    ]
   },
   {
@@ -758,7 +767,8 @@
    "accumulation_income": "Income",
    "purification": "No",
    "platforms": [
-    "Trading212"
+    "Trading212",
+    "AjBell"
    ]
   },
   {
@@ -934,7 +944,8 @@
    "accumulation_income": "Accumulation",
    "purification": "Yes",
    "platforms": [
-    "Trading212"
+    "Trading212",
+    "AjBell"
    ]
   }
  ]
