@@ -263,7 +263,7 @@
    "fee": 0.35,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "Trading212"
@@ -511,7 +511,7 @@
    "fee": 0.62,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "HL",
@@ -761,7 +761,7 @@
    "fee": 0.35,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell"
    ],
@@ -2503,7 +2503,7 @@
    "fee": 0.35,
    "geo_focus": "Emerging Markets",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "Trading212",
@@ -2752,7 +2752,7 @@
    "fee": 0.62,
    "geo_focus": "International",
    "accumulation_income": "Both",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "IG"
    ],
@@ -4817,7 +4817,7 @@
    "fee": 0.35,
    "geo_focus": "Emerging Markets",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "Trading212",
@@ -5320,7 +5320,7 @@
    "fee": 0.3,
    "geo_focus": "U.S.",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "IG"
@@ -5572,7 +5572,7 @@
    "fee": 0.3,
    "geo_focus": "U.S.",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "Trading212",
@@ -6332,7 +6332,7 @@
    "fee": 0.3,
    "geo_focus": "Japan",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "Trading212",
@@ -6832,7 +6832,7 @@
    "fee": 0.3,
    "geo_focus": "Japan",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "Trading212"
    ],
@@ -7483,7 +7483,7 @@
    "fee": 0.3,
    "geo_focus": "European Region",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "Trading212",
@@ -8496,7 +8496,7 @@
    "fee": 0.3,
    "geo_focus": "European Region",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "Saxo",
     "Trading212"
