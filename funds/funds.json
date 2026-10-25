@@ -603,7 +603,9 @@
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
    "purification": "N/A",
-   "platforms": [],
+   "platforms": [
+    "AjBell"
+   ],
    "ft": {
     "symbol": "LU3297715396:GBP",
     "xid": "1072298315",
