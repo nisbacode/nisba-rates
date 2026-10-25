@@ -487,7 +487,7 @@
    "fee": 0.55,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "AjBell",
     "BestInvest"
@@ -849,7 +849,7 @@
    "fee": 0.77,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "HL"
    ],
