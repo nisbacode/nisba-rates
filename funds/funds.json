@@ -259,6 +259,23 @@
    ]
   },
   {
+   "ticker": "AMAP",
+   "name": "Saturna Al-Kawthar International Focused Equity UCITS ETF (GBP)",
+   "category": "ETF",
+   "alpha_vantage_ticker": "AMAP.LON",
+   "yahoo_finance_ticker": "AMAP.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Pound",
+   "fee": 0.75,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "No",
+   "platforms": [
+    "AjBell"
+   ]
+  },
+  {
    "ticker": "ISDW",
    "name": "iShares MSCI World Islamic UCITS ETF",
    "category": "ETF",
@@ -387,6 +404,28 @@
    }
   },
   {
+   "ticker": "HSKD",
+   "name": "HSBC Global Sukuk UCITS ETF (USD, distributing)",
+   "category": "ETF",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": null,
+   "asset_class": "Sukuk",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.37,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell"
+   ],
+   "ft": {
+    "symbol": "HSKD:LSE:USD",
+    "xid": "959100167",
+    "type": "etfs"
+   }
+  },
+  {
    "ticker": "ISDE",
    "name": "iShares MSCI EM Islamic UCITS ETF",
    "category": "ETF",
@@ -503,6 +542,28 @@
    "ft": {
     "symbol": "GB00BF780Y53:GBP",
     "xid": "637440141",
+    "type": "funds"
+   }
+  },
+  {
+   "ticker": "IE0002KKZSN4",
+   "name": "Mayar Responsible Global Equity Fund (WE3 GBP Acc)",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": null,
+   "asset_class": "Equity",
+   "currency": "GBP",
+   "currency_denomination": "Note",
+   "fee": 1.37,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "No",
+   "platforms": [
+    "AjBell"
+   ],
+   "ft": {
+    "symbol": "IE0002KKZSN4:GBP",
+    "xid": "1048904153",
     "type": "funds"
    }
   },
