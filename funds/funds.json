@@ -176,7 +176,9 @@
    "geo_focus": "International",
    "accumulation_income": "Income",
    "purification": "N/A",
-   "platforms": []
+   "platforms": [
+    "Trading212"
+   ]
   },
   {
    "ticker": "HBKS",
@@ -741,6 +743,23 @@
     "Fidelity",
     "BestInvest",
     "InvestEngine"
+   ]
+  },
+  {
+   "ticker": "ISDU",
+   "name": "iShares MSCI USA Islamic UCITS ETF",
+   "category": "ETF",
+   "alpha_vantage_ticker": "ISDU.LON",
+   "yahoo_finance_ticker": "ISDU.L",
+   "asset_class": "Equity",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.3,
+   "geo_focus": "U.S.",
+   "accumulation_income": "Income",
+   "purification": "No",
+   "platforms": [
+    "Trading212"
    ]
   },
   {
