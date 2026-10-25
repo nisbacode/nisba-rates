@@ -515,7 +515,8 @@
    "platforms": [
     "AjBell",
     "HL",
-    "BestInvest"
+    "BestInvest",
+    "Prosper"
    ],
    "ft": {
     "symbol": "LU2092165666:GBP",
@@ -3507,7 +3508,8 @@
     "Trading212",
     "Fidelity",
     "Saxo",
-    "InvestEngine"
+    "InvestEngine",
+    "Prosper"
    ],
    "as_of": "2026-10-23",
    "perf": {
@@ -4253,7 +4255,8 @@
    "purification": "N/A",
    "platforms": [
     "AjBell",
-    "Trading212"
+    "Trading212",
+    "Prosper"
    ],
    "ft": {
     "symbol": "HBKU:LSE:USD",
@@ -5828,7 +5831,8 @@
    "purification": "No",
    "platforms": [
     "AjBell",
-    "BestInvest"
+    "BestInvest",
+    "Prosper"
    ],
    "ft": {
     "symbol": "GB00BF780Y53:GBP",
@@ -7085,7 +7089,8 @@
    "accumulation_income": "Income",
    "purification": "N/A",
    "platforms": [
-    "AjBell"
+    "AjBell",
+    "Prosper"
    ],
    "ft": {
     "symbol": "LU2407588818:GBP",
