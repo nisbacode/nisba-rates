@@ -358,6 +358,28 @@
    }
   },
   {
+   "ticker": "HSKG",
+   "name": "HSBC Global Sukuk UCITS ETF (GBP hedged)",
+   "category": "ETF",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": null,
+   "asset_class": "Sukuk",
+   "currency": "GBP",
+   "currency_denomination": "Pound",
+   "fee": 0.38,
+   "geo_focus": "International",
+   "accumulation_income": "Accumulation",
+   "purification": "N/A",
+   "platforms": [
+    "AjBell"
+   ],
+   "ft": {
+    "symbol": "HSKG:LSE:GBP",
+    "xid": "1110945648",
+    "type": "etfs"
+   }
+  },
+  {
    "ticker": "ISDE",
    "name": "iShares MSCI EM Islamic UCITS ETF",
    "category": "ETF",
@@ -537,21 +559,6 @@
    ]
   },
   {
-   "ticker": "SPUS",
-   "name": "SP Funds S&P 500 Sharia Industry Exclusions ETF",
-   "category": "ETF",
-   "alpha_vantage_ticker": "SPUS",
-   "yahoo_finance_ticker": "SPUS",
-   "asset_class": "Equity",
-   "currency": "USD",
-   "currency_denomination": "Note",
-   "fee": 0.45,
-   "geo_focus": "U.S.",
-   "accumulation_income": "Income",
-   "purification": "No",
-   "platforms": []
-  },
-  {
    "ticker": "HIJS",
    "name": "HSBC MSCI Japan Islamic Screened UCITS ETF",
    "category": "ETF",
@@ -604,7 +611,7 @@
    "accumulation_income": "Accumulation",
    "purification": "N/A",
    "platforms": [
-    "AjBell"
+    "InteractiveInvestor"
    ],
    "ft": {
     "symbol": "LU3297715396:GBP",
@@ -831,21 +838,6 @@
    }
   },
   {
-   "ticker": "SPWO",
-   "name": "SP Funds S&P World ETF",
-   "category": "ETF",
-   "alpha_vantage_ticker": "SPWO",
-   "yahoo_finance_ticker": "SPWO",
-   "asset_class": "Equity",
-   "currency": "USD",
-   "currency_denomination": "Note",
-   "fee": 0.55,
-   "geo_focus": "International",
-   "accumulation_income": "Income",
-   "purification": "No",
-   "platforms": []
-  },
-  {
    "ticker": "IE0009TGSLD9",
    "name": "Baillie Gifford Worldwide Islamic Global Equities Fund",
    "category": "Fund",
@@ -880,7 +872,10 @@
    "geo_focus": "International",
    "accumulation_income": "Income",
    "purification": "N/A",
-   "platforms": [],
+   "platforms": [
+    "Trading212",
+    "AjBell"
+   ],
    "ft": {
     "symbol": "XASB:LSE:USD",
     "xid": "1026739337",
