@@ -113,7 +113,7 @@
    "fee": 0.3,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "Trading212",
     "BestInvest"
@@ -304,7 +304,7 @@
    "fee": 0.3,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
-   "purification": "Yes",
+   "purification": "No",
    "platforms": [
     "Trading212",
     "IG",
