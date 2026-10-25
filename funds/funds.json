@@ -680,6 +680,28 @@
    }
   },
   {
+   "ticker": "LU1195185126",
+   "name": "Franklin International Sukuk Fund",
+   "category": "Fund",
+   "alpha_vantage_ticker": null,
+   "yahoo_finance_ticker": null,
+   "asset_class": "Sukuk",
+   "currency": "USD",
+   "currency_denomination": "Note",
+   "fee": 0.9,
+   "geo_focus": "International",
+   "accumulation_income": "Income",
+   "purification": "N/A",
+   "platforms": [
+    "HL"
+   ],
+   "ft": {
+    "symbol": "LU1195185126:USD",
+    "xid": "85481598",
+    "type": "funds"
+   }
+  },
+  {
    "ticker": "LU3297715396",
    "name": "Franklin Global Sukuk Ultra Short Duration Fund (GBP hedged)",
    "category": "Fund",
