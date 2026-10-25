@@ -272,7 +272,8 @@
    "accumulation_income": "Accumulation",
    "purification": "No",
    "platforms": [
-    "AjBell"
+    "AjBell",
+    "HL"
    ]
   },
   {
@@ -312,7 +313,8 @@
     "Trading212",
     "Fidelity",
     "Saxo",
-    "InvestEngine"
+    "InvestEngine",
+    "HL"
    ]
   },
   {
@@ -349,8 +351,7 @@
    "accumulation_income": "Accumulation",
    "purification": "N/A",
    "platforms": [
-    "AjBell",
-    "HL"
+    "AjBell"
    ],
    "ft": {
     "symbol": "LU1150259296:USD",
@@ -442,7 +443,8 @@
     "AjBell",
     "Trading212",
     "IG",
-    "Saxo"
+    "Saxo",
+    "HL"
    ]
   },
   {
@@ -482,7 +484,8 @@
     "Trading212",
     "IG",
     "Saxo",
-    "AjBell"
+    "AjBell",
+    "HL"
    ]
   },
   {
@@ -519,7 +522,8 @@
    "platforms": [
     "AjBell",
     "Trading212",
-    "BestInvest"
+    "BestInvest",
+    "HL"
    ]
   },
   {
@@ -537,7 +541,8 @@
    "purification": "No",
    "platforms": [
     "AjBell",
-    "BestInvest"
+    "BestInvest",
+    "HL"
    ],
    "ft": {
     "symbol": "GB00BF780Y53:GBP",
@@ -659,7 +664,8 @@
    "accumulation_income": "Income",
    "purification": "N/A",
    "platforms": [
-    "AjBell"
+    "AjBell",
+    "HL"
    ],
    "ft": {
     "symbol": "LU2407588818:GBP",
@@ -811,7 +817,8 @@
     "Trading212",
     "Fidelity",
     "BestInvest",
-    "InvestEngine"
+    "InvestEngine",
+    "HL"
    ]
   },
   {
