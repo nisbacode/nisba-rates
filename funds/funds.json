@@ -781,14 +781,14 @@
    ]
   },
   {
-   "ticker": "PHPT",
+   "ticker": "PPTX",
    "name": "WisdomTree Physical Platinum",
    "category": "ETC",
-   "alpha_vantage_ticker": "PHPT.LON",
+   "alpha_vantage_ticker": "PPTX.LON",
    "yahoo_finance_ticker": "PPTX.L",
    "asset_class": "Commodity",
    "currency": "GBP",
-   "currency_denomination": null,
+   "currency_denomination": "Coin",
    "fee": 0.49,
    "geo_focus": "International",
    "accumulation_income": "Accumulation",
