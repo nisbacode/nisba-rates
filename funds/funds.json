@@ -151,28 +151,6 @@
    }
   },
   {
-   "ticker": "FTGSIAU",
-   "name": "Franklin International Sukuk Fund",
-   "category": "Fund",
-   "alpha_vantage_ticker": null,
-   "yahoo_finance_ticker": "0P0001FKZR",
-   "asset_class": "Sukuk",
-   "currency": "USD",
-   "currency_denomination": "Note",
-   "fee": 0.9,
-   "geo_focus": "International",
-   "accumulation_income": "Accumulation",
-   "purification": "N/A",
-   "platforms": [
-    "IG"
-   ],
-   "ft": {
-    "symbol": "LU0792756115:USD",
-    "xid": "56863306",
-    "type": "funds"
-   }
-  },
-  {
    "ticker": "SKUK",
    "name": "iShares $ Sukuk UCITS ETF",
    "category": "ETF",

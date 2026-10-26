@@ -45,6 +45,6 @@ The comparison table on the savings page is `site/savings-tool.html`. After edit
 `funds/funds.json` lists the 51 funds on nisba.co.uk/funds. The "Daily fund check" workflow (about 6:20am UK) works out performance for each fund and writes `docs/funds.json`, which the funds page reads live:
 
 - **33 ETFs and ETCs**: daily prices from Alpha Vantage (secret `ALPHA_VANTAGE_API_KEY`, premium plan). MWIX uses its USD twin MWIM.
-- **17 funds** (HSBC, Schroders, Baillie Gifford, Franklin, BNP Paribas, Oasis Crescent, Mayar, plus DJIW, HBKU, HSKG, HSKD and XASB): prices from FT.com, kept in `funds/ft_prices.json`. A Claude scheduled task ("Nisba FT fund price check", 7:52am UK, runs through Ahmad's Chrome) reads the latest prices with `funds/ft_fetch.js`, merges them with `funds/ft_merge.py`, pushes, and reruns the workflow.
+- **16 funds** (HSBC, Schroders, Baillie Gifford, Franklin, BNP Paribas, Oasis Crescent, Mayar, plus DJIW, HBKU, HSKG, HSKD and XASB): prices from FT.com, kept in `funds/ft_prices.json`. A Claude scheduled task ("Nisba FT fund price check", 7:52am UK, runs through Ahmad's Chrome) reads the latest prices with `funds/ft_fetch.js`, merges them with `funds/ft_merge.py`, pushes, and reruns the workflow.
 
 Returns are price returns, so income (distributing) share classes understate total return.
