@@ -1,7 +1,17 @@
 {
- "checked_at": "2026-10-26T10:43:10+00:00",
+ "checked_at": "2026-10-27T07:28:41+00:00",
  "channel": "https://www.youtube.com/@nisbainvest",
  "videos": [
+  {
+   "id": "PclX1oZnVGA",
+   "title": "#foryou #halalentertainment #islamicfinance #podcast",
+   "published_at": "2026-10-26T19:42:05Z",
+   "url": "https://www.youtube.com/watch?v=PclX1oZnVGA",
+   "duration": "PT1M26S",
+   "is_short": false,
+   "thumbnail": "https://i.ytimg.com/vi/PclX1oZnVGA/hqdefault.jpg",
+   "description": "\u2060 @deniztalks_ it\u2019s quite frustrating to understand how to invest Islamically we understand your frustration"
+  },
   {
    "id": "WxUQmtHFDcw",
    "title": "Can You Build a Halal Portfolio on AJ Bell? FULL GUIDE",
@@ -291,16 +301,6 @@
    "is_short": true,
    "thumbnail": "https://i.ytimg.com/vi/5izOB0nA7So/hqdefault.jpg",
    "description": "Your rainy day fund is the first step to start investing, but many people overlook it. It\u2019s more important than you think, and here\u2019s how you calculate it."
-  },
-  {
-   "id": "djBXGexxpP0",
-   "title": "Here\u2019s a breakdown of investing \u00a310,000.           #foryou #xycba #finance #muslims #mortage",
-   "published_at": "2026-08-22T12:01:22Z",
-   "url": "https://www.youtube.com/watch?v=djBXGexxpP0",
-   "duration": "PT59S",
-   "is_short": true,
-   "thumbnail": "https://i.ytimg.com/vi/djBXGexxpP0/hqdefault.jpg",
-   "description": ""
   }
  ]
 }
