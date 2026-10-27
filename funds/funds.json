@@ -18,7 +18,8 @@
     "Trading212",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/ib1t-ishares-bitcoin-etp-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "HINS",
@@ -37,7 +38,8 @@
     "AjBell",
     "Trading212",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000u679it9/gb/en/factsheet"
   },
   {
    "ticker": "HSGEIBG",
@@ -63,7 +65,8 @@
     "symbol": "LU2092165666:GBP",
     "xid": "625838090",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/lu2092165666/gb/en/factsheet"
   },
   {
    "ticker": "HIND",
@@ -81,7 +84,8 @@
    "platforms": [
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000u679it9/gb/en/factsheet"
   },
   {
    "ticker": "HSGSBCG",
@@ -104,7 +108,8 @@
     "symbol": "IE000WNUEVW5:GBP",
     "xid": "833459078",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000wnuevw5/gb/en/factsheet"
   },
   {
    "ticker": "HIWS",
@@ -124,7 +129,8 @@
     "BestInvest",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000x9fti22/gb/en/factsheet"
   },
   {
    "ticker": "OCGIGFA",
@@ -148,7 +154,8 @@
     "symbol": "GB00BLD0R132:GBP",
     "xid": "634079145",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.oasiscrescent.co.uk/fund-facts-monthly"
   },
   {
    "ticker": "SKUK",
@@ -165,7 +172,8 @@
    "purification": "N/A",
    "platforms": [
     "Trading212"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/skuk-ishares-sukuk-ucits-etf-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "HBKS",
@@ -185,7 +193,8 @@
     "Trading212",
     "HL",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000e8wzd37/gb/en/factsheet"
   },
   {
    "ticker": "HIES",
@@ -205,7 +214,8 @@
     "Trading212",
     "BestInvest",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie0009bc6k22/gb/en/factsheet"
   },
   {
    "ticker": "HSBAGIC",
@@ -227,7 +237,8 @@
     "symbol": "LU0466842654:USD",
     "xid": "129493107",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/lu1569385302/gb/en/factsheet"
   },
   {
    "ticker": "AMAL",
@@ -245,7 +256,8 @@
    "platforms": [
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://etp.hanetf.com/Factsheet-AMAL-IE00BMYMHS24-en"
   },
   {
    "ticker": "AMAP",
@@ -264,7 +276,8 @@
     "AjBell",
     "HL",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://etp.hanetf.com/Factsheet-AMAL-IE00BMYMHS24-en"
   },
   {
    "ticker": "ISDW",
@@ -284,7 +297,8 @@
     "IG",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/iswd-ishares-msci-world-islamic-ucits-etf-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "ISWD",
@@ -308,7 +322,8 @@
     "HL",
     "Prosper",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/iswd-ishares-msci-world-islamic-ucits-etf-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "HIWO",
@@ -329,7 +344,8 @@
     "Saxo",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000x9fti22/gb/en/factsheet"
   },
   {
    "ticker": "BPIHIPA",
@@ -351,7 +367,8 @@
     "symbol": "LU1150259296:USD",
     "xid": "535659578",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.bnpparibas-am.com/en-gb/intermediary/fundsheet/fixed-income/bnp-paribas-islamic-fund-hilal-income-privilege-capitalisation-lu1150259296/"
   },
   {
    "ticker": "HBKU",
@@ -376,7 +393,8 @@
     "symbol": "HBKU:LSE:USD",
     "xid": "827212975",
     "type": "etfs"
-   }
+   },
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000e8wzd37/gb/en/factsheet"
   },
   {
    "ticker": "HSKG",
@@ -398,7 +416,8 @@
     "symbol": "HSKG:LSE:GBP",
     "xid": "1110945648",
     "type": "etfs"
-   }
+   },
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000juk4yf1/gb/en/factsheet"
   },
   {
    "ticker": "HSKD",
@@ -422,7 +441,8 @@
     "symbol": "HSKD:LSE:USD",
     "xid": "959100167",
     "type": "etfs"
-   }
+   },
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie0009u8ibu8/gb/en/factsheet"
   },
   {
    "ticker": "ISDE",
@@ -444,7 +464,8 @@
     "Saxo",
     "HL",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/isde-ishares-msci-em-islamic-ucits-etf-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "HIEM",
@@ -465,7 +486,8 @@
     "IG",
     "Saxo",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie0009bc6k22/gb/en/factsheet"
   },
   {
    "ticker": "IGDA",
@@ -487,7 +509,8 @@
     "AjBell",
     "HL",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.invesco.com/uk/en/financial-products/etfs/invesco-dow-jones-islamic-global-developed-markets-ucits-etf-acc.html"
   },
   {
    "ticker": "HIUA",
@@ -506,7 +529,8 @@
     "AjBell",
     "IG",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000i5nv504/gb/en/factsheet"
   },
   {
    "ticker": "HIUS",
@@ -527,7 +551,8 @@
     "BestInvest",
     "HL",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000i5nv504/gb/en/factsheet"
   },
   {
    "ticker": "SCIGEQG",
@@ -553,7 +578,8 @@
     "symbol": "GB00BF780Y53:GBP",
     "xid": "637440141",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://api.schroders.com/document-store/SIFCO-IsLAic-Global-Equity-Fund-Z-Acc-FMR-UKEN.pdf"
   },
   {
    "ticker": "IE0002KKZSN4",
@@ -575,7 +601,8 @@
     "symbol": "IE0002KKZSN4:GBP",
     "xid": "1048904153",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.mayarcapital.com/factsheets-global"
   },
   {
    "ticker": "SLVP",
@@ -600,7 +627,8 @@
     "Saxo",
     "InvestEngine",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.invesco.com/uk/en/financial-products/etfs/invesco-physical-silver-etc.html"
   },
   {
    "ticker": "HIJP",
@@ -620,7 +648,8 @@
     "Trading212",
     "IG",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie0001xcfc82/gb/en/factsheet"
   },
   {
    "ticker": "RMAP",
@@ -638,7 +667,8 @@
    "platforms": [
     "Trading212",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://etp.hanetf.com/Factsheet-RMAU-XS2115336336-en"
   },
   {
    "ticker": "HIJS",
@@ -657,7 +687,8 @@
     "Trading212",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie0001xcfc82/gb/en/factsheet"
   },
   {
    "ticker": "FRFGSWG",
@@ -682,7 +713,8 @@
     "symbol": "LU2407588818:GBP",
     "xid": "690392117",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.franklintempleton.lu/download/en-lu/factsheet/64da043a-b32b-48aa-8587-91e2b260c62e/Factsheet-FranklinGlobalSukukFund-W(Qdis)GBP-H1-16214-BB3-FF-LU-en-GB.PDF"
   },
   {
    "ticker": "LU1195185126",
@@ -704,7 +736,8 @@
     "symbol": "LU1195185126:USD",
     "xid": "85481598",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.franklintempleton.co.uk/download/en-gb/factsheet/93e729b9-3dc6-4ab6-b3fd-a3f1802d42c3/Factsheet-FranklinGlobalSukukFund-W(Qdis)USD-16214-BB-FF-GB-en-GB.PDF"
   },
   {
    "ticker": "LU3297715396",
@@ -726,7 +759,8 @@
     "symbol": "LU3297715396:GBP",
     "xid": "1072298315",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.franklintempleton.lu/our-funds/price-and-performance/products/50684/GB1/franklin-global-sukuk-ultra-short-duration-fund/LU3297715396"
   },
   {
    "ticker": "HIPS",
@@ -747,7 +781,8 @@
     "HL",
     "BestInvest",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000agfzm58/gb/en/factsheet"
   },
   {
    "ticker": "SGLN",
@@ -772,7 +807,8 @@
     "Saxo",
     "InvestEngine",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/sgln-ishares-physical-gold-etc-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "SSLV",
@@ -797,7 +833,8 @@
     "Saxo",
     "InvestEngine",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.invesco.com/uk/en/financial-products/etfs/invesco-physical-silver-etc.html"
   },
   {
    "ticker": "RMAU",
@@ -815,7 +852,8 @@
    "platforms": [
     "Trading212",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://etp.hanetf.com/Factsheet-RMAU-XS2115336336-en"
   },
   {
    "ticker": "HIEU",
@@ -835,7 +873,8 @@
     "Trading212",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.assetmanagement.hsbc.co.uk/api/v1/download/document/ie000agfzm58/gb/en/factsheet"
   },
   {
    "ticker": "ISUS",
@@ -858,7 +897,8 @@
     "InvestEngine",
     "HL",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/isus-ishares-msci-usa-islamic-ucits-etf-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "ISDU",
@@ -877,7 +917,8 @@
     "Trading212",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.ishares.com/gls-download/literature/fact-sheet/isus-ishares-msci-usa-islamic-ucits-etf-fund-fact-sheet-en-gb.pdf"
   },
   {
    "ticker": "PPDX",
@@ -897,7 +938,8 @@
     "AjBell",
     "HL",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.wisdomtree.com/gb/products/commodities/wisdomtree-physical-palladium"
   },
   {
    "ticker": "PPTX",
@@ -915,7 +957,8 @@
    "platforms": [
     "Trading212",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.wisdomtree.com/gb/products/commodities/wisdomtree-physical-platinum"
   },
   {
    "ticker": "PHPP",
@@ -933,7 +976,8 @@
    "platforms": [
     "Trading212",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.wisdomtree.com/gb/products/commodities/wisdomtree-physical-precious-metals"
   },
   {
    "ticker": "MWIM",
@@ -952,7 +996,8 @@
     "AjBell",
     "Trading212",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.invesco.com/uk/en/financial-products/etfs/invesco-msci-acwi-islamic-m-series-ucits-etf-acc.html"
   },
   {
    "ticker": "DJIW",
@@ -975,7 +1020,8 @@
     "symbol": "DJIW:LSE:USD",
     "xid": "1044783862",
     "type": "etfs"
-   }
+   },
+   "factsheet": "https://www.wahed.com/uk/djiw"
   },
   {
    "ticker": "IE0009TGSLD9",
@@ -997,7 +1043,8 @@
     "symbol": "IE0009TGSLD9:GBP",
     "xid": "725676943",
     "type": "funds"
-   }
+   },
+   "factsheet": "https://www.bailliegifford.com/en/uk/intermediaries/literature-library/factsheets/baillie-gifford-worldwide-islamic-global-equities-fund-b-class-factsheet/"
   },
   {
    "ticker": "LU3123443510",
@@ -1020,7 +1067,8 @@
     "symbol": "XASB:LSE:USD",
     "xid": "1026739337",
     "type": "etfs"
-   }
+   },
+   "factsheet": "https://etf.dws.com/en-gb/AssetDownload/Index/a1708158-01ee-4106-8db8-e10cdfe3893b/Factsheet.pdf"
   },
   {
    "ticker": "MWIX",
@@ -1041,7 +1089,8 @@
     "IG",
     "InteractiveInvestor"
    ],
-   "proxy": "MWIM"
+   "proxy": "MWIM",
+   "factsheet": "https://www.invesco.com/uk/en/financial-products/etfs/invesco-msci-acwi-islamic-m-series-ucits-etf-acc.html"
   },
   {
    "ticker": "SPWI",
@@ -1060,7 +1109,8 @@
     "Trading212",
     "AjBell",
     "InteractiveInvestor"
-   ]
+   ],
+   "factsheet": "https://www.wahed.com/uk/spwi"
   }
  ]
 }
