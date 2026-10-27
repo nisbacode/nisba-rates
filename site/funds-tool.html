@@ -56,7 +56,7 @@
       <tbody id="nf-body"></tbody>
     </table>
   </div>
-  <p class="nf-small">Returns are price returns from daily closing prices, shown in pounds by default (US dollar funds converted at the daily exchange rate). Fees are the ongoing charge per year. "n/a" means the fund is too new for that period or we do not have a daily price feed for it yet. Past performance is not a guide to future returns. Check the fund's own factsheet and Shariah certification before investing. Education only, not personalised financial advice.</p>
+  <p class="nf-small">Returns are price returns from daily closing prices, shown in pounds by default (US dollar funds converted at the daily exchange rate). Fees are the ongoing charge per year. * means the fund's latest price is from the date shown, so its 1 day move is left out to keep comparisons fair. "n/a" means the fund is too new for that period or we do not have a daily price feed for it yet. Past performance is not a guide to future returns. Check the fund's own factsheet and Shariah certification before investing. Education only, not personalised financial advice.</p>
 </div>
 
 <style>
@@ -107,6 +107,7 @@
 .nf-up{color:var(--up);font-weight:600}
 .nf-down{color:var(--down);font-weight:600}
 .nf-na{color:#b4aa9f;font-size:12.5px}
+.nf-old{color:var(--mut);font-size:12.5px}
 .nf-fund b{display:block;font-weight:600;font-size:14.5px;line-height:1.3}
 .nf-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
 .nf-tag{font-size:11px;font-weight:500;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap;color:#4d453d}
@@ -149,7 +150,15 @@
   var data = null, funds = [];
 
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function perf(f){ return (S.ccy === 'gbp' ? f.perf_gbp : f.perf) || {}; }
+  function perf(f){
+    var p = (S.ccy === 'gbp' ? f.perf_gbp : f.perf) || {};
+    // A fund whose latest price is older than most of the page has a 1 day move from an earlier day, so hide it.
+    if (behind(f)) { var c = {}; for (var k in p) c[k] = p[k]; c['1d'] = null; return c; }
+    return p;
+  }
+  var mainDate = null;
+  function behind(f){ return !!(f.as_of && mainDate && f.as_of < mainDate); }
+  function shortDate(iso){ return new Date(iso).toLocaleDateString('en-GB', {day:'numeric', month:'short'}); }
   function pct(v){
     if (v == null || isNaN(v)) return '<span class="nf-na">n/a</span>';
     var cls = v > 0 ? 'nf-up' : (v < 0 ? 'nf-down' : '');
@@ -168,7 +177,13 @@
     if (i >= DATA.length) return fail();
     fetch(DATA[i] + '?t=' + Math.floor(Date.now()/300000), {cache:'no-store'})
       .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(function(j){ data = j; funds = j.funds; ready(); })
+      .then(function(j){
+        data = j; funds = j.funds;
+        // The price date most funds share (usually the last trading day).
+        var n = {}; funds.forEach(function(f){ if (f.as_of) n[f.as_of] = (n[f.as_of] || 0) + 1; });
+        mainDate = Object.keys(n).sort(function(a, b){ return n[b] - n[a] || (b < a ? -1 : 1); })[0] || null;
+        ready();
+      })
       .catch(function(){ load(i+1); });
   }
   function fail(){
@@ -236,7 +251,7 @@
           '<span class="nf-tag">' + esc(f.category) + '</span>' +
           '<span class="nf-tag">' + esc(f.currency) + '</span>' +
           '<span class="nf-tag">' + esc(f.ticker) + '</span></div></td>' +
-        '<td class="c-1d nf-num" data-l="1D">' + pct(p['1d']) + '</td>' +
+        '<td class="c-1d nf-num" data-l="1D">' + (behind(f) ? '<span class="nf-old" title="Latest price is from ' + esc(shortDate(f.as_of)) + '">*' + esc(shortDate(f.as_of)) + '</span>' : pct(p['1d'])) + '</td>' +
         '<td class="c-1m nf-num" data-l="1M">' + pct(p['1m']) + '</td>' +
         '<td class="c-6m nf-num" data-l="6M">' + pct(p['6m']) + '</td>' +
         '<td class="c-ytd nf-num" data-l="YTD">' + pct(p['ytd']) + '</td>' +
