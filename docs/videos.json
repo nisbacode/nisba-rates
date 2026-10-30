@@ -1,7 +1,17 @@
 {
- "checked_at": "2026-10-29T07:41:27+00:00",
+ "checked_at": "2026-10-30T07:40:04+00:00",
  "channel": "https://www.youtube.com/@nisbainvest",
  "videos": [
+  {
+   "id": "4e02wB1zKAo",
+   "title": "COCOA Invest Review: Is 6.75% Expected Profit Worth It?",
+   "published_at": "2026-10-29T21:25:19Z",
+   "url": "https://www.youtube.com/watch?v=4e02wB1zKAo",
+   "duration": "PT12M10S",
+   "is_short": false,
+   "thumbnail": "https://i.ytimg.com/vi/4e02wB1zKAo/hqdefault.jpg",
+   "description": "COCOA Invest advertises 6.75% expected annual profit on a 12-month GBP term. But is it worth considering for UK Muslims looking for halal ways to grow their savings?\n\nIn this COCOA Invest review, we look at how the platform works, what its expected profit rate means, its fees and FCA authorization, "
+  },
   {
    "id": "PclX1oZnVGA",
    "title": "#foryou #halalentertainment #islamicfinance #podcast",
@@ -291,16 +301,6 @@
    "is_short": false,
    "thumbnail": "https://i.ytimg.com/vi/L1Sw4j9MvJ4/hqdefault.jpg",
    "description": ""
-  },
-  {
-   "id": "5izOB0nA7So",
-   "title": "#foryou #xycba #muslims #rainyday #muslimwedding",
-   "published_at": "2026-08-23T19:14:15Z",
-   "url": "https://www.youtube.com/watch?v=5izOB0nA7So",
-   "duration": "PT37S",
-   "is_short": true,
-   "thumbnail": "https://i.ytimg.com/vi/5izOB0nA7So/hqdefault.jpg",
-   "description": "Your rainy day fund is the first step to start investing, but many people overlook it. It\u2019s more important than you think, and here\u2019s how you calculate it."
   }
  ]
 }
