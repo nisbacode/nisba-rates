@@ -51,7 +51,7 @@ root.innerHTML="<div id=\"nr-app\" class=\"nr\">\n  <div class=\"nr-head\">\n   
     fd.append('thank_you_url', location.pathname);
     fd.append('form_submission[name]', name);
     fd.append('form_submission[email]', email);
-    return fetch('/forms/' + FORM_ID + '/form_submissions', { method: 'POST', body: fd, credentials: 'same-origin' })
+    return fetch('/forms/' + FORM_ID + '/form_submissions', { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true })
       .catch(function(){});
   }
 
@@ -68,12 +68,11 @@ root.innerHTML="<div id=\"nr-app\" class=\"nr\">\n  <div class=\"nr-head\">\n   
     if (!name || !okEmail){ err.textContent = !name ? 'Please add your first name.' : 'Please check your email address.'; err.hidden = false; return; }
     if (el['website_url'].value) return; // bot filled the hidden field
     err.hidden = true;
-    var btn = f.querySelector('button'); btn.disabled = true; btn.textContent = 'Unlocking…';
     var tool = gate.getAttribute('data-tool');
-    send(name, email).then(function(){
-      unlock(); track(tool);
-      subs.forEach(function(cb){ try { cb(); } catch (x) {} });
-    });
+    // Send in the background (keepalive survives navigation) and open the list straight away.
+    send(name, email);
+    unlock(); track(tool);
+    subs.forEach(function(cb){ try { cb(); } catch (x) {} });
   });
 
   window.NisbaGate = {
