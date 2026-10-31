@@ -13,7 +13,6 @@
 .ng-form input{font-family:inherit;font-size:15px;border:2px solid #efe4d6;border-radius:999px;padding:12px 18px;outline:0;background:#fff;color:#1e1e1e;min-width:0;width:100%;box-sizing:border-box}
 .ng-form input:focus{border-color:#ff8e0f}
 .ng-form input.ng-bad{border-color:#c0392b}
-.ng-form .ng-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .ng-form button{grid-column:1/-1;font-family:inherit;background:#ff8e0f;color:#fff;border:0;border-radius:999px;padding:14px 22px;font-size:15.5px;font-weight:600;cursor:pointer;transition:background .15s}
 .ng-form button:hover{background:#e67800}
 .ng-form button[disabled]{opacity:.7;cursor:default}
@@ -49,10 +48,9 @@
       '<p class="ng-eyebrow">Free with your email</p>' +
       '<h3 class="ng-h">See all ' + total + ' ' + esc(noun) + '</h3>' +
       '<p class="ng-p">' + sub + '</p>' +
-      '<form class="ng-form" novalidate>' +
+      '<form class="ng-form" novalidate action="javascript:void(0)">' +
         '<input name="name" type="text" placeholder="First name" autocomplete="given-name" aria-label="First name">' +
         '<input name="email" type="email" placeholder="Email address" autocomplete="email" aria-label="Email address">' +
-        '<input name="website_url" class="ng-hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
         '<button type="submit">Show me the full list</button>' +
       '</form>' +
       '<p class="ng-err" hidden></p>' +
@@ -80,10 +78,20 @@
       .catch(function(){});
   }
 
-  document.addEventListener('submit', function(e){
-    var f = e.target;
-    if (!f.classList || !f.classList.contains('ng-form')) return;
+  function handle(e){
+    var f = e.target && e.target.closest ? e.target.closest('.ng-form') : null;
+    if (!f) return;
     e.preventDefault();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+    try { submitGate(f); } catch (x) { unlock(); subs.forEach(function(cb){ try { cb(); } catch (y) {} }); }
+  }
+  // Capture phase so no other script on the page can swallow the event first.
+  document.addEventListener('submit', handle, true);
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.closest && e.target.closest('.ng-form button')) handle(e);
+  }, true);
+
+  function submitGate(f){
     var gate = f.closest('.ng-gate'), err = gate.querySelector('.ng-err');
     var el = f.elements, nm = el['name'], em = el['email'];
     var name = nm.value.trim(), email = em.value.trim();
@@ -91,14 +99,14 @@
     var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
     em.classList.toggle('ng-bad', !okEmail);
     if (!name || !okEmail){ err.textContent = !name ? 'Please add your first name.' : 'Please check your email address.'; err.hidden = false; return; }
-    if (el['website_url'].value) return; // bot filled the hidden field
     err.hidden = true;
     var tool = gate.getAttribute('data-tool');
     // Send in the background (keepalive survives navigation) and open the list straight away.
-    send(name, email);
-    unlock(); track(tool);
+    unlock();
+    try { send(name, email); } catch (x) {}
+    track(tool);
     subs.forEach(function(cb){ try { cb(); } catch (x) {} });
-  });
+  }
 
   window.NisbaGate = {
     VISIBLE: VISIBLE,
