@@ -2,6 +2,7 @@
 
   site/savings-tool.html -> site/savings-tool.js  (mounts into <div id="nr-root">)
   site/funds-tool.html   -> site/funds-tool.js    (mounts into <div id="nf-root">)
+  site/gate.html is the shared email gate, bundled into both.
 
 Kajabi only holds a tiny loader, for example:
   <div id="nr-root"></div>
@@ -24,6 +25,10 @@ def build(name: str) -> None:
     markup = re.sub(r"<!--.*?-->", "", src.split("<style>")[0], flags=re.S).strip()
     css = re.search(r"<style>(.*?)</style>", src, re.S).group(1).strip()
     js = re.search(r"<script>(.*?)</script>", src, re.S).group(1).strip()
+    # Shared email gate (site/gate.html): its CSS and JS go into every tool.
+    gate = (here / "gate.html").read_text()
+    css += "\n" + re.search(r"<style>(.*?)</style>", gate, re.S).group(1).strip()
+    js = re.search(r"<script>(.*?)</script>", gate, re.S).group(1).strip() + "\n" + js
     out = (
         f"/* Built from site/{name}.html by site/build.py. Do not edit by hand. */\n"
         "(function(){\n"

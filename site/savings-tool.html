@@ -104,7 +104,8 @@
 .nr-summary{margin:22px 4px 12px;font-size:15px;color:var(--mut)}
 .nr-summary strong{color:var(--ink)}
 .nr-fscs{background:#fff;border-left:4px solid var(--o);border-radius:12px;padding:12px 16px;font-size:13px;margin-bottom:12px}
-.nr-list{display:flex;flex-direction:column;gap:12px}
+.nr-list{display:flex;flex-direction:column;gap:12px;--ng-bg:#fffbf7}
+.nr-list .ng-gate{margin-top:-182px}
 .nr-card{display:grid;grid-template-columns:72px minmax(0,1fr) 170px 190px 180px;align-items:center;gap:20px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px;transition:box-shadow .15s,transform .15s}
 .nr-card:hover{box-shadow:0 10px 30px rgba(30,30,30,.07);transform:translateY(-1px)}
 .nr-card.best{border:2px solid var(--o)}
@@ -234,8 +235,9 @@
       $('nr-list').innerHTML = '<div class="nr-empty">No accounts match these filters. Try a longer term, a different account type, or untick "Only show accounts I can open".</div>';
       return;
     }
-    var shown = state.showAll ? list : list.slice(0, 12);
-    var html = shown.map(function(a){
+    var G = window.NisbaGate, locked = G && !G.isOpen() && list.length > G.VISIBLE;
+    var shown = locked ? list.slice(0, G.VISIBLE + 3) : (state.showAll ? list : list.slice(0, 12));
+    var html = shown.map(function(a, i){
       var b = data.banks[a.bank] || {name: a.bank};
       var why = eligible(a);
       var p = profit(a);
@@ -247,7 +249,8 @@
       var note = '';
       if (a.stale) note = '<span class="nr-stale">Rate last confirmed ' + (a.last_verified ? new Date(a.last_verified).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : 'recently') + '. Check with the provider.</span>';
       else if (a.checked_by_hand) note = '<span class="nr-stale">Checked by hand on ' + new Date(a.last_verified).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) + '</span>';
-      return '<div class="nr-card' + (why ? ' off' : '') + (best ? ' best' : '') + '">' +
+      var tease = locked && i >= G.VISIBLE ? ' ng-tease ng-t' + (i - G.VISIBLE + 1) + '" aria-hidden="true' : '';
+      return '<div class="nr-card' + (why ? ' off' : '') + (best ? ' best' : '') + tease + '">' +
         '<div class="nr-logo">' + (b.logo ? '<img loading="lazy" alt="' + esc(b.name) + '" src="' + (/^https?:/.test(b.logo) ? '' : ASSETS) + esc(b.logo) + '">' : '') + '</div>' +
         '<div class="nr-name"><p class="nr-bank">' + esc(b.name) + '</p><p class="nr-acc">' + esc(a.name) + '</p><div class="nr-tags">' + tags + '</div></div>' +
         '<div class="nr-rate"><b>' + a.rate.toFixed(2) + '%</b><span>Expected profit rate (AER)</span>' + note + '</div>' +
@@ -256,7 +259,8 @@
         '<a class="nr-cta" href="' + esc(a.link) + '" target="_blank" rel="noopener nofollow">View at ' + esc(a.platform === 'Raisin' ? 'Raisin' : b.name.replace(/ Bank( Zurich)?$/,'')) + '</a>' +
       '</div>';
     }).join('');
-    if (list.length > shown.length) html += '<button type="button" class="nr-more" id="nr-more">Show all ' + list.length + ' accounts</button>';
+    if (locked) html += G.html('savings', list.length, 'matching accounts', 'You are seeing the top ' + G.VISIBLE + '. Pop in your email to see every account that matches, and we will tell you when rates move.');
+    else if (list.length > shown.length) html += '<button type="button" class="nr-more" id="nr-more">Show all ' + list.length + ' accounts</button>';
     $('nr-list').innerHTML = html;
     var more = $('nr-more');
     if (more) more.onclick = function(){ state.showAll = true; render(); };
@@ -286,6 +290,7 @@
   $('nr-term').addEventListener('change', function(){ state.term = Number(this.value); state.showAll = false; render(); });
   $('nr-sort').addEventListener('change', function(){ state.sort = this.value; render(); });
   $('nr-elig').addEventListener('change', function(){ state.elig = this.checked; state.showAll = false; render(); });
+  if (window.NisbaGate) window.NisbaGate.onUnlock(function(){ state.showAll = true; render(); });
   setAmount(10000);
   load();
 })();

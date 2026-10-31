@@ -56,6 +56,7 @@
       <tbody id="nf-body"></tbody>
     </table>
   </div>
+  <div id="nf-gate"></div>
   <p class="nf-small">Returns are price returns from daily closing prices, shown in pounds by default (US dollar funds converted at the daily exchange rate). Fees are the ongoing charge per year. * means the fund's latest price is from the date shown, so its 1 day move is left out to keep comparisons fair. "n/a" means the fund is too new for that period or we do not have a daily price feed for it yet. Past performance is not a guide to future returns. Check the fund's own factsheet and Shariah certification before investing. Education only, not personalised financial advice.</p>
 </div>
 
@@ -244,11 +245,15 @@
     $('nf-summary').innerHTML = '<strong>' + list.length + ' fund' + (list.length === 1 ? '' : 's') + '</strong> match' + (list.length === 1 ? 'es' : '') +
       (best ? '. Best 1 year return here: <strong>' + esc(best.name) + '</strong> at <strong>' + (perf(best)['1y'] > 0 ? '+' : '') + perf(best)['1y'].toFixed(1) + '%</strong>' + (S.ccy === 'gbp' ? ' in pounds.' : ' in its own currency.') : '.');
 
-    if (!list.length){ $('nf-body').innerHTML = '<tr><td colspan="9" class="nf-empty">No funds match these filters. Try clearing the search or widening the fee limit.</td></tr>'; drawChart(); return; }
-    $('nf-body').innerHTML = list.map(function(f){
+    if (!list.length){ $('nf-gate').innerHTML = ''; $('nf-body').innerHTML = '<tr><td colspan="9" class="nf-empty">No funds match these filters. Try clearing the search or widening the fee limit.</td></tr>'; drawChart(); return; }
+    var G = window.NisbaGate, locked = G && !G.isOpen() && list.length > G.VISIBLE;
+    var total = list.length;
+    if (locked) list = list.slice(0, G.VISIBLE + 3);
+    $('nf-body').innerHTML = list.map(function(f, i){
       var p = perf(f), id = esc(f.ticker), picked = S.picks.indexOf(f.ticker) >= 0;
+      var tease = locked && i >= G.VISIBLE;
       var canPick = f.hist_gbp && f.hist_gbp.length > 2;
-      var row = '<tr class="nf-row-main">' +
+      var row = '<tr class="nf-row-main' + (tease ? ' ng-tease ng-t' + (i - G.VISIBLE + 1) + '" aria-hidden="true' : '') + '">' +
         '<td class="c-pick">' + (canPick ? '<input type="checkbox" class="nf-pick" data-t="' + id + '"' + (picked ? ' checked' : '') + ' aria-label="Compare ' + esc(f.name) + '">' : '') + '</td>' +
         '<td class="c-fund nf-fund"><b>' + esc(f.name) + '</b><div class="nf-meta">' +
           '<span class="nf-tag t-' + esc(f.asset_class) + '">' + esc(f.asset_class === 'Mix' ? 'Multi-asset' : f.asset_class) + '</span>' +
@@ -263,7 +268,7 @@
         '<td class="c-1y nf-num" data-l="1Y">' + pct(p['1y']) + '</td>' +
         '<td class="c-fee nf-num" data-l="Fee">' + f.fee.toFixed(2) + '%</td>' +
         '<td class="c-more"><button type="button" class="nf-more" data-t="' + id + '">' + (S.open[f.ticker] ? 'Hide' : 'More') + '</button></td></tr>';
-      if (S.open[f.ticker]) {
+      if (S.open[f.ticker] && !tease) {
         row += '<tr class="nf-detail"><td colspan="9"><div class="nf-dl">' +
           '<div><span>Region</span>' + esc(f.geo_focus) + '</div>' +
           '<div><span>Accumulation or income</span>' + esc(f.accumulation_income) + '</div>' +
@@ -275,6 +280,7 @@
       }
       return row;
     }).join('');
+    $('nf-gate').innerHTML = locked ? G.html('funds', total, 'halal funds', 'You are seeing the top ' + G.VISIBLE + '. Pop in your email to see every fund that matches, with fees, platforms and factsheets side by side.') : '';
     drawChart();
   }
 
@@ -357,6 +363,7 @@
     drawChart();
     $('nf-chart-card').scrollIntoView && window.innerWidth < 900 && S.picks.length === 1 && $('nf-chart-card').scrollIntoView({behavior:'smooth', block:'start'});
   });
+  if (window.NisbaGate) window.NisbaGate.onUnlock(render);
   load();
 })();
 </script>
