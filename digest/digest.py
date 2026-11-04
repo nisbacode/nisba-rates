@@ -27,6 +27,7 @@ PENDING = HERE / "pending.json"
 RATE_MOVE = 0.05  # percentage points; smaller moves are ignored
 SAVINGS_URL = "https://www.nisba.co.uk/savings-accounts?unlocked=1"
 FUNDS_URL = "https://www.nisba.co.uk/funds?unlocked=1"
+FEEDBACK_URL = "https://www.nisba.co.uk/update-feedback"  # Kajabi thank-you page; votes = link clicks per broadcast
 PLATFORM_NAMES = {"Trading212": "Trading 212", "AjBell": "AJ Bell", "InteractiveInvestor": "Interactive Investor",
                   "HL": "Hargreaves Lansdown", "Hargreaves": "Hargreaves Lansdown"}
 
@@ -169,6 +170,10 @@ def email(d, cur):
           "", "Rates are expected profit rates read from each provider's own website and can change at any time. "
               "Always check with the provider before you open an account or invest. Education only, not personalised "
               "financial advice. Investing carries risk and you may get back less than you put in.",
+          "", "**Are these weekly updates useful?** One click tells us: "
+              f"[More like this]({FEEDBACK_URL}?vote=more) | "
+              f"[Fine as they are]({FEEDBACK_URL}?vote=same) | "
+              f"[Less often, please]({FEEDBACK_URL}?vote=less)",
           "", "Jzk", "", "Ahmad and Adel  ", "Nisba"]
     body = "\n".join(L) + "\n"
     for bad in ("—", "–"):
