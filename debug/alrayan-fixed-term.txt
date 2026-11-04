@@ -1,5 +1,5 @@
 {
- "12 Month Fixed Term Deposit": 5.15,
+ "12 Month Fixed Term Deposit": 5.18,
  "Educate A Child International 36 Month Fixed Term Deposit": 4.55,
  "24 Month Fixed Term Deposit": 4.43
 }
