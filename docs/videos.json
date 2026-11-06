@@ -1,7 +1,27 @@
 {
- "checked_at": "2026-11-05T07:54:52+00:00",
+ "checked_at": "2026-11-06T07:52:58+00:00",
  "channel": "https://www.youtube.com/@nisbainvest",
  "videos": [
+  {
+   "id": "AvrO4-IphRs",
+   "title": "Interest Rates Just Went Up to 4%. What It Means for Muslims in the UK",
+   "published_at": "2026-11-05T18:57:09Z",
+   "url": "https://www.youtube.com/watch?v=AvrO4-IphRs",
+   "duration": "PT1M43S",
+   "is_short": true,
+   "thumbnail": "https://i.ytimg.com/vi/AvrO4-IphRs/hqdefault.jpg",
+   "description": "The Bank of England raised the base rate from 3.75% to 4% on 5 November 2026, its first rise since 2023. What it means for mortgages (including Islamic home finance), savings accounts and inflation.\n\nCompare UK Islamic savings accounts: https://www.nisba.co.uk/savings-accounts\n\nEducation only, not f"
+  },
+  {
+   "id": "sjG_Rz1dsKY",
+   "title": "Which Platform Has the Cheapest Islamic Funds? 9 Compared",
+   "published_at": "2026-11-05T18:31:55Z",
+   "url": "https://www.youtube.com/watch?v=sjG_Rz1dsKY",
+   "duration": "PT7M47S",
+   "is_short": false,
+   "thumbnail": "https://i.ytimg.com/vi/sjG_Rz1dsKY/hqdefault.jpg",
+   "description": "Which platform offers the cheapest Islamic funds in the UK? We compare 9 investing platforms to find the lowest-cost Islamic equity funds, Sukuk funds and currency-hedged Sukuk funds.\n\nThis video compares fund fees only, not platform fees. The cheapest fund does not necessarily mean the cheapest pla"
+  },
   {
    "id": "6m-b5V0NJ78",
    "title": "These blanket statements highlight the lack of financial knowledge #foryou #podcast #xycba",
@@ -281,26 +301,6 @@
    "is_short": true,
    "thumbnail": "https://i.ytimg.com/vi/JvjRdg84oiE/hqdefault.jpg",
    "description": "#foryou #xybca #islam #finance #muslim"
-  },
-  {
-   "id": "slJMyRPuIHg",
-   "title": "It\u2019s more simple than the words make it seem\u2026..      #foryou #xycba #muslims #halal #finance",
-   "published_at": "2026-08-27T20:37:31Z",
-   "url": "https://www.youtube.com/watch?v=slJMyRPuIHg",
-   "duration": "PT30S",
-   "is_short": true,
-   "thumbnail": "https://i.ytimg.com/vi/slJMyRPuIHg/hqdefault.jpg",
-   "description": ""
-  },
-  {
-   "id": "gKIquJCtgFE",
-   "title": "Why YOU Should Have An Islamic Savings Account",
-   "published_at": "2026-08-27T16:45:24Z",
-   "url": "https://www.youtube.com/watch?v=gKIquJCtgFE",
-   "duration": "PT14M40S",
-   "is_short": false,
-   "thumbnail": "https://i.ytimg.com/vi/gKIquJCtgFE/hqdefault.jpg",
-   "description": "In this video we go over what Islamic savings accounts really are, who offers them, how they work, and whether you should get one\n\n\u26a0\ufe0f Disclaimer: This video is for educational purposes only and should not be considered financial advice. Always do your own research before making any investment decisi"
   }
  ]
 }
