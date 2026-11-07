@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-07T09:18:01+00:00",
+ "checked_at": "2026-11-07T16:34:40+00:00",
  "account_count": 72,
  "stale_count": 0,
  "banks": {
@@ -41,7 +41,8 @@
    "max": 1000000,
    "rate": 5.18,
    "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-12m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": "2026-11-04",
    "stale": false,
    "stale_since": null
@@ -58,7 +59,8 @@
    "max": 1000000,
    "rate": 4.43,
    "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-24m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -75,7 +77,7 @@
    "max": 1000000,
    "rate": 4.55,
    "link": "https://www.alrayanbank.co.uk/savings/fixed-term",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -92,7 +94,7 @@
    "max": 1000000,
    "rate": 2.75,
    "link": "https://www.alrayanbank.co.uk/savings/instant-access",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -110,7 +112,7 @@
    "max": 1000000,
    "rate": 4.58,
    "link": "https://www.blme.com/products-and-services/savings/notice-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -127,7 +129,8 @@
    "max": 1000000,
    "rate": 4.01,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-3m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -144,7 +147,8 @@
    "max": 1000000,
    "rate": 4.24,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-6m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -161,7 +165,8 @@
    "max": 1000000,
    "rate": 5.0,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-12m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -178,7 +183,8 @@
    "max": 1000000,
    "rate": 4.8,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-18m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -195,7 +201,8 @@
    "max": 1000000,
    "rate": 4.9,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-24m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -212,7 +219,8 @@
    "max": 1000000,
    "rate": 4.55,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-36m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -229,7 +237,8 @@
    "max": 1000000,
    "rate": 4.35,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-48m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -246,7 +255,8 @@
    "max": 1000000,
    "rate": 4.35,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-60m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -263,7 +273,8 @@
    "max": 1000000,
    "rate": 4.0,
    "link": "https://www.blme.com/products-and-services/savings/premier-deposit-account/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-84m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -280,7 +291,7 @@
    "max": 1000000,
    "rate": 3.5,
    "link": "https://www.prosper.co.uk/savings/blme-2-month-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -297,7 +308,8 @@
    "max": 1000000,
    "rate": 3.8,
    "link": "https://www.prosper.co.uk/savings/blme-3-month-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-3m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -314,7 +326,8 @@
    "max": 1000000,
    "rate": 4.04,
    "link": "https://www.prosper.co.uk/savings/blme-6-month-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-6m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -331,7 +344,7 @@
    "max": 1000000,
    "rate": 4.02,
    "link": "https://www.prosper.co.uk/savings/blme-9-month-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -348,11 +361,11 @@
    "max": 1000000,
    "rate": 4.8,
    "link": "https://www.prosper.co.uk/savings/blme-1-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-12m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": "2026-11-07",
    "stale": false,
-   "stale_since": null,
-   "previous_rate": 4.35
+   "stale_since": null
   },
   {
    "id": "pr-blme-18-month-fixed-term-deposit",
@@ -366,11 +379,11 @@
    "max": 1000000,
    "rate": 4.6,
    "link": "https://www.prosper.co.uk/savings/blme-18-month-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-18m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": "2026-11-07",
    "stale": false,
-   "stale_since": null,
-   "previous_rate": 4.05
+   "stale_since": null
   },
   {
    "id": "pr-blme-2-year-fixed-term-deposit",
@@ -384,7 +397,8 @@
    "max": 1000000,
    "rate": 4.7,
    "link": "https://www.prosper.co.uk/savings/blme-2-year-fixed-term-deposit-",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-24m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -401,7 +415,8 @@
    "max": 240000,
    "rate": 4.35,
    "link": "https://www.prosper.co.uk/savings/blme-3-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-36m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -418,7 +433,8 @@
    "max": 1000000,
    "rate": 4.15,
    "link": "https://www.prosper.co.uk/savings/blme-4-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-48m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -435,7 +451,8 @@
    "max": 1000000,
    "rate": 4.15,
    "link": "https://www.prosper.co.uk/savings/blme-5-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-60m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -452,7 +469,8 @@
    "max": 1000000,
    "rate": 3.8,
    "link": "https://www.prosper.co.uk/savings/blme-7-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "blme-fixed-84m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -469,7 +487,7 @@
    "max": 1000000,
    "rate": 3.75,
    "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -486,7 +504,7 @@
    "max": 1000000,
    "rate": 4.2,
    "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -503,7 +521,7 @@
    "max": 1000000,
    "rate": 3.85,
    "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -520,7 +538,7 @@
    "max": 1000000,
    "rate": 3.85,
    "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -537,7 +555,7 @@
    "max": 1000000,
    "rate": 3.85,
    "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -554,7 +572,7 @@
    "max": 1000000,
    "rate": 3.9,
    "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -571,7 +589,7 @@
    "max": 1000000,
    "rate": 3.9,
    "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -588,7 +606,7 @@
    "max": 1000000,
    "rate": 4.15,
    "link": "https://www.gatehousebank.com/personal/savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -605,7 +623,7 @@
    "max": 250000,
    "rate": 2.65,
    "link": "https://www.gatehousebank.com/personal/savings/easy-access-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -623,7 +641,7 @@
    "max": 1000000,
    "rate": 3.4,
    "link": "https://www.gatehousebank.com/personal/savings/notice-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -641,7 +659,7 @@
    "max": 1000000,
    "rate": 3.5,
    "link": "https://www.gatehousebank.com/personal/savings/notice-savings",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -658,7 +676,7 @@
    "max": 250000,
    "rate": 2.6,
    "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -675,7 +693,7 @@
    "max": 1000000,
    "rate": 3.75,
    "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -692,7 +710,7 @@
    "max": 1000000,
    "rate": 3.6,
    "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -709,7 +727,7 @@
    "max": 1000000,
    "rate": 3.6,
    "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -726,7 +744,7 @@
    "max": 1000000,
    "rate": 3.65,
    "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -743,7 +761,7 @@
    "max": 1000000,
    "rate": 3.65,
    "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -760,7 +778,7 @@
    "max": 1000000,
    "rate": 3.75,
    "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -777,7 +795,7 @@
    "max": 1000000,
    "rate": 4.25,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -794,7 +812,7 @@
    "max": 1000000,
    "rate": 4.75,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -811,7 +829,7 @@
    "max": 1000000,
    "rate": 4.1,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -828,7 +846,7 @@
    "max": 1000000,
    "rate": 4.05,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -845,7 +863,7 @@
    "max": 1000000,
    "rate": 4.0,
    "link": "https://www.habibbank.com/gb/our-services/edeposits/hbz-sirat-edeposit/",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -862,6 +880,7 @@
    "max": 120000,
    "rate": 4.37,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR006/",
+   "product": "al-rayan-fixed-6m",
    "last_verified": "2026-11-07T00:00:00+00:00",
    "rate_changed": null,
    "stale": false,
@@ -880,6 +899,7 @@
    "max": 120000,
    "rate": 4.35,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR007/",
+   "product": "al-rayan-fixed-9m",
    "last_verified": "2026-11-07T00:00:00+00:00",
    "rate_changed": null,
    "stale": false,
@@ -898,6 +918,7 @@
    "max": 120000,
    "rate": 4.85,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR001/",
+   "product": "al-rayan-fixed-12m",
    "last_verified": "2026-11-07T00:00:00+00:00",
    "rate_changed": null,
    "stale": false,
@@ -916,6 +937,7 @@
    "max": 120000,
    "rate": 4.43,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR002/",
+   "product": "al-rayan-fixed-24m",
    "last_verified": "2026-11-07T00:00:00+00:00",
    "rate_changed": null,
    "stale": false,
@@ -934,6 +956,7 @@
    "max": 120000,
    "rate": 4.55,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR003/",
+   "product": "al-rayan-fixed-36m",
    "last_verified": "2026-11-07T00:00:00+00:00",
    "rate_changed": null,
    "stale": false,
@@ -952,6 +975,7 @@
    "max": 120000,
    "rate": 4.25,
    "link": "https://www.raisin.co.uk/bank/al-rayan-bank/ALR005/",
+   "product": "al-rayan-fixed-60m",
    "last_verified": "2026-11-07T00:00:00+00:00",
    "rate_changed": null,
    "stale": false,
@@ -970,7 +994,7 @@
    "max": 1000000,
    "rate": 4.06,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-easy-access",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -987,7 +1011,8 @@
    "max": 1000000,
    "rate": 4.7,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit-new-customers-only",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-6m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -1004,7 +1029,8 @@
    "max": 1000000,
    "rate": 4.32,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-6m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -1021,7 +1047,8 @@
    "max": 1000000,
    "rate": 4.3,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-9-month-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-9m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -1038,7 +1065,8 @@
    "max": 1000000,
    "rate": 4.8,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-1-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-12m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -1055,7 +1083,8 @@
    "max": 1000000,
    "rate": 4.38,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-2-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-24m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -1072,7 +1101,8 @@
    "max": 1000000,
    "rate": 4.5,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-3-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-36m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
@@ -1089,7 +1119,8 @@
    "max": 1000000,
    "rate": 4.2,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-5-year-fixed-term-deposit",
-   "last_verified": "2026-11-07T09:18:01+00:00",
+   "product": "al-rayan-fixed-60m",
+   "last_verified": "2026-11-07T16:34:40+00:00",
    "rate_changed": null,
    "stale": false,
    "stale_since": null
