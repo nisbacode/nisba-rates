@@ -353,7 +353,7 @@
    "isa": false,
    "min": 1000,
    "max": 1000000,
-   "rate": 4.35,
+   "rate": 4.8,
    "link": "https://www.prosper.co.uk/savings/blme-1-year-fixed-term-deposit",
    "source": {
     "kind": "prosper",
@@ -370,7 +370,7 @@
    "isa": false,
    "min": 1000,
    "max": 1000000,
-   "rate": 4.05,
+   "rate": 4.6,
    "link": "https://www.prosper.co.uk/savings/blme-18-month-fixed-term-deposit",
    "source": {
     "kind": "prosper",
