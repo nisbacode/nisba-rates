@@ -71,7 +71,7 @@
   <div class="nr-fscs" id="nr-fscs" hidden>Deposits are protected by the FSCS up to £120,000 per person, per banking group. Above that, consider splitting your savings across different banks.</div>
   <div class="nr-list" id="nr-list" aria-live="polite"></div>
 
-  <p class="nr-small">Rates are read from each bank's own website every morning. Raisin rates are checked by hand. Islamic banks pay an expected profit rate rather than interest. Estimated profit is a simple guide for the first year (or the full term if shorter) and is not guaranteed. Always confirm the rate and terms with the provider before opening an account. Education only, not personalised financial advice.</p>
+  <p class="nr-small">Rates are read from each bank's own website and from Prosper every morning. Raisin rates are checked by hand. Some Prosper rates for new customers include a Prosper boost, which is not FSCS protected. Islamic banks pay an expected profit rate rather than interest. Estimated profit is a simple guide for the first year (or the full term if shorter) and is not guaranteed. Always confirm the rate and terms with the provider before opening an account. Education only, not personalised financial advice.</p>
 </div>
 
 <style>
@@ -244,7 +244,7 @@
       var best = top && a.id === top.id && state.sort === 'rate';
       var tags = '<span class="nr-tag">' + termLabel(a) + '</span>' +
         (a.isa ? '<span class="nr-tag isa">Cash ISA</span>' : '') +
-        '<span class="nr-tag">' + (a.platform === 'Raisin' ? 'Via Raisin' : 'Direct with bank') + '</span>' +
+        '<span class="nr-tag">' + (a.platform && a.platform !== 'Direct' ? 'Via ' + esc(a.platform) : 'Direct with bank') + '</span>' +
         (best ? '<span class="nr-tag best">Top rate</span>' : '');
       var note = '';
       if (a.stale) note = '<span class="nr-stale">Rate last confirmed ' + (a.last_verified ? new Date(a.last_verified).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : 'recently') + '. Check with the provider.</span>';
@@ -256,7 +256,7 @@
         '<div class="nr-rate"><b>' + a.rate.toFixed(2) + '%</b><span>Expected profit rate (AER)</span>' + note + '</div>' +
         '<div class="nr-profit">' + (why ? '<b>Not available</b><span class="nr-why">' + why + '</span>' : '<b>' + gbp(p.value) + '</b><span>Est. profit ' + p.label + '</span>') +
         '<span class="nr-stale">Min ' + gbp(a.min) + ' · Max ' + gbp(a.max) + '</span></div>' +
-        '<a class="nr-cta" href="' + esc(a.link) + '" target="_blank" rel="noopener nofollow">View at ' + esc(a.platform === 'Raisin' ? 'Raisin' : b.name.replace(/ Bank( Zurich)?$/,'')) + '</a>' +
+        '<a class="nr-cta" href="' + esc(a.link) + '" target="_blank" rel="noopener nofollow">View at ' + esc(a.platform && a.platform !== 'Direct' ? a.platform : b.name.replace(/ Bank( Zurich)?$/,'')) + '</a>' +
       '</div>';
     }).join('');
     if (locked) html += G.html('savings', list.length, 'matching accounts', 'You are seeing the top ' + G.VISIBLE + '. Pop in your email to see every account that matches, and we will tell you when rates move.');

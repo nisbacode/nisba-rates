@@ -276,6 +276,193 @@
    }
   },
   {
+   "id": "pr-blme-2-month-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "2 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 2,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.5,
+   "link": "https://www.prosper.co.uk/savings/blme-2-month-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-2-month-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-3-month-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "3 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 3,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.8,
+   "link": "https://www.prosper.co.uk/savings/blme-3-month-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-3-month-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-6-month-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "6 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.04,
+   "link": "https://www.prosper.co.uk/savings/blme-6-month-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-6-month-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-9-month-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "9 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 9,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.02,
+   "link": "https://www.prosper.co.uk/savings/blme-9-month-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-9-month-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-1-year-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "12 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.35,
+   "link": "https://www.prosper.co.uk/savings/blme-1-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-1-year-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-18-month-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "18 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 18,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.05,
+   "link": "https://www.prosper.co.uk/savings/blme-18-month-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-18-month-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-2-year-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "24 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.7,
+   "link": "https://www.prosper.co.uk/savings/blme-2-year-fixed-term-deposit-",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-2-year-fixed-term-deposit-"
+   }
+  },
+  {
+   "id": "pr-blme-3-year-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "36 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": false,
+   "min": 1000,
+   "max": 240000,
+   "rate": 4.35,
+   "link": "https://www.prosper.co.uk/savings/blme-3-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-3-year-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-4-year-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "48 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 48,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.15,
+   "link": "https://www.prosper.co.uk/savings/blme-4-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-4-year-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-5-year-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "60 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 60,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.15,
+   "link": "https://www.prosper.co.uk/savings/blme-5-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-5-year-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-blme-7-year-fixed-term-deposit",
+   "bank": "blme",
+   "platform": "Prosper",
+   "name": "84 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 84,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 3.8,
+   "link": "https://www.prosper.co.uk/savings/blme-7-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/blme-7-year-fixed-term-deposit"
+   }
+  },
+  {
    "id": "gh-wood-6m",
    "bank": "gatehouse",
    "platform": "Direct",
@@ -769,6 +956,142 @@
     "kind": "manual",
     "checked": "2026-11-07",
     "product": "ALR005"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-easy-access",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "Easy Access Account",
+   "type": "easy",
+   "term_months": 0,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.06,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-easy-access",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-easy-access"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-6-month-fixed-term-deposit-new-customers-only",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "6 Month Fixed Term Deposit (new Prosper customers)",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 10000,
+   "max": 1000000,
+   "rate": 4.7,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit-new-customers-only",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit-new-customers-only"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-6-month-fixed-term-deposit",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "6 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 6,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.32,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-9-month-fixed-term-deposit",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "9 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 9,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.3,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-9-month-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-9-month-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-1-year-fixed-term-deposit",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "12 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 12,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.8,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-1-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-1-year-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-2-year-fixed-term-deposit",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "24 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 24,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.38,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-2-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-2-year-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-3-year-fixed-term-deposit",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "36 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 36,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.5,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-3-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-3-year-fixed-term-deposit"
+   }
+  },
+  {
+   "id": "pr-alrayan-bank-5-year-fixed-term-deposit",
+   "bank": "al-rayan",
+   "platform": "Prosper",
+   "name": "60 Month Fixed Term Deposit",
+   "type": "fixed",
+   "term_months": 60,
+   "isa": false,
+   "min": 1000,
+   "max": 1000000,
+   "rate": 4.2,
+   "link": "https://www.prosper.co.uk/savings/alrayan-bank-5-year-fixed-term-deposit",
+   "source": {
+    "kind": "prosper",
+    "page": "https://www.prosper.co.uk/savings/alrayan-bank-5-year-fixed-term-deposit"
    }
   },
   {

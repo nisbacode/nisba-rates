@@ -6,7 +6,7 @@ The daily check behind the Islamic savings accounts table on [nisba.co.uk/saving
 
 Every morning at about 6 to 7am UK time, GitHub runs `scraper/scrape.py`. It:
 
-1. Opens each bank's own pages (Al Rayan, BLME, Gatehouse, Habib Bank Zurich) and Raisin (for Al Rayan, QIB and KFH accounts sold there).
+1. Opens each bank's own pages (Al Rayan, BLME, Gatehouse, Habib Bank Zurich) and Raisin (for Al Rayan, QIB and KFH accounts sold there), plus Prosper (for Al Rayan and BLME accounts sold there).
 2. Reads the current rate for every account listed in `accounts.json`.
 3. Checks each figure makes sense. If a rate can't be found, looks wrong, or jumps by more than 1.5 points overnight, it keeps the last confirmed figure and marks that account as not confirmed today.
 4. Writes everything to `docs/rates.json`, which the website reads live on every visit.
@@ -27,6 +27,7 @@ The website file is here:
 | `blme_notice` | reads the "Gross AER" figure on the notice account page |
 | `habib_sirat` | uses `term_months` to pick the HBZ Sirat eDeposit term |
 | `raisin` | `bank_slug` and `product` are from the Raisin URL, e.g. raisin.co.uk/bank/qib/**QIB001** |
+| `prosper` | `page` is the Prosper product page, e.g. prosper.co.uk/savings/blme-9-month-fixed-term-deposit. Reads the AER after "What is the interest rate?". New Al Rayan, BLME, QIB, Gatehouse, KFH or Habib products on the Prosper listing are noted in the report |
 
 **Remove an account:** delete its entry from `accounts.json`.
 

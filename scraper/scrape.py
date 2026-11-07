@@ -202,6 +202,44 @@ def parse_raisin(bank_slug: str, any_product: str) -> dict[str, dict]:
     return found
 
 
+PROSPER_LIST = "https://www.prosper.co.uk/savings"
+PROSPER_BANKS = ("alrayan-bank", "blme", "qib", "gatehouse", "kuwait-finance", "habib")  # Islamic banks to watch for
+_RATE_RX = re.compile(r"(\d+(?:\.\d+)?)\s*%\s*Gross\s*/\s*(\d+(?:\.\d+)?)\s*%\s*AER", re.I)
+
+
+def parse_prosper(url: str) -> float | None:
+    """AER from a Prosper product page, read from the line after 'What is the interest rate?'.
+
+    Anchored to that label because boosted products also mention the boost as 'x% Gross / x% AER'.
+    """
+    html = fetch(url)
+    lines = text_lines(html)
+    name = url.rstrip("/").split("/")[-1]
+    for i, l in enumerate(lines):
+        if re.search(r"what is the (interest|profit) rate", l, re.I):
+            for nxt in lines[i + 1:i + 4]:
+                m = _RATE_RX.search(nxt)
+                if m:
+                    save_debug("prosper-" + name, {"aer": float(m.group(2)), "line": nxt})
+                    return float(m.group(2))
+    save_debug("prosper-" + name, "\n".join(lines)[:8000])
+    return None
+
+
+def prosper_listed() -> set[str]:
+    """Product page slugs from Islamic banks on Prosper's listing (all pages)."""
+    slugs: set[str] = set()
+    for page in range(1, 40):
+        html = fetch(PROSPER_LIST + (f"?069bf1c6_page={page}" if page > 1 else ""))
+        for s in re.findall(r'href="(?:https://www\.prosper\.co\.uk)?/savings/([a-z0-9-]+)"', html):
+            if s.startswith(PROSPER_BANKS):
+                slugs.add(s)
+        if f"069bf1c6_page={page + 1}" not in html:
+            break
+    save_debug("prosper-listing", sorted(slugs))
+    return slugs
+
+
 # ---------------------------------------------------------------- matching
 
 def match_label(found: dict[str, float], pattern: str) -> float | None:
@@ -230,6 +268,8 @@ def read_rate(acc: dict, raisin_pages: dict) -> float | None:
         offers = raisin_pages.setdefault(src["bank_slug"], parse_raisin(src["bank_slug"], src["product"]))
         o = offers.get(src["product"].upper())
         return o["rate"] if o else None
+    if kind == "prosper":
+        return parse_prosper(src["page"])
     raise RuntimeError(f"unknown source kind {kind}")
 
 
@@ -303,6 +343,15 @@ def main() -> int:
         for pid, o in offers.items():
             if pid not in known:
                 notes.append(f"- New on Raisin ({slug}): `{pid}` {o.get('name')} at {o['rate']}% (not on the site yet; add it to accounts.json if it is Islamic)")
+
+    # New Islamic-bank products on Prosper that we do not list yet.
+    if any(a["source"]["kind"] == "prosper" for a in cfg["accounts"]):
+        try:
+            known_p = {a["source"]["page"].rstrip("/").split("/")[-1] for a in cfg["accounts"] if a["source"]["kind"] == "prosper"}
+            for s in sorted(prosper_listed() - known_p):
+                notes.append(f"- New on Prosper: https://www.prosper.co.uk/savings/{s} (not on the site yet; add it to accounts.json)")
+        except Exception as e:  # noqa: BLE001
+            notes.append(f"- Could not read the Prosper listing to look for new products: {e}")
 
     banks = {k: {"name": v["name"], "logo": v["logo"]} for k, v in cfg["banks"].items()}
     payload = {
