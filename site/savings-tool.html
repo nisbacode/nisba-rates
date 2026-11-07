@@ -252,8 +252,10 @@
 
     var openable = list.filter(function(a){ return !eligible(a); });
     var top = openable.length ? openable.slice().sort(function(a,b){ return b.rate - a.rate; })[0] : null;
+    // Count every listing, including the same account offered in more than one place.
+    var total = list.reduce(function(n, a){ return n + 1 + a.others.filter(function(o){ return !state.elig || !eligible(o); }).length; }, 0);
     $('nr-summary').innerHTML = list.length
-      ? '<strong>' + list.length + ' account' + (list.length === 1 ? '' : 's') + '</strong> match' + (list.length === 1 ? 'es' : '') +
+      ? '<strong>' + total + ' account' + (total === 1 ? '' : 's') + '</strong> match' + (total === 1 ? 'es' : '') +
         (top ? '. Best rate you can get with ' + gbp(state.amount) + ': <strong>' + top.rate.toFixed(2) + '%</strong>, about <strong>' + gbp(profit(top).value) + '</strong> ' + profit(top).label + '.' : '.')
       : '';
     $('nr-fscs').hidden = state.amount <= 120000;
@@ -292,7 +294,7 @@
         }).join('') + '</div>' : '') +
       '</div>';
     }).join('');
-    if (locked) html += G.html('savings', list.length, 'matching accounts', 'You are seeing the top ' + G.VISIBLE + '. Pop in your email to see every account that matches, and we will tell you when rates move.');
+    if (locked) html += G.html('savings', total, 'matching accounts', 'You are seeing the top ' + G.VISIBLE + '. Pop in your email to see every account that matches, and we will tell you when rates move.');
     else if (list.length > shown.length) html += '<button type="button" class="nr-more" id="nr-more">Show all ' + list.length + ' accounts</button>';
     $('nr-list').innerHTML = html;
     var more = $('nr-more');
