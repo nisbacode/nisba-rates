@@ -23,6 +23,8 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "accounts.json"
 OUT = ROOT / "docs" / "rates.json"
 REPORT = ROOT / "report.md"
+NEW_REPORT = ROOT / "new.md"          # only written when there are new accounts we have not alerted on yet
+NEW_SEEN = ROOT / "debug" / "new-seen.json"  # new accounts already alerted on, so the email goes once
 DEBUG = ROOT / "debug"
 
 MIN_RATE, MAX_RATE = 0.1, 10.0      # anything outside this is treated as a misread
@@ -337,11 +339,13 @@ def main() -> int:
             rec["last_verified"] = now.isoformat()
         out_accounts.append(rec)
 
+    new_found: dict[str, str] = {}
     # New products on Raisin that we do not list yet.
     known = {a["source"].get("product", "").upper() for a in cfg["accounts"]}
     for slug, offers in raisin_pages.items():
         for pid, o in offers.items():
             if pid not in known:
+                new_found[f"raisin:{pid}"] = f"- New on Raisin ({slug}): `{pid}` {o.get('name')} at {o['rate']}%"
                 notes.append(f"- New on Raisin ({slug}): `{pid}` {o.get('name')} at {o['rate']}% (not on the site yet; add it to accounts.json if it is Islamic)")
 
     # New Islamic-bank products on Prosper that we do not list yet.
@@ -349,9 +353,11 @@ def main() -> int:
         try:
             known_p = {a["source"]["page"].rstrip("/").split("/")[-1] for a in cfg["accounts"] if a["source"]["kind"] == "prosper"}
             for s in sorted(prosper_listed() - known_p):
+                new_found[f"prosper:{s}"] = f"- New on Prosper: https://www.prosper.co.uk/savings/{s}"
                 notes.append(f"- New on Prosper: https://www.prosper.co.uk/savings/{s} (not on the site yet; add it to accounts.json)")
         except Exception as e:  # noqa: BLE001
             notes.append(f"- Could not read the Prosper listing to look for new products: {e}")
+            new_found = None  # keep the record of what we have already alerted on
 
     banks = {k: {"name": v["name"], "logo": v["logo"]} for k, v in cfg["banks"].items()}
     payload = {
@@ -372,8 +378,31 @@ def main() -> int:
     if notes:
         report += ["## Changes and new products\n", *notes, ""]
     REPORT.write_text("\n".join(report))
+    alert_new(new_found, today)
     print("\n".join(report))
     return 1 if problems else 0
+
+
+def alert_new(new_found: dict[str, str] | None, today: str) -> None:
+    """Write new.md for accounts we have not alerted on before. The workflow turns it into an email."""
+    if new_found is None:
+        return
+    try:
+        seen = set(json.loads(NEW_SEEN.read_text()))
+    except Exception:  # noqa: BLE001
+        seen = set()
+    fresh = [line for key, line in sorted(new_found.items()) if key not in seen]
+    NEW_REPORT.unlink(missing_ok=True)
+    if fresh:
+        NEW_REPORT.write_text("\n".join([
+            f"The rate check on {today} found accounts from the Islamic banks that are not on nisba.co.uk/savings-accounts yet.\n",
+            *fresh, "",
+            "Check each one is Islamic, then add it to accounts.json. If it is the same account as one already listed "
+            "(direct, Raisin or Prosper), give it that account's `product` key so the site groups them.",
+        ]))
+    # Remember what is new right now. Once an account is added it drops out; if it is withdrawn and comes back, it alerts again.
+    DEBUG.mkdir(exist_ok=True)
+    NEW_SEEN.write_text(json.dumps(sorted(new_found), indent=1) + "\n")
 
 
 def fetch_logos(cfg: dict) -> None:

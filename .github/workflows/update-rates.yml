@@ -53,6 +53,19 @@ jobs:
             gh issue create --title "Savings rates need a look" --label rate-check --body-file report.md
           fi
 
+      - name: Email about new accounts to add
+        if: hashFiles('new.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create new-account --color 7C3AED --force >/dev/null 2>&1 || true
+          existing=$(gh issue list --label new-account --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file new.md
+          else
+            gh issue create --title "New savings accounts to add" --label new-account --body-file new.md
+          fi
+
       - name: Close the issue once everything reads fine again
         if: steps.scrape.outputs.status == '0'
         env:
@@ -70,4 +83,5 @@ jobs:
           path: |
             debug/
             report.md
+            new.md
           retention-days: 14
