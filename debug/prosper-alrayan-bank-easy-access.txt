@@ -1,0 +1,4 @@
+{
+ "aer": 4.06,
+ "line": "3.98% Gross / 4.06% AER* variable"
+}
