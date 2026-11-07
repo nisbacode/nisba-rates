@@ -48,7 +48,8 @@
     "kind": "alrayan",
     "page": "https://www.alrayanbank.co.uk/savings/fixed-term",
     "match": "^12 Month Fixed Term Deposit"
-   }
+   },
+   "product": "al-rayan-fixed-12m"
   },
   {
    "id": "alr-24m",
@@ -66,7 +67,8 @@
     "kind": "alrayan",
     "page": "https://www.alrayanbank.co.uk/savings/fixed-term",
     "match": "^24 Month Fixed Term Deposit"
-   }
+   },
+   "product": "al-rayan-fixed-24m"
   },
   {
    "id": "alr-36m-eac",
@@ -137,7 +139,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-3m"
   },
   {
    "id": "blme-pd-6m",
@@ -154,7 +157,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-6m"
   },
   {
    "id": "blme-pd-12m",
@@ -171,7 +175,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-12m"
   },
   {
    "id": "blme-pd-18m",
@@ -188,7 +193,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-18m"
   },
   {
    "id": "blme-pd-24m",
@@ -205,7 +211,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-24m"
   },
   {
    "id": "blme-pd-36m",
@@ -222,7 +229,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-36m"
   },
   {
    "id": "blme-pd-48m",
@@ -239,7 +247,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-48m"
   },
   {
    "id": "blme-pd-60m",
@@ -256,7 +265,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-60m"
   },
   {
    "id": "blme-pd-84m",
@@ -273,7 +283,8 @@
    "source": {
     "kind": "blme_premier",
     "page": "https://www.blme.com/products-and-services/savings/premier-deposit-account/"
-   }
+   },
+   "product": "blme-fixed-84m"
   },
   {
    "id": "pr-blme-2-month-fixed-term-deposit",
@@ -307,7 +318,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-3-month-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-3m"
   },
   {
    "id": "pr-blme-6-month-fixed-term-deposit",
@@ -324,7 +336,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-6-month-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-6m"
   },
   {
    "id": "pr-blme-9-month-fixed-term-deposit",
@@ -358,7 +371,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-1-year-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-12m"
   },
   {
    "id": "pr-blme-18-month-fixed-term-deposit",
@@ -375,7 +389,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-18-month-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-18m"
   },
   {
    "id": "pr-blme-2-year-fixed-term-deposit",
@@ -392,7 +407,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-2-year-fixed-term-deposit-"
-   }
+   },
+   "product": "blme-fixed-24m"
   },
   {
    "id": "pr-blme-3-year-fixed-term-deposit",
@@ -409,7 +425,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-3-year-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-36m"
   },
   {
    "id": "pr-blme-4-year-fixed-term-deposit",
@@ -426,7 +443,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-4-year-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-48m"
   },
   {
    "id": "pr-blme-5-year-fixed-term-deposit",
@@ -443,7 +461,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-5-year-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-60m"
   },
   {
    "id": "pr-blme-7-year-fixed-term-deposit",
@@ -460,7 +479,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-7-year-fixed-term-deposit"
-   }
+   },
+   "product": "blme-fixed-84m"
   },
   {
    "id": "gh-wood-6m",
@@ -866,7 +886,8 @@
     "kind": "manual",
     "checked": "2026-11-07",
     "product": "ALR006"
-   }
+   },
+   "product": "al-rayan-fixed-6m"
   },
   {
    "id": "rz-ALR007",
@@ -884,7 +905,8 @@
     "kind": "manual",
     "checked": "2026-11-07",
     "product": "ALR007"
-   }
+   },
+   "product": "al-rayan-fixed-9m"
   },
   {
    "id": "rz-ALR001",
@@ -902,7 +924,8 @@
     "kind": "manual",
     "checked": "2026-11-07",
     "product": "ALR001"
-   }
+   },
+   "product": "al-rayan-fixed-12m"
   },
   {
    "id": "rz-ALR002",
@@ -920,7 +943,8 @@
     "kind": "manual",
     "checked": "2026-11-07",
     "product": "ALR002"
-   }
+   },
+   "product": "al-rayan-fixed-24m"
   },
   {
    "id": "rz-ALR003",
@@ -938,7 +962,8 @@
     "kind": "manual",
     "checked": "2026-11-07",
     "product": "ALR003"
-   }
+   },
+   "product": "al-rayan-fixed-36m"
   },
   {
    "id": "rz-ALR005",
@@ -956,7 +981,8 @@
     "kind": "manual",
     "checked": "2026-11-07",
     "product": "ALR005"
-   }
+   },
+   "product": "al-rayan-fixed-60m"
   },
   {
    "id": "pr-alrayan-bank-easy-access",
@@ -990,7 +1016,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit-new-customers-only"
-   }
+   },
+   "product": "al-rayan-fixed-6m"
   },
   {
    "id": "pr-alrayan-bank-6-month-fixed-term-deposit",
@@ -1007,7 +1034,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit"
-   }
+   },
+   "product": "al-rayan-fixed-6m"
   },
   {
    "id": "pr-alrayan-bank-9-month-fixed-term-deposit",
@@ -1024,7 +1052,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-9-month-fixed-term-deposit"
-   }
+   },
+   "product": "al-rayan-fixed-9m"
   },
   {
    "id": "pr-alrayan-bank-1-year-fixed-term-deposit",
@@ -1041,7 +1070,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-1-year-fixed-term-deposit"
-   }
+   },
+   "product": "al-rayan-fixed-12m"
   },
   {
    "id": "pr-alrayan-bank-2-year-fixed-term-deposit",
@@ -1058,7 +1088,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-2-year-fixed-term-deposit"
-   }
+   },
+   "product": "al-rayan-fixed-24m"
   },
   {
    "id": "pr-alrayan-bank-3-year-fixed-term-deposit",
@@ -1075,7 +1106,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-3-year-fixed-term-deposit"
-   }
+   },
+   "product": "al-rayan-fixed-36m"
   },
   {
    "id": "pr-alrayan-bank-5-year-fixed-term-deposit",
@@ -1092,7 +1124,8 @@
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-5-year-fixed-term-deposit"
-   }
+   },
+   "product": "al-rayan-fixed-60m"
   },
   {
    "id": "rz-QIB199",

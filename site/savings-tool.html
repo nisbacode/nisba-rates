@@ -71,7 +71,7 @@
   <div class="nr-fscs" id="nr-fscs" hidden>Deposits are protected by the FSCS up to £120,000 per person, per banking group. Above that, consider splitting your savings across different banks.</div>
   <div class="nr-list" id="nr-list" aria-live="polite"></div>
 
-  <p class="nr-small">Rates are read from each bank's own website and from Prosper every morning. Raisin rates are checked by hand. Some Prosper rates for new customers include a Prosper boost, which is not FSCS protected. Islamic banks pay an expected profit rate rather than interest. Estimated profit is a simple guide for the first year (or the full term if shorter) and is not guaranteed. Always confirm the rate and terms with the provider before opening an account. Education only, not personalised financial advice.</p>
+  <p class="nr-small">Rates are read from each bank's own website and from Prosper every morning. Raisin rates are checked by hand. Where the same account is offered direct and through Raisin or Prosper, we show the best rate you can get for your amount and list the other places underneath. FSCS protection is up to £120,000 per person, per banking group, and money you hold with the same bank directly, through Raisin or through Prosper all counts towards that one limit. Some Prosper rates for new customers include a Prosper boost, which is not FSCS protected. Islamic banks pay an expected profit rate rather than interest. Estimated profit is a simple guide for the first year (or the full term if shorter) and is not guaranteed. Always confirm the rate and terms with the provider before opening an account. Education only, not personalised financial advice.</p>
 </div>
 
 <style>
@@ -127,6 +127,13 @@
 .nr-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--o);color:#fff!important;text-decoration:none!important;font-weight:600;font-size:14px;border-radius:999px;padding:12px 20px;white-space:nowrap;transition:background .15s}
 .nr-cta:hover{background:var(--od)}
 .nr-card.off .nr-cta{background:#d8cfc4}
+.nr-alt{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;border-top:1px dashed var(--line);padding-top:12px;margin-top:-4px;font-size:13px}
+.nr-alt-h{font-weight:600;color:var(--mut);margin-right:2px}
+.nr-alt-o{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:4px 6px;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--ink)!important;text-decoration:none!important;transition:border-color .15s}
+.nr-alt-o:hover{border-color:var(--o)}
+.nr-alt-o b{font-weight:600}
+.nr-alt-o span{font-size:11.5px;color:var(--mut)}
+.nr-alt-o.off{opacity:.7}
 .nr-empty{background:#fff;border-radius:20px;padding:28px;text-align:center;color:var(--mut)}
 .nr-small{font-size:12px;color:var(--mut);margin:20px 4px 0;line-height:1.6}
 .nr-more{align-self:center;margin-top:6px;border:1px solid var(--ink);background:transparent;border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer}
@@ -199,6 +206,7 @@
     if (state.amount > a.max) return 'Maximum deposit ' + gbp(a.max);
     return '';
   }
+  function where(a, b){ return esc(a.platform && a.platform !== 'Direct' ? a.platform : b.name.replace(/ Bank( Zurich)?$/,'')); }
   function profit(a){
     var amt = Math.min(state.amount, a.max);
     var years = (a.type === 'fixed' && a.term_months < 12) ? a.term_months/12 : 1;
@@ -207,13 +215,32 @@
 
   function render(){
     if (!data) return;
-    var list = data.accounts.filter(function(a){
+    var matching = data.accounts.filter(function(a){
       if (state.type !== 'all' && a.type !== state.type) return false;
       if (state.isa === 'isa' && !a.isa) return false;
       if (state.isa === 'non' && a.isa) return false;
       if (a.type !== 'easy' && a.term_months > state.term) return false;
-      if (state.elig && eligible(a)) return false;
       return true;
+    });
+    // The same account sold in more than one place (direct, Raisin, Prosper) shares a
+    // 'product' key. Show one card per product: the best version this saver can open
+    // leads, and the other places are listed underneath.
+    var groups = {}, order = [];
+    matching.forEach(function(a){
+      var k = a.product || a.id;
+      if (!groups[k]){ groups[k] = []; order.push(k); }
+      groups[k].push(a);
+    });
+    var list = [];
+    order.forEach(function(k){
+      var v = groups[k].slice().sort(function(x, y){
+        var ex = eligible(x) ? 1 : 0, ey = eligible(y) ? 1 : 0;
+        return (ex - ey) || (y.rate - x.rate);
+      });
+      if (state.elig && eligible(v[0])) return;
+      var lead = Object.create(v[0]);
+      lead.others = v.slice(1);
+      list.push(lead);
     });
     list.sort(function(x, y){
       var ex = eligible(x) ? 1 : 0, ey = eligible(y) ? 1 : 0;
@@ -256,7 +283,13 @@
         '<div class="nr-rate"><b>' + a.rate.toFixed(2) + '%</b><span>Expected profit rate (AER)</span>' + note + '</div>' +
         '<div class="nr-profit">' + (why ? '<b>Not available</b><span class="nr-why">' + why + '</span>' : '<b>' + gbp(p.value) + '</b><span>Est. profit ' + p.label + '</span>') +
         '<span class="nr-stale">Min ' + gbp(a.min) + ' · Max ' + gbp(a.max) + '</span></div>' +
-        '<a class="nr-cta" href="' + esc(a.link) + '" target="_blank" rel="noopener nofollow">View at ' + esc(a.platform && a.platform !== 'Direct' ? a.platform : b.name.replace(/ Bank( Zurich)?$/,'')) + '</a>' +
+        '<a class="nr-cta" href="' + esc(a.link) + '" target="_blank" rel="noopener nofollow">View at ' + where(a, b) + '</a>' +
+        (a.others.length ? '<div class="nr-alt"><span class="nr-alt-h">Also available</span>' + a.others.map(function(o){
+          var w = eligible(o);
+          return '<a class="nr-alt-o' + (w ? ' off' : '') + '" href="' + esc(o.link) + '" target="_blank" rel="noopener nofollow">' +
+            '<b>' + (o.platform && o.platform !== 'Direct' ? 'Via ' + esc(o.platform) : 'Direct with bank') + '</b> ' + o.rate.toFixed(2) + '%' +
+            '<span>' + (w ? w : 'Min ' + gbp(o.min)) + (/\(([^)]+)\)/.test(o.name) ? ' · ' + esc(o.name.match(/\(([^)]+)\)/)[1]) : '') + '</span></a>';
+        }).join('') + '</div>' : '') +
       '</div>';
     }).join('');
     if (locked) html += G.html('savings', list.length, 'matching accounts', 'You are seeing the top ' + G.VISIBLE + '. Pop in your email to see every account that matches, and we will tell you when rates move.');
