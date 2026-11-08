@@ -1,7 +1,17 @@
 {
- "checked_at": "2026-11-07T07:41:44+00:00",
+ "checked_at": "2026-11-08T07:40:58+00:00",
  "channel": "https://www.youtube.com/@nisbainvest",
  "videos": [
+  {
+   "id": "zSRQ_eeNOBU",
+   "title": "Aviva Islamic Funds: Lower-Cost Investing Inside a Pension #shorts",
+   "published_at": "2026-11-07T17:18:25Z",
+   "url": "https://www.youtube.com/watch?v=zSRQ_eeNOBU",
+   "duration": "PT51S",
+   "is_short": true,
+   "thumbnail": "https://i.ytimg.com/vi/zSRQ_eeNOBU/hqdefault.jpg",
+   "description": "Aviva pension accounts offer global Islamic equity funds at around 0.15% and currency-hedged sukuk at 0.25%. The caveat: these lower-cost funds are only available inside a pension. #IslamicFinance #HalalInvesting #PensionFunds #FundFees"
+  },
   {
    "id": "AvrO4-IphRs",
    "title": "Interest Rates Just Went Up to 4%. What It Means for Muslims in the UK",
@@ -291,16 +301,6 @@
    "is_short": true,
    "thumbnail": "https://i.ytimg.com/vi/37towXSRGhA/hqdefault.jpg",
    "description": "#foryou #xybca #muslim #finance"
-  },
-  {
-   "id": "JvjRdg84oiE",
-   "title": "Some need more information to realistically understand the investment projection",
-   "published_at": "2026-08-30T18:39:16Z",
-   "url": "https://www.youtube.com/watch?v=JvjRdg84oiE",
-   "duration": "PT32S",
-   "is_short": true,
-   "thumbnail": "https://i.ytimg.com/vi/JvjRdg84oiE/hqdefault.jpg",
-   "description": "#foryou #xybca #islam #finance #muslim"
   }
  ]
 }
