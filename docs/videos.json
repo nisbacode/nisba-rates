@@ -1,7 +1,27 @@
 {
- "checked_at": "2026-11-09T07:59:19+00:00",
+ "checked_at": "2026-11-10T07:50:58+00:00",
  "channel": "https://www.youtube.com/@nisbainvest",
  "videos": [
+  {
+   "id": "dRBHO53UlWE",
+   "title": "Franklin Templeton Ultra Short Sukuk Fund: Lower Fees, Less Risk #shorts",
+   "published_at": "2026-11-09T20:13:24Z",
+   "url": "https://www.youtube.com/watch?v=dRBHO53UlWE",
+   "duration": "PT38S",
+   "is_short": true,
+   "thumbnail": "https://i.ytimg.com/vi/dRBHO53UlWE/hqdefault.jpg",
+   "description": "Franklin Templeton\u2019s ultra-short duration currency-hedged Sukuk fund charges 0.25%, compared with 0.9% for its standard Sukuk fund. Shorter-dated holdings can mean lower yields, but less sensitivity to interest-rate movements. #SukukFunds #FranklinTempleton #IslamicFinance #Investing"
+  },
+  {
+   "id": "rPvKUfPunpw",
+   "title": "HSBC's Islamic Fund Is Dropping Weapons Companies",
+   "published_at": "2026-11-09T18:36:01Z",
+   "url": "https://www.youtube.com/watch?v=rPvKUfPunpw",
+   "duration": "PT54S",
+   "is_short": true,
+   "thumbnail": "https://i.ytimg.com/vi/rPvKUfPunpw/hqdefault.jpg",
+   "description": "The S&P Global 1200 Shariah Select Index, which the HSBC Islamic Global Equity Index Fund tracks, will exclude weapons and military contracting companies from 23 November 2026. Learn more at https://www.nisba.co.uk. This is education, not financial advice. #halalinvesting #islamicfinance #shorts #sh"
+  },
   {
    "id": "zSRQ_eeNOBU",
    "title": "Aviva Islamic Funds: Lower-Cost Investing Inside a Pension #shorts",
@@ -281,26 +301,6 @@
    "is_short": false,
    "thumbnail": "https://i.ytimg.com/vi/DQuNFickTvc/hqdefault.jpg",
    "description": ""
-  },
-  {
-   "id": "QXDWz6o-EVs",
-   "title": "Why I Might Start Using Wahed Again",
-   "published_at": "2026-09-03T17:00:04Z",
-   "url": "https://www.youtube.com/watch?v=QXDWz6o-EVs",
-   "duration": "PT17M40S",
-   "is_short": false,
-   "thumbnail": "https://i.ytimg.com/vi/QXDWz6o-EVs/hqdefault.jpg",
-   "description": "In this video we go over the recent changes to Wahed's funds and what this means for you, the customers.\n\n\u26a0\ufe0f Disclaimer: This video is for educational purposes only and should not be considered financial advice. Always do your own research before making any investment decisions.\n\n\ud83c\udf10 Learn more about "
-  },
-  {
-   "id": "37towXSRGhA",
-   "title": "Should\u2019ve done this at the start, but here\u2019s some facts that you didn\u2019t know about me",
-   "published_at": "2026-09-02T19:13:12Z",
-   "url": "https://www.youtube.com/watch?v=37towXSRGhA",
-   "duration": "PT45S",
-   "is_short": true,
-   "thumbnail": "https://i.ytimg.com/vi/37towXSRGhA/hqdefault.jpg",
-   "description": "#foryou #xybca #muslim #finance"
   }
  ]
 }
