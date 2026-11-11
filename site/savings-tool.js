@@ -222,10 +222,10 @@ root.innerHTML="<div id=\"nr-app\" class=\"nr\">\n  <div class=\"nr-head\">\n   
         '<div class="nr-rate"><b>' + a.rate.toFixed(2) + '%</b><span>Expected profit rate (AER)</span>' + note + '</div>' +
         '<div class="nr-profit">' + (why ? '<b>Not available</b><span class="nr-why">' + why + '</span>' : '<b>' + gbp(p.value) + '</b><span>Est. profit ' + p.label + '</span>') +
         '<span class="nr-stale">Min ' + gbp(a.min) + ' · Max ' + gbp(a.max) + '</span></div>' +
-        '<a class="nr-cta" href="' + esc(a.link) + '" target="_blank" rel="noopener nofollow">View at ' + where(a, b) + '</a>' +
+        '<a class="nr-cta" href="' + esc(a.link) + '"' + (a.aff_link ? ' data-aff="' + esc(a.aff_link) + '"' : '') + ' target="_blank" rel="noopener nofollow">View at ' + where(a, b) + '</a>' +
         (a.others.length ? '<div class="nr-alt"><span class="nr-alt-h">Also available</span>' + a.others.map(function(o){
           var w = eligible(o);
-          return '<a class="nr-alt-o' + (w ? ' off' : '') + '" href="' + esc(o.link) + '" target="_blank" rel="noopener nofollow">' +
+          return '<a class="nr-alt-o' + (w ? ' off' : '') + '" href="' + esc(o.link) + '"' + (o.aff_link ? ' data-aff="' + esc(o.aff_link) + '"' : '') + ' target="_blank" rel="noopener nofollow">' +
             '<b>' + (o.platform && o.platform !== 'Direct' ? 'Via ' + esc(o.platform) : 'Direct with bank') + '</b> ' + o.rate.toFixed(2) + '%' +
             '<span>' + (w ? w : 'Min ' + gbp(o.min)) + (/\(([^)]+)\)/.test(o.name) ? ' · ' + esc(o.name.match(/\(([^)]+)\)/)[1]) : '') + '</span></a>';
         }).join('') + '</div>' : '') +
@@ -245,6 +245,12 @@ root.innerHTML="<div id=\"nr-app\" class=\"nr\">\n  <div class=\"nr-head\">\n   
       state[key] = num ? Number(b.dataset.v) : b.dataset.v; state.showAll = false; render();
     });
   }
+  // Accounts with an affiliate link: open the account page and the affiliate link together.
+  $('nr-list').addEventListener('click', function(e){
+    var l = e.target.closest('a[data-aff]'); if (!l) return;
+    // The link itself still opens the account page, so nothing is lost if a browser blocks the extra tab.
+    window.open(l.getAttribute('data-aff'), '_blank', 'noopener');
+  });
   seg('nr-type', 'type'); seg('nr-isa', 'isa');
   function setAmount(v, fromInput){
     state.amount = Math.max(0, Math.min(10000000, v || 0));

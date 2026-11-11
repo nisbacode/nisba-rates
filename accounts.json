@@ -996,6 +996,7 @@
    "max": 1000000,
    "rate": 4.06,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-easy-access",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-easy-access"
@@ -1013,6 +1014,7 @@
    "max": 1000000,
    "rate": 4.7,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit-new-customers-only",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit-new-customers-only"
@@ -1031,6 +1033,7 @@
    "max": 1000000,
    "rate": 4.32,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-6-month-fixed-term-deposit"
@@ -1049,6 +1052,7 @@
    "max": 1000000,
    "rate": 4.3,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-9-month-fixed-term-deposit",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-9-month-fixed-term-deposit"
@@ -1067,6 +1071,7 @@
    "max": 1000000,
    "rate": 4.8,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-1-year-fixed-term-deposit",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-1-year-fixed-term-deposit"
@@ -1085,6 +1090,7 @@
    "max": 1000000,
    "rate": 4.38,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-2-year-fixed-term-deposit",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-2-year-fixed-term-deposit"
@@ -1103,6 +1109,7 @@
    "max": 1000000,
    "rate": 4.5,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-3-year-fixed-term-deposit",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-3-year-fixed-term-deposit"
@@ -1121,6 +1128,7 @@
    "max": 1000000,
    "rate": 4.2,
    "link": "https://www.prosper.co.uk/savings/alrayan-bank-5-year-fixed-term-deposit",
+   "aff_link": "https://go.prosper.co.uk/US7p/518rq52v",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/alrayan-bank-5-year-fixed-term-deposit"
