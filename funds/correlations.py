@@ -11,8 +11,9 @@ Method
 - Each pair uses the weeks where both funds have a price. A fund that launched
   inside the window therefore shows a shorter history, which the page flags.
 - A pair needs at least MIN_WEEKS shared weeks, otherwise it shows as "n/a".
-- One-day price spikes that reverse the next day are treated as wrong closes in
-  the data feed and left out (see drop_bad_prints).
+- Price spikes of more than 15% that fully reverse the next day or week are
+  treated as wrong closes in the data feed and left out (see drop_bad_prints
+  and drop_weekly_spikes).
 
 To change which funds appear, edit FUNDS below. "ticker" must match a ticker in
 funds/funds.json that has an alpha_vantage_ticker. Funds in the same "group" sit
@@ -106,6 +107,18 @@ def weekly_values(rows, fx, end: dt.date, weeks: int = WEEKS):
     return out
 
 
+def drop_weekly_spikes(values):
+    """Same idea as drop_bad_prints, for a wrong price that lasted a few days and landed on a weekly point."""
+    SPIKE, SETTLE = 0.15, 0.08
+    out, dropped = list(values), 0
+    for i in range(1, len(values) - 1):
+        a, v, b = values[i - 1], values[i], values[i + 1]
+        if a and v and b and abs(v / a - 1) > SPIKE and abs(v / b - 1) > SPIKE and abs(b / a - 1) < SETTLE:
+            out[i] = None
+            dropped += 1
+    return out, dropped
+
+
 def weekly_returns(values):
     return [(b / a - 1) if (a and b) else None for a, b in zip(values, values[1:])]
 
@@ -141,7 +154,9 @@ def build(series: dict, fx, today: dt.date, now_iso: str) -> dict:
             print(f"Correlations: ignored {len(bad)} suspect price(s) for {f['ticker']}: " + ", ".join(d.isoformat() for d in bad))
         if ccy == "USD" and not fx:
             raise ValueError("no USD/GBP exchange rate today")
-        vals = weekly_values(rows, fx if ccy == "USD" else None, end)
+        vals, spikes = drop_weekly_spikes(weekly_values(rows, fx if ccy == "USD" else None, end))
+        if spikes:
+            print(f"Correlations: ignored {spikes} suspect weekly price(s) for {f['ticker']}")
         r = weekly_returns(vals)
         rets.append(r)
         if os.environ.get("CORR_DEBUG"):
