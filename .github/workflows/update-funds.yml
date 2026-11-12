@@ -36,6 +36,7 @@ jobs:
         env:
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
           DAILY_FUND_CALLS: ${{ github.event.inputs.calls || '100' }}
+          CORR_DEBUG: ${{ github.event.inputs.correlations == 'yes' && '1' || '' }}
           FORCE_CORRELATIONS: ${{ github.event.inputs.correlations == 'yes' && '1' || '' }}
         run: |
           set +e

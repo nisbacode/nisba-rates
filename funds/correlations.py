@@ -22,6 +22,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import math
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -118,6 +119,9 @@ def build(series: dict, fx, today: dt.date, now_iso: str) -> dict:
         vals = weekly_values(rows, fx if ccy == "USD" else None, end)
         r = weekly_returns(vals)
         rets.append(r)
+        if os.environ.get("CORR_DEBUG"):
+            print("CORRDBG", f["ticker"], ccy, "missing", sum(1 for x in vals if x is None),
+                  " ".join(f"{x:.4g}" if x else "-" for x in vals))
         have = [i for i, x in enumerate(r) if x is not None]
         first = (end - dt.timedelta(days=7 * (WEEKS - have[0]))).isoformat() if have else None
         funds.append({**f, "weeks": len(have), "since": first})
