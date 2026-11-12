@@ -16,6 +16,8 @@ from pathlib import Path
 
 import requests
 
+import correlations
+
 ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "funds" / "funds.json"
 FT_PRICES = ROOT / "funds" / "ft_prices.json"
@@ -152,11 +154,13 @@ def main() -> int:
         problems.append(f"- USD/GBP exchange rate: {e}")
 
     fresh = {}
+    series = {}  # ticker -> (daily rows, currency), kept for the monthly correlations
     for f in batch:
         time.sleep(PAUSE)
         sym = f["alpha_vantage_ticker"].replace("﻿", "").strip()
         try:
             rows = price_series(sym)
+            series[f["ticker"]] = (rows, f["currency"])
             perf = performance(rows)
             if f["currency"] == "USD" and fx:
                 perf_gbp = performance(rows, fx)
@@ -228,6 +232,15 @@ def main() -> int:
         "funds": out_funds,
     }
     OUT.write_text(json.dumps(payload, indent=1, ensure_ascii=False) + "\n")
+
+    # Correlations for nisba.co.uk/correlations: recalculated once a month, when the window moves on.
+    target = correlations.window_end(today).isoformat()
+    if os.environ.get("FORCE_CORRELATIONS") or correlations.current_window_end() != target:
+        try:
+            correlations.write(correlations.build(series, fx, today, now.isoformat()))
+            notes.append(f"- Correlations recalculated for the two years to {target}.")
+        except Exception as e:  # noqa: BLE001
+            problems.append(f"- Correlations table not updated: {e}")
 
     missing = [f["name"] for f in out_funds if not f.get("alpha_vantage_ticker") and not f.get("proxy") and not f.get("ft")]
     report = [f"Fund check {today}: refreshed {len(fresh)} of {len(av_funds)} Alpha Vantage funds today; "

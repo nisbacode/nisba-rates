@@ -9,6 +9,10 @@ on:
         description: "Safety cap on funds refreshed this run"
         required: false
         default: "100"
+      correlations:
+        description: "Type yes to recalculate the correlations table now (it normally updates once a month)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -32,6 +36,7 @@ jobs:
         env:
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
           DAILY_FUND_CALLS: ${{ github.event.inputs.calls || '100' }}
+          FORCE_CORRELATIONS: ${{ github.event.inputs.correlations == 'yes' && '1' || '' }}
         run: |
           set +e
           python funds/update_funds.py
@@ -40,7 +45,7 @@ jobs:
         run: |
           git config user.name "nisba-rates bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/funds.json
+          git add docs/funds.json docs/correlations.json
           git commit -m "Funds checked $(date -u +%F)" || { echo "nothing to commit"; exit 0; }
           for i in 1 2 3 4 5; do
             if git pull --rebase -q origin main && git push; then exit 0; fi

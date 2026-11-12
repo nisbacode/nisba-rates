@@ -51,3 +51,13 @@ The comparison table on the savings page is `site/savings-tool.html`. After edit
 Returns are price returns, so income (distributing) share classes understate total return.
 
 **Factsheets:** each fund in `funds/funds.json` has a `factsheet` field, which the page shows as a "Factsheet" link. Most point at the provider's own "latest factsheet" PDF (HSBC, iShares, Schroders, HANetf, Baillie Gifford, DWS), which updates in place each month. Where the provider has no stable PDF link the field points at the provider's fund page or factsheet listing instead (Invesco, WisdomTree, Wahed, BNP Paribas, Oasis Crescent, Mayar, the Franklin Ultra Short fund). The two Franklin Global Sukuk PDFs are dated downloads, so check them if Franklin changes its site. To change a link, edit `funds/funds.json`; it flows into `docs/funds.json` on the next daily run.
+
+## Correlations
+
+The table on [nisba.co.uk/correlations](https://www.nisba.co.uk/correlations) reads `docs/correlations.json` live. The "Daily fund check" workflow recalculates it once a month (the first run after a month ends) from the same daily prices it already downloads, using `funds/correlations.py`: weekly returns in pounds over the two years to the last month end. Each pair uses the weeks both funds have prices for, and needs at least 26 shared weeks.
+
+**Change the funds shown:** edit the `FUNDS` list at the top of `funds/correlations.py` (tickers must exist in `funds/funds.json` with an Alpha Vantage code).
+
+**Recalculate now:** Actions tab, "Daily fund check", Run workflow, and type `yes` in the correlations box.
+
+The page tool is `site/correlations-tool.html`, built to `site/correlations-tool.js` by `python site/build.py correlations-tool`. Kajabi holds the loader (Site theme, Correlations page, "Custom Code" section) pinned to a commit, the same way as the savings tool.
