@@ -4,14 +4,14 @@
 
   <div class="controls">
     <button class="mode-btn active" data-mode="explore">Explore mode</button>
-    <button class="mode-btn" data-mode="build">Build portfolio</button>
+    <button class="mode-btn" data-mode="build">Compare a basket</button>
     <button class="reset-btn" id="nc-reset">Reset</button>
   </div>
 
   <div class="help-text" id="nc-help"></div>
 
   <div class="portfolio-panel" id="nc-panel" style="display:none">
-    <div class="portfolio-label">Your portfolio · click a chip to remove · next suggestions outlined in blue</div>
+    <div class="portfolio-label">Your basket · click a chip to remove · the three funds with the lowest correlation to it are outlined in blue</div>
     <div class="portfolio-chips" id="nc-chips"></div>
   </div>
 
@@ -31,16 +31,16 @@
       <div class="legend-labels">
         <span>-0.2</span><span>0.0</span><span>0.2</span><span>0.4</span><span>0.6</span><span>0.8</span><span>1.0</span>
       </div>
-      <span style="margin-left:12px">green = diversifying · red = redundant</span>
+      <span style="margin-left:12px">green = moved differently · red = moved together</span>
       <span style="margin-left:4px;display:inline-flex;align-items:center;gap:6px">
         <span style="display:inline-block;width:14px;height:14px;border:3px solid #1e40af;box-sizing:border-box"></span>
-        <span>= best diversifier</span>
+        <span>= lowest correlation</span>
       </span>
     </div>
   </div>
 
   <div class="disclaimer">
-    <strong>Education only, not personalised financial advice.</strong> Correlations are calculated from weekly returns in pounds over the period shown and will change as market conditions shift. <span id="nc-short"></span>Average pair correlation is a simplified measure: it does not account for position sizes or volatility. Past correlations are not a guide to future ones. Always do your own research or speak to a qualified adviser before investing.
+    <strong>Education only, not personalised financial advice.</strong> Correlations are calculated from weekly returns in pounds over the period shown and will change as market conditions shift. <span id="nc-short"></span>Average pair correlation is a simplified measure: it does not account for position sizes or volatility. A low correlation describes how two funds have moved in the past. It is not a recommendation to hold either fund, and past correlations are not a guide to future ones. Always do your own research or speak to a qualified adviser before investing.
   </div>
 </div>
 <div class="nc-tooltip" id="nc-tooltip"></div>
@@ -112,8 +112,8 @@
   var mode = 'explore', highlighted = null, portfolio = [];
 
   var HELP = {
-    explore: '👉 <strong>Click a fund name</strong> (in the row or column labels, not the cells) to highlight its three best diversifiers. Hover any cell to see the correlation.',
-    build: '👉 <strong>Click fund names</strong> (row or column labels) to add them to your portfolio. After each click, the three best next additions (lowest average correlation with your basket) are highlighted in blue.'
+    explore: '👉 <strong>Click a fund name</strong> (in the row or column labels, not the cells) to highlight the three funds it has moved least in step with. Hover any cell to see the correlation.',
+    build: '👉 <strong>Click fund names</strong> (row or column labels) to add them to your basket. After each click, the three funds with the lowest average correlation to your basket are highlighted in blue.'
   };
 
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -270,11 +270,11 @@
     } else {
       var idx = parseInt(t.dataset.idx, 10);
       if (mode === 'explore') {
-        var html = '<strong>' + esc(funds[idx].name) + '</strong>' + history(funds[idx]) + '<br>Click to highlight 3 best diversifiers:';
+        var html = '<strong>' + esc(funds[idx].name) + '</strong>' + history(funds[idx]) + '<br>Click to highlight its 3 lowest correlations:';
         bestDiversifiers(idx).forEach(function(d){ html += '<br>· ' + esc(funds[d.idx].name) + ' (' + d.corr.toFixed(2) + ')'; });
         show(e, html);
       } else {
-        show(e, '<strong>' + esc(funds[idx].name) + '</strong>' + history(funds[idx]) + '<br>Click to ' + (portfolio.indexOf(idx) > -1 ? 'remove from' : 'add to') + ' portfolio');
+        show(e, '<strong>' + esc(funds[idx].name) + '</strong>' + history(funds[idx]) + '<br>Click to ' + (portfolio.indexOf(idx) > -1 ? 'remove from' : 'add to') + ' basket');
       }
     }
   });
