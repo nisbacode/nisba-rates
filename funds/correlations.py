@@ -11,6 +11,8 @@ Method
 - Each pair uses the weeks where both funds have a price. A fund that launched
   inside the window therefore shows a shorter history, which the page flags.
 - A pair needs at least MIN_WEEKS shared weeks, otherwise it shows as "n/a".
+- One-day price spikes that reverse the next day are treated as wrong closes in
+  the data feed and left out (see drop_bad_prints).
 
 To change which funds appear, edit FUNDS below. "ticker" must match a ticker in
 funds/funds.json that has an alpha_vantage_ticker. Funds in the same "group" sit
@@ -66,6 +68,25 @@ def _on_or_before(rows, day):
     return None, None
 
 
+def drop_bad_prints(rows):
+    """Remove one-day price spikes that reverse the next day (a wrong close in the data feed).
+
+    A day is dropped when it sits more than SPIKE away from both the day before and the
+    day after, while those two are within SETTLE of each other.
+    """
+    SPIKE, SETTLE = 0.15, 0.08
+    keep, dropped = [], []
+    for i, (d, v) in enumerate(rows):  # newest first
+        if 0 < i < len(rows) - 1:
+            newer, older = rows[i - 1][1], rows[i + 1][1]
+            if newer > 0 and older > 0 and v > 0 and abs(v / older - 1) > SPIKE \
+                    and abs(v / newer - 1) > SPIKE and abs(newer / older - 1) < SETTLE:
+                dropped.append(d)
+                continue
+        keep.append((d, v))
+    return keep, dropped
+
+
 def weekly_values(rows, fx, end: dt.date, weeks: int = WEEKS):
     """Values in pounds at `end` and each 7 days before it, oldest first. None where there is no recent price."""
     out = []
@@ -114,6 +135,10 @@ def build(series: dict, fx, today: dt.date, now_iso: str) -> dict:
     rets, funds = [], []
     for f in FUNDS:
         rows, ccy = series[f["ticker"]]
+        cutoff = end - dt.timedelta(days=7 * WEEKS + 14)
+        rows, bad = drop_bad_prints([r for r in rows if r[0] >= cutoff])
+        if bad:
+            print(f"Correlations: ignored {len(bad)} suspect price(s) for {f['ticker']}: " + ", ".join(d.isoformat() for d in bad))
         if ccy == "USD" and not fx:
             raise ValueError("no USD/GBP exchange rate today")
         vals = weekly_values(rows, fx if ccy == "USD" else None, end)
