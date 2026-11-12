@@ -154,13 +154,13 @@ def main() -> int:
         problems.append(f"- USD/GBP exchange rate: {e}")
 
     fresh = {}
-    series = {}  # ticker -> (daily rows, currency), kept for the monthly correlations
+    daily_rows = {}  # ticker -> (daily rows, currency), kept for the monthly correlations
     for f in batch:
         time.sleep(PAUSE)
         sym = f["alpha_vantage_ticker"].replace("﻿", "").strip()
         try:
             rows = price_series(sym)
-            series[f["ticker"]] = (rows, f["currency"])
+            daily_rows[f["ticker"]] = (rows, f["currency"])
             perf = performance(rows)
             if f["currency"] == "USD" and fx:
                 perf_gbp = performance(rows, fx)
@@ -237,7 +237,7 @@ def main() -> int:
     target = correlations.window_end(today).isoformat()
     if os.environ.get("FORCE_CORRELATIONS") or correlations.current_window_end() != target:
         try:
-            correlations.write(correlations.build(series, fx, today, now.isoformat()))
+            correlations.write(correlations.build(daily_rows, fx, today, now.isoformat()))
             notes.append(f"- Correlations recalculated for the two years to {target}.")
         except Exception as e:  # noqa: BLE001
             problems.append(f"- Correlations table not updated: {e}")
