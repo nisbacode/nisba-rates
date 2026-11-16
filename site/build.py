@@ -4,6 +4,7 @@
   site/funds-tool.html   -> site/funds-tool.js    (mounts into <div id="nf-root">)
   site/home-live.html    -> site/home-live.js     (mounts into <div id="nh-root">, no gate)
   site/correlations-tool.html -> site/correlations-tool.js (mounts into <div id="nc-root">, no gate)
+  site/platforms-directory.html -> site/platforms-directory.js (mounts into <div id="np-root">, no gate)
   site/gate.html is the shared email gate, bundled into the two tools.
 
 Kajabi only holds a tiny loader, for example:
@@ -19,8 +20,8 @@ import sys
 from pathlib import Path
 
 here = Path(__file__).parent
-ROOTS = {"savings-tool": "nr-root", "funds-tool": "nf-root", "home-live": "nh-root", "correlations-tool": "nc-root"}
-NO_GATE = {"home-live", "correlations-tool"}  # no email gate on these
+ROOTS = {"savings-tool": "nr-root", "funds-tool": "nf-root", "home-live": "nh-root", "correlations-tool": "nc-root", "platforms-directory": "np-root"}
+NO_GATE = {"home-live", "correlations-tool", "platforms-directory"}  # no email gate on these
 
 
 def build(name: str) -> None:
