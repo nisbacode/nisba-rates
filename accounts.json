@@ -297,7 +297,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.5,
-   "link": "https://www.prosper.co.uk/savings/blme-2-month-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-2-month-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-2-month-fixed-term-deposit"
@@ -314,7 +314,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.8,
-   "link": "https://www.prosper.co.uk/savings/blme-3-month-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-3-month-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-3-month-fixed-term-deposit"
@@ -332,7 +332,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.04,
-   "link": "https://www.prosper.co.uk/savings/blme-6-month-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-6-month-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-6-month-fixed-term-deposit"
@@ -350,7 +350,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.02,
-   "link": "https://www.prosper.co.uk/savings/blme-9-month-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-9-month-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-9-month-fixed-term-deposit"
@@ -367,7 +367,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.8,
-   "link": "https://www.prosper.co.uk/savings/blme-1-year-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-1-year-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-1-year-fixed-term-deposit"
@@ -385,7 +385,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.6,
-   "link": "https://www.prosper.co.uk/savings/blme-18-month-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-18-month-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-18-month-fixed-term-deposit"
@@ -403,7 +403,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.7,
-   "link": "https://www.prosper.co.uk/savings/blme-2-year-fixed-term-deposit-",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-2-year-fixed-term-deposit-",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-2-year-fixed-term-deposit-"
@@ -421,7 +421,7 @@
    "min": 1000,
    "max": 240000,
    "rate": 4.35,
-   "link": "https://www.prosper.co.uk/savings/blme-3-year-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-3-year-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-3-year-fixed-term-deposit"
@@ -439,7 +439,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.15,
-   "link": "https://www.prosper.co.uk/savings/blme-4-year-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-4-year-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-4-year-fixed-term-deposit"
@@ -457,7 +457,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.15,
-   "link": "https://www.prosper.co.uk/savings/blme-5-year-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-5-year-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-5-year-fixed-term-deposit"
@@ -475,7 +475,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.8,
-   "link": "https://www.prosper.co.uk/savings/blme-7-year-fixed-term-deposit",
+   "link": "https://go.prosper.co.uk/US7p/518rq52v?af_web_dp=https%3A%2F%2Fwww.prosper.co.uk%2Fsavings%2Fblme-7-year-fixed-term-deposit",
    "source": {
     "kind": "prosper",
     "page": "https://www.prosper.co.uk/savings/blme-7-year-fixed-term-deposit"
