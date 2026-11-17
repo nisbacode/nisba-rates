@@ -12,6 +12,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import re
+import urllib.parse
 import sys
 import time
 from pathlib import Path
@@ -277,6 +278,20 @@ def read_rate(acc: dict, raisin_pages: dict) -> float | None:
 
 # ---------------------------------------------------------------- main
 
+RAISIN_AFFILIATE = "https://raisin-uk.pxf.io/c/8107925/941068/12683"  # Nisba's Raisin UK link on impact.com (live 17 Nov 2026)
+
+
+def raisin_affiliate_link(link: str) -> str:
+    """Turn any Raisin account link into Nisba's tracked deep link to the same account page.
+    Deep links only work with the raisin.com/en-gb domain, not raisin.co.uk."""
+    if link.startswith(RAISIN_AFFILIATE):
+        return link
+    m = re.search(r"/bank/([^/?#]+)/([^/?#]+)", link)
+    if not m:
+        return link
+    target = f"https://www.raisin.com/en-gb/bank/{m[1]}/{m[2]}/"
+    return RAISIN_AFFILIATE + "?u=" + urllib.parse.quote(target, safe="")
+
 def main() -> int:
     cfg = json.loads(CONFIG.read_text())
     prev = {}
@@ -297,6 +312,8 @@ def main() -> int:
         old = prev.get(acc["id"], {})
         last_good = old.get("rate", acc["rate"])
         rec = {k: v for k, v in acc.items() if k != "source"}
+        if acc["platform"] == "Raisin":
+            rec["link"] = raisin_affiliate_link(acc["link"])
         rec["rate"] = last_good
         rec["last_verified"] = old.get("last_verified")
         rec["rate_changed"] = old.get("rate_changed")

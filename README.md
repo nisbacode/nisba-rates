@@ -26,7 +26,7 @@ The website file is here:
 | `blme_premier` | uses `term_months` to pick the row from the Premier Deposit table |
 | `blme_notice` | reads the "Gross AER" figure on the notice account page |
 | `habib_sirat` | uses `term_months` to pick the HBZ Sirat eDeposit term |
-| `raisin` | `bank_slug` and `product` are from the Raisin URL, e.g. raisin.co.uk/bank/qib/**QIB001** |
+| `raisin` | `bank_slug` and `product` are from the Raisin URL, e.g. raisin.co.uk/bank/qib/**QIB001**. Raisin links are turned into the Nisba affiliate deep link automatically by the scraper |
 | `prosper` | `page` is the Prosper product page, e.g. prosper.co.uk/savings/blme-9-month-fixed-term-deposit. Reads the AER after "What is the interest rate?". New Al Rayan, BLME, QIB, Gatehouse, KFH or Habib products on the Prosper listing are noted in the report |
 
 **Remove an account:** delete its entry from `accounts.json`.
