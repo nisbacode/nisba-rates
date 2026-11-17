@@ -493,7 +493,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.75,
-   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/6-month-fixed-term-deposit",
    "source": {
     "kind": "gatehouse",
     "match": "^6 Month.*Woodland Saver"
@@ -510,7 +510,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.2,
-   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/1-year-fixed-term-deposit",
    "source": {
     "kind": "gatehouse",
     "match": "^(1 Year|12 Month).*Woodland Saver"
@@ -527,7 +527,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.85,
-   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/18-month-fixed-term-deposit",
    "source": {
     "kind": "gatehouse",
     "match": "^18 Month.*Woodland Saver"
@@ -544,7 +544,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.85,
-   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/2-year-fixed-term-deposit",
    "source": {
     "kind": "gatehouse",
     "match": "^2 Year.*Woodland Saver"
@@ -561,7 +561,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.85,
-   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/3-year-fixed-term-deposit",
    "source": {
     "kind": "gatehouse",
     "match": "^3 Year.*Woodland Saver"
@@ -578,7 +578,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.9,
-   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/4-year-fixed-term-deposit",
    "source": {
     "kind": "gatehouse",
     "match": "^4 Year.*Woodland Saver"
@@ -595,7 +595,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.9,
-   "link": "https://www.gatehousebank.com/personal/savings/fixed-term-savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/5-year-fixed-term-deposit",
    "source": {
     "kind": "gatehouse",
     "match": "^5 Year.*Woodland Saver"
@@ -612,7 +612,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 4.15,
-   "link": "https://www.gatehousebank.com/personal/savings",
+   "link": "https://gatehousebank.com/personal/savings/fixed-term-deposits/1-year-fixed-term-community-saver",
    "source": {
     "kind": "gatehouse",
     "match": "Community Saver"
@@ -629,7 +629,7 @@
    "min": 1,
    "max": 250000,
    "rate": 2.65,
-   "link": "https://www.gatehousebank.com/personal/savings/easy-access-savings",
+   "link": "https://gatehousebank.com/personal/savings/easy-access/easy-access-account",
    "source": {
     "kind": "gatehouse",
     "match": "^Easy Access Account"
@@ -647,7 +647,7 @@
    "min": 500,
    "max": 1000000,
    "rate": 3.4,
-   "link": "https://www.gatehousebank.com/personal/savings/notice-savings",
+   "link": "https://gatehousebank.com/personal/savings/notice-accounts/95-day-notice-account",
    "source": {
     "kind": "gatehouse",
     "match": "^95 Day Notice"
@@ -665,7 +665,7 @@
    "min": 500,
    "max": 1000000,
    "rate": 3.5,
-   "link": "https://www.gatehousebank.com/personal/savings/notice-savings",
+   "link": "https://gatehousebank.com/personal/savings/notice-accounts/120-day-notice-account",
    "source": {
     "kind": "gatehouse",
     "match": "^120 Day Notice"
@@ -682,7 +682,7 @@
    "min": 1,
    "max": 250000,
    "rate": 2.6,
-   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "link": "https://gatehousebank.com/personal/savings/cash-isa/easy-access-cash-isa",
    "source": {
     "kind": "gatehouse",
     "match": "^Easy Access Cash ISA"
@@ -699,7 +699,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.75,
-   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "link": "https://gatehousebank.com/personal/savings/cash-isa/1-year-fixed-term-cash-isa",
    "source": {
     "kind": "gatehouse",
     "match": "^(1 Year|12 Month).*Woodland Cash ISA"
@@ -716,7 +716,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.6,
-   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "link": "https://gatehousebank.com/personal/savings/cash-isa/18-month-fixed-term-cash-isa",
    "source": {
     "kind": "gatehouse",
     "match": "^18 Month.*Woodland Cash ISA"
@@ -733,7 +733,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.6,
-   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "link": "https://gatehousebank.com/personal/savings/cash-isa/2-year-fixed-term-cash-isa",
    "source": {
     "kind": "gatehouse",
     "match": "^2 Year.*Woodland Cash ISA"
@@ -750,7 +750,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.65,
-   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "link": "https://gatehousebank.com/personal/savings/cash-isa/3-year-fixed-term-cash-isa",
    "source": {
     "kind": "gatehouse",
     "match": "^3 Year.*Woodland Cash ISA"
@@ -767,7 +767,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.65,
-   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "link": "https://gatehousebank.com/personal/savings/cash-isa/4-year-fixed-term-cash-isa",
    "source": {
     "kind": "gatehouse",
     "match": "^4 Year.*Woodland Cash ISA"
@@ -784,7 +784,7 @@
    "min": 1000,
    "max": 1000000,
    "rate": 3.75,
-   "link": "https://www.gatehousebank.com/personal/savings/cash-isa",
+   "link": "https://gatehousebank.com/personal/savings/cash-isa/5-year-fixed-term-cash-isa",
    "source": {
     "kind": "gatehouse",
     "match": "^5 Year.*Woodland Cash ISA"
