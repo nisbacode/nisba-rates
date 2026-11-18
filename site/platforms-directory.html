@@ -86,7 +86,7 @@
 const S={auth:'FCA authorised',ar:'Representative or agent',none:'Not FCA regulated'};
 const reg=n=>'https://register.fca.org.uk/s/search?q='+n+'&type=Companies';
 const P=[
-{n:'Amal Invest',logo:'https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148749493/images/6c66278-0642-dbac-e031-f547876efe8d_logo-amal-invest.png',c:'Investing',s:'none',url:'https://amalinvest.com',
+{n:'Amal Invest',logo:'https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148749493/images/6c66278-0642-dbac-e031-f547876efe8d_logo-amal-invest.png',c:'Investing',s:'none',url:'https://amalinvest.com/212?via=nisba',sp:1,aff:'Nisba may earn a commission if you sign up through this link.',
 w:'Software that rebuilds popular funds using only Shariah-screened holdings, invested through your own brokerage account.',
 f:'Amal Invest (not a broker or adviser)',
 r:'Amal says it is not a broker or financial adviser and never holds client money. In the UK, the investments sit in your own Trading 212 account.',
@@ -166,7 +166,7 @@ seg('np-s',[['all','All'],['auth','FCA authorised'],['ar','Representative or age
 const short=x=>x.f.split(',')[0].replace(/ \(.*\)$/,'');
 const card=x=>{const fr=x.frn||x.regn;return '<div class="np-card"><div class="np-logo'+(x.dark?' dark':'')+'">'+(x.logo?'<img src="'+x.logo+'" alt="'+x.n+' logo" loading="lazy">':'')+'</div><div><p class="np-type">'+x.c+'</p><p class="np-name">'+x.n+'</p><p class="np-what">'+x.w+'</p>'+(x.aff?'<p class="np-aff">'+x.aff+'</p>':'')+'<div class="np-tags"><span class="np-tag'+(x.s==='auth'?' auth':'')+'">'+S[x.s]+'</span>'+(short(x)!==x.n||x.frn?'<span class="np-firm">'+short(x)+(x.frn?' · <span style="white-space:nowrap">FRN '+x.frn+'</span>':'')+'</span>':'')+'</div></div>'
 +'<div class="np-fact"><span>Protection</span><b>'+x.p+'</b></div>'
-+'<div class="np-ctas"><a class="np-cta" href="'+x.url+'" rel="noopener">'+(x.cta||'Visit '+x.n)+'</a>'+(fr?'<a class="np-reg" href="'+reg(fr)+'" rel="noopener">Check on FCA Register</a>':'')+'</div>'
++'<div class="np-ctas"><a class="np-cta" href="'+x.url+'" rel="'+(x.sp?'sponsored noopener':'noopener')+'">'+(x.cta||'Visit '+x.n)+'</a>'+(fr?'<a class="np-reg" href="'+reg(fr)+'" rel="noopener">Check on FCA Register</a>':'')+'</div>'
 +vids(x)+'<details class="np-alt"><summary>How it is regulated</summary><p>'+x.r+(x.f.includes(',')?' The firm is '+x.f+'.':'')+(x.aff?' <b>Commercial relationship:</b> '+x.aff:'')+'</p></details></div>'};
 const render=()=>{const q=st.q.toLowerCase();
 const r=P.filter(x=>(st.c==='all'||x.c===st.c)&&(st.s==='all'||x.s===st.s)&&(!q||(x.n+' '+x.w+' '+x.c).toLowerCase().includes(q)));
