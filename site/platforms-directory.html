@@ -65,9 +65,19 @@
 .np-alt summary::after{content:'+';color:var(--o);font-size:18px;line-height:1}
 .np-alt[open] summary::after{content:'\2212'}
 .np-alt p{margin:8px 0 0;line-height:1.6}
+.np-vids{grid-column:1/-1;border-top:1px dashed var(--line);padding-top:12px;margin-top:-4px}
+.np-vids>span{display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.np-vrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.np-vid{display:flex;gap:10px;align-items:center;text-decoration:none!important;color:var(--ink)!important;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:8px;transition:border-color .15s}
+.np-vid:hover{border-color:var(--o)}
+.np-thumb{position:relative;flex:none;width:96px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#ddd}
+.np-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.np-thumb::after{content:'';position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:rgba(255,142,15,.95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l8 5-8 5z' fill='%23fff'/%3E%3C/svg%3E") center/18px no-repeat}
+.np-vt{font-size:12.5px;font-weight:500;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.np-vids+.np-alt{border-top:0;margin-top:-8px;padding-top:0}
 .np-empty{background:#fff;border-radius:20px;padding:28px;text-align:center;color:var(--mut)}
 .np-small{font-size:12px;color:var(--mut);margin:20px 4px 0;line-height:1.6}
-@media(max-width:860px){.np-card{grid-template-columns:minmax(0,1fr);gap:14px 16px;padding:16px}.np-card>div:nth-child(2),.np-ctas{grid-column:1/-1}.np-logo{justify-content:flex-start;width:auto;max-width:140px}}
+@media(max-width:860px){.np-vrow{grid-template-columns:minmax(0,1fr)}.np-card{grid-template-columns:minmax(0,1fr);gap:14px 16px;padding:16px}.np-card>div:nth-child(2),.np-ctas{grid-column:1/-1}.np-logo{justify-content:flex-start;width:auto;max-width:140px}}
 @media(max-width:640px){.np{padding:20px 14px;border-radius:20px}.np-panel{padding:18px;border-radius:20px}.np-grid{grid-template-columns:1fr}.np-search{max-width:none}.np-head{align-items:flex-start}}
 </style>
 
@@ -138,6 +148,16 @@ f:'Wahed Invest Ltd, with custody by WealthKernel Limited',
 r:'Authorised and regulated by the FCA for discretionary investment management.',
 p:'Wahed says it is a member of the FSCS. Client investments are held separately from Wahed\'s own money.'}
 ];
+const V={
+'Amal Invest':[['EhRhkeQpPQE','Amal Invest, investing with genocide filters. Updated and improved?'],['3q_lcbBjowE','First look at Amal Invest: is it a game changer for halal investing?']],
+'Bayuti':[['uhygBJDtv4Q','Halal property investment and mortgages: a chat with Anour, CEO of Bayuti'],['jKabWNB7UkI','Shariah compliant halal property investing: a guide to Bayuti']],
+'Cocoa Invest':[['4e02wB1zKAo','6.75% halal profit? What you need to know about Cocoa Invest']],
+'Cur8 Capital':[['Td9XICRs-Yk','Cur8 new deal: is it worth it?'],['lwrAUbviQb4','Cur8 Capital EIS VC Fund: our first look']],
+'Nester':[['Ij5SZeJj__0','Nester: the halal property platform with 9% returns. Too good to be true?']],
+'Pfida':[['plVLEf985yg','Buying a halal home with Pfida'],['zFfTXjHeAU8','Pfida: the early days and how it started']],
+'Wahed':[['QXDWz6o-EVs','Why I might start using Wahed again'],['oE2-A4U_nCY','Wahed\u2019s new Shariah Everyday Account: our review'],['uQ9DvpTpdg8','Watch this before using Wahed: our Wahed deep dive']]
+};
+const vids=x=>{const v=V[x.n];if(!v)return '';return '<div class="np-vids"><span>Our videos on '+x.n+'</span><div class="np-vrow">'+v.map(([id,t])=>'<a class="np-vid" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener"><span class="np-thumb"><img src="https://i.ytimg.com/vi/'+id+'/mqdefault.jpg" alt="" loading="lazy"></span><span class="np-vt">'+t+'</span></a>').join('')+'</div></div>'};
 const st={c:'all',s:'all',q:''};
 const cats=[...new Set(P.map(x=>x.c))].sort();
 const seg=(id,opts,k)=>{document.getElementById(id).innerHTML=opts.map(([v,l])=>'<button type="button" data-k="'+k+'" data-v="'+v+'">'+l+'</button>').join('')};
@@ -147,7 +167,7 @@ const short=x=>x.f.split(',')[0].replace(/ \(.*\)$/,'');
 const card=x=>{const fr=x.frn||x.regn;return '<div class="np-card"><div class="np-logo'+(x.dark?' dark':'')+'">'+(x.logo?'<img src="'+x.logo+'" alt="'+x.n+' logo" loading="lazy">':'')+'</div><div><p class="np-type">'+x.c+'</p><p class="np-name">'+x.n+'</p><p class="np-what">'+x.w+'</p>'+(x.aff?'<p class="np-aff">'+x.aff+'</p>':'')+'<div class="np-tags"><span class="np-tag'+(x.s==='auth'?' auth':'')+'">'+S[x.s]+'</span>'+(short(x)!==x.n||x.frn?'<span class="np-firm">'+short(x)+(x.frn?' · <span style="white-space:nowrap">FRN '+x.frn+'</span>':'')+'</span>':'')+'</div></div>'
 +'<div class="np-fact"><span>Protection</span><b>'+x.p+'</b></div>'
 +'<div class="np-ctas"><a class="np-cta" href="'+x.url+'" rel="noopener">'+(x.cta||'Visit '+x.n)+'</a>'+(fr?'<a class="np-reg" href="'+reg(fr)+'" rel="noopener">Check on FCA Register</a>':'')+'</div>'
-+'<details class="np-alt"><summary>How it is regulated</summary><p>'+x.r+(x.f.includes(',')?' The firm is '+x.f+'.':'')+(x.aff?' <b>Commercial relationship:</b> '+x.aff:'')+'</p></details></div>'};
++vids(x)+'<details class="np-alt"><summary>How it is regulated</summary><p>'+x.r+(x.f.includes(',')?' The firm is '+x.f+'.':'')+(x.aff?' <b>Commercial relationship:</b> '+x.aff:'')+'</p></details></div>'};
 const render=()=>{const q=st.q.toLowerCase();
 const r=P.filter(x=>(st.c==='all'||x.c===st.c)&&(st.s==='all'||x.s===st.s)&&(!q||(x.n+' '+x.w+' '+x.c).toLowerCase().includes(q)));
 document.getElementById('np-list').innerHTML=r.length?r.map(card).join(''):'<div class="np-empty">No platforms match those filters.</div>';
