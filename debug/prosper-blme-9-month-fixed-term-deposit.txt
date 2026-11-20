@@ -1,4 +1,4 @@
 {
- "aer": 4.02,
- "line": "4.00% Gross / 4.02% AER*"
+ "aer": 4.37,
+ "line": "4.35% Gross / 4.37% AER*"
 }
