@@ -10,6 +10,12 @@ last email that actually went out (digest/baseline.json), and writes a ready-to-
   python digest/digest.py sent     The last draft was sent: make digest/pending.json's
                                    snapshot the new baseline and remove pending.json.
 
+The email lists the best rate in each term bucket (BUCKETS) now against the baseline, plus new or
+removed funds and any lines in digest/notes.md (optional, hand written "other news"; "sent" clears it).
+summary.json "due" is true once the baseline is at least MIN_DAYS old, so the email goes out every
+two weeks; "suspicious" lists best rates that moved more than SUSPICIOUS_MOVE points (likely a data
+problem, do not draft).
+
 The weekly scheduled task creates the Kajabi broadcast draft from email.md, saves its id and
 the snapshot in digest/pending.json, and runs "sent" the next week once Kajabi shows the
 broadcast as delivered. Until then the baseline stays put, so a skipped week is not lost.
@@ -80,83 +86,89 @@ def plats(p):
     return ", ".join(PLATFORM_NAMES.get(x, x) for x in p) or "platforms to be confirmed"
 
 
+BUCKETS = [  # (label, test) for the best-rate table; ISAs are kept separate
+    ("Easy access", lambda a: a["type"] == "easy" and not a["isa"]),
+    ("Notice accounts", lambda a: a["type"] == "notice" and not a["isa"]),
+    ("3 month fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 3 and not a["isa"]),
+    ("6 month fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 6 and not a["isa"]),
+    ("9 month fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 9 and not a["isa"]),
+    ("1 year fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 12 and not a["isa"]),
+    ("18 month fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 18 and not a["isa"]),
+    ("2 year fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 24 and not a["isa"]),
+    ("3 year fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 36 and not a["isa"]),
+    ("5 year fixed", lambda a: a["type"] == "fixed" and a.get("term_months") == 60 and not a["isa"]),
+    ("Cash ISA, easy access", lambda a: a["isa"] and a["type"] != "fixed"),
+    ("Cash ISA, fixed", lambda a: a["isa"] and a["type"] == "fixed"),
+]
+SUSPICIOUS_MOVE = 1.5  # percentage points; a best rate moving more than this is probably a data problem
+MIN_DAYS = 13          # the email goes out every two weeks: build says due only once the baseline is this old
+NOTES = HERE / "notes.md"  # optional "other news" lines Ahmad adds by hand; cleared by "sent"
+
+
+def best(snap, test):
+    pool = [a for a in snap["accounts"].values() if not a["stale"] and test(a)]
+    return max(pool, key=lambda a: a["rate"]) if pool else None
+
+
+def who(a):
+    via = " via Raisin" if a.get("platform") == "Raisin" else (" via Prosper" if a.get("platform") == "Prosper" else "")
+    t = f", {term(a)}" if a["type"] == "notice" or (a["isa"] and a["type"] == "fixed") else ""
+    return f"{a['bank']}{via}{t}"
+
+
 def diff(base, cur):
-    ba, ca = base["accounts"], cur["accounts"]
+    rows = []
+    for label, test in BUCKETS:
+        o, n = best(base, test), best(cur, test)
+        if not n:
+            continue
+        move = round(n["rate"] - o["rate"], 2) if o else None
+        rows.append({"label": label, "old": o, "new": n, "move": move,
+                     "changed": o is None or abs(move) >= RATE_MOVE})
     bf, cf = base["funds"], cur["funds"]
-    new_acc = [ca[k] for k in ca if k not in ba and not ca[k]["stale"]]
-    gone_acc = [ba[k] for k in ba if k not in ca]
-    ups, downs = [], []
-    for k, a in ca.items():
-        if k in ba and not a["stale"]:
-            d = round(a["rate"] - ba[k]["rate"], 2)
-            if d >= RATE_MOVE:
-                ups.append((a, ba[k]["rate"]))
-            elif d <= -RATE_MOVE:
-                downs.append((a, ba[k]["rate"]))
     new_funds = [cf[k] | {"ticker": k} for k in cf if k not in bf]
     gone_funds = [bf[k] | {"ticker": k} for k in bf if k not in cf]
-    new_acc.sort(key=lambda a: -a["rate"])
-    ups.sort(key=lambda t: -(t[0]["rate"] - t[1]))
-    downs.sort(key=lambda t: t[0]["rate"] - t[1])
-    return {"new_accounts": new_acc, "removed_accounts": gone_acc, "rate_rises": ups, "rate_cuts": downs,
-            "new_funds": new_funds, "removed_funds": gone_funds}
+    return {"rows": rows, "new_funds": new_funds, "removed_funds": gone_funds}
 
 
-def best_now(cur):
-    live = [a for a in cur["accounts"].values() if not a["stale"]]
-    out = []
-    for t, label in (("easy", "Easy access"), ("notice", "Notice"), ("fixed", "Fixed term")):
-        pool = [a for a in live if a["type"] == t]
-        if pool:
-            a = max(pool, key=lambda a: a["rate"])
-            out.append(f"- **{label}:** {a['rate']:.2f}% with {acc_label(a)}")
-    isas = [a for a in live if a["isa"]]
-    if isas:
-        a = max(isas, key=lambda a: a["rate"])
-        out.append(f"- **Cash ISA:** {a['rate']:.2f}% with {acc_label(a)}")
-    return out
+def fmt_date(iso):
+    d = datetime.fromisoformat(iso)
+    return f"{d.day} {d.strftime('%b %Y')}"
 
 
-def email(d, cur):
-    n_acc = len(d["new_accounts"]) + len(d["rate_rises"]) + len(d["rate_cuts"]) + len(d["removed_accounts"])
-    n_fund = len(d["new_funds"]) + len(d["removed_funds"])
-    bits = []
-    if d["new_accounts"]:
-        bits.append(f"{len(d['new_accounts'])} new savings account{'s' if len(d['new_accounts']) > 1 else ''}")
-    if d["rate_rises"] or d["rate_cuts"]:
-        k = len(d["rate_rises"]) + len(d["rate_cuts"])
-        bits.append(f"{k} rate change{'s' if k > 1 else ''}")
-    if d["new_funds"]:
-        bits.append(f"{len(d['new_funds'])} new halal fund{'s' if len(d['new_funds']) > 1 else ''}")
-    if not bits and (d["removed_accounts"] or d["removed_funds"]):
-        bits.append("a few accounts and funds removed")
-    subject = "This week on Nisba: " + (", ".join(bits[:-1]) + " and " + bits[-1] if len(bits) > 1 else bits[0])
-    if d["new_accounts"]:
-        top = d["new_accounts"][0]
-        preview = f"New: {top['bank']} at {top['rate']:.2f}%. Plus the best Islamic savings rates right now."
-    elif d["rate_rises"]:
-        a, old = d["rate_rises"][0]
-        preview = f"{a['bank']} up from {old:.2f}% to {a['rate']:.2f}%. Plus the best rates right now."
+def email(d, base, notes):
+    moved = [r for r in d["rows"] if r["changed"] and r["old"]]
+    ups = sorted([r for r in moved if r["move"] > 0], key=lambda r: -r["move"])
+    downs = sorted([r for r in moved if r["move"] < 0], key=lambda r: r["move"])
+    lead = (ups or downs or [None])[0]
+    if lead:
+        subject = f"Nisba savings update: best {lead['label'].lower()} rate now {lead['new']['rate']:.2f}%"
+        k = len(moved)
+        preview = (f"{k} best rate{'s' if k > 1 else ''} moved since {fmt_date(base['taken_at'])}. "
+                   "Here is where the top Islamic savings rates stand.")
     elif d["new_funds"]:
-        preview = f"New on the list: {d['new_funds'][0]['name']}."
+        subject = f"Nisba update: {len(d['new_funds'])} new halal fund{'s' if len(d['new_funds']) > 1 else ''} on the list"
+        preview = "Best Islamic savings rates unchanged. Here is what is new on the funds list."
     else:
-        preview = "The latest changes to our Islamic savings and halal funds lists."
+        subject = "Nisba update: what is new this fortnight"
+        preview = "The latest from Nisba, plus the best Islamic savings rates right now."
 
-    L = ["Salam {{ first_name | default: \"there\" }},", "",
-         "Here is what changed on our Islamic savings and halal funds lists this week."]
-    if n_acc:
-        L += ["", "## Savings accounts"]
-        if d["new_accounts"]:
-            L += ["", "**New accounts**"] + [f"- {acc_label(a)}: **{a['rate']:.2f}%**, minimum £{a['min']:,}" for a in d["new_accounts"]]
-        if d["rate_rises"]:
-            L += ["", "**Rates up**"] + [f"- {acc_label(a)}: {old:.2f}% to **{a['rate']:.2f}%**" for a, old in d["rate_rises"]]
-        if d["rate_cuts"]:
-            L += ["", "**Rates down**"] + [f"- {acc_label(a)}: {old:.2f}% to **{a['rate']:.2f}%**" for a, old in d["rate_cuts"]]
-        if d["removed_accounts"]:
-            L += ["", "**No longer available**"] + [f"- {acc_label(a)}" for a in d["removed_accounts"]]
-        L += ["", "**Best rates right now**"] + best_now(cur)
-        L += ["", f"[Compare every account]({SAVINGS_URL})"]
-    if n_fund:
+    L = ["Salam,", "",
+         f"Here are the best Islamic savings rates on Nisba right now, against our last update on {fmt_date(base['taken_at'])}."]
+    L += ["", "## Best savings rates", ""]
+    for r in d["rows"]:
+        n, o = r["new"], r["old"]
+        if not o:
+            L.append(f"- **{r['label']}:** **{n['rate']:.2f}%** with {who(n)} (new on the list)")
+        elif not r["changed"]:
+            L.append(f"- **{r['label']}:** {n['rate']:.2f}% with {who(n)} (no change)")
+        else:
+            arrow = "up" if r["move"] > 0 else "down"
+            was = f"{o['rate']:.2f}% with {who(o)}" if o["bank"] != n["bank"] or o.get("platform") != n.get("platform") \
+                else f"{o['rate']:.2f}%"
+            L.append(f"- **{r['label']}:** **{n['rate']:.2f}%** with {who(n)}, {arrow} from {was}")
+    L += ["", f"[Compare every account]({SAVINGS_URL})"]
+    if d["new_funds"] or d["removed_funds"]:
         L += ["", "## Halal funds"]
         if d["new_funds"]:
             L += ["", "**New on the list**"] + [
@@ -165,18 +177,21 @@ def email(d, cur):
         if d["removed_funds"]:
             L += ["", "**Taken off the list**"] + [f"- {x['name']}" for x in d["removed_funds"]]
         L += ["", f"[See all the funds side by side]({FUNDS_URL})"]
-    L += ["", "A good rate or a popular fund is a tool, not a plan. What suits you depends on what the money is for, "
+    if notes:
+        L += ["", "## Also new at Nisba", "", notes]
+    L += ["", "A good rate is a tool, not a plan. What suits you depends on what the money is for, "
               "when you need it and how much risk you can take, which is what the Nisba six step framework walks you through.",
           "", "Rates are expected profit rates read from each provider's own website and can change at any time. "
               "Always check with the provider before you open an account or invest. Education only, not personalised "
               "financial advice. Investing carries risk and you may get back less than you put in.",
-          "", "**Are these weekly updates useful?** One click tells us: "
+          "", "**Are these updates useful?** One click tells us: "
               f"[More like this]({FEEDBACK_URL}?vote=more) | "
               f"[Fine as they are]({FEEDBACK_URL}?vote=same) | "
               f"[Less often, please]({FEEDBACK_URL}?vote=less)",
+          "", "We now send this every two weeks, or less often if nothing moves.",
           "", "Jzk", "", "Ahmad and Adel  ", "Nisba"]
     body = "\n".join(L) + "\n"
-    for bad in ("—", "–"):
+    for bad in ("\u2014", "\u2013"):
         assert bad not in body and bad not in subject and bad not in preview, "dash found"
     return subject, preview, body
 
@@ -190,17 +205,27 @@ def main():
         p = load(PENDING)
         BASELINE.write_text(json.dumps(p["snapshot"], indent=1, sort_keys=True))
         PENDING.unlink()
+        if NOTES.exists():
+            NOTES.unlink()
         print("baseline moved to", p["snapshot"]["taken_at"])
     elif cmd == "build":
         OUT.mkdir(exist_ok=True)
-        cur = snapshot()
-        d = diff(load(BASELINE), cur)
-        counts = {k: len(v) for k, v in d.items()}
-        has = any(counts[k] for k in ("new_accounts", "rate_rises", "rate_cuts", "new_funds")) or \
-            (counts["removed_accounts"] + counts["removed_funds"]) > 0
-        summary = {"has_changes": has, "counts": counts, "baseline_taken_at": load(BASELINE)["taken_at"]}
-        if has:
-            subject, preview, body = email(d, cur)
+        base, cur = load(BASELINE), snapshot()
+        d = diff(base, cur)
+        notes = NOTES.read_text().strip() if NOTES.exists() else ""
+        moved = [r for r in d["rows"] if r["changed"]]
+        age = (datetime.now(timezone.utc) - datetime.fromisoformat(base["taken_at"])).days
+        suspicious = [f"{r['label']}: {r['old']['rate']:.2f}% to {r['new']['rate']:.2f}%"
+                      for r in moved if r["old"] and abs(r["move"]) > SUSPICIOUS_MOVE]
+        summary = {"has_changes": bool(moved or d["new_funds"] or d["removed_funds"] or notes),
+                   "due": age >= MIN_DAYS, "baseline_age_days": age, "baseline_taken_at": base["taken_at"],
+                   "best_rate_moves": [{"bucket": r["label"], "old": r["old"] and r["old"]["rate"],
+                                        "old_with": r["old"] and who(r["old"]), "new": r["new"]["rate"],
+                                        "new_with": who(r["new"])} for r in moved],
+                   "new_funds": len(d["new_funds"]), "removed_funds": len(d["removed_funds"]),
+                   "notes": bool(notes), "suspicious": suspicious}
+        if summary["has_changes"]:
+            subject, preview, body = email(d, base, notes)
             summary.update(subject=subject, preview=preview)
             (OUT / "email.md").write_text(body)
         (OUT / "snapshot.json").write_text(json.dumps(cur, indent=1, sort_keys=True))
