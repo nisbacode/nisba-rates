@@ -55,7 +55,7 @@ def snapshot():
             "name": a["name"], "type": a["type"], "term_months": a.get("term_months"),
             "notice_days": a.get("notice_days"), "isa": a.get("isa", False),
             "platform": a.get("platform"), "min": a.get("min"), "rate": a["rate"],
-            "stale": bool(a.get("stale")),
+            "stale": bool(a.get("stale")), "link": a.get("link"),
         }
     funds = {}
     for x in f["funds"]:
@@ -149,6 +149,7 @@ def fund_moves(since_iso, n=3):
             continue
         chg = (h[-1][1] / start[-1][1] - 1) * 100
         out.append({"name": x["name"], "ticker": x["ticker"].split(".")[0], "asset_class": x.get("asset_class"),
+                    "factsheet": x.get("factsheet"),
                     "change": round(chg, 1), "from": start[-1][0], "to": h[-1][0]})
     out.sort(key=lambda r: -r["change"])
     total = len(out)
@@ -164,20 +165,22 @@ def pct(v):
     return f"+{v:.1f}%" if v > 0 else f"{v:.1f}%"
 
 
-# Design (researched 25 Nov 2026): one column, 600px, about 200 words of prose (Constant Contact: ~200 words
-# gets the best click rate; Nielsen Norman: ~51 seconds spent per newsletter), 16px sans-serif body, buttons at
-# least 44px tall (bulletproof table-cell buttons get most clicks), no meaning by colour alone (arrows + words),
-# light backgrounds behind dark text for dark mode. Colours are the website's: navy, Nisba orange, cream.
-# Kajabi's sanitiser drops <div> and <th>, so only p, span, strong, a, table/tr/td, h1/h2, hr, br are used.
-NAVY, ORANGE, CREAM, INK, GREY, GREEN, RED, LINE = ("#081426", "#FF8E0F", "#FFF3E0", "#1A1A1A", "#5F6368",
-                                                    "#1E7B4A", "#B3261E", "#EADFCF")
+# Design (researched 25 Nov 2026).
+# Readability: one column, 600px, 16px sans-serif body, about 200 words of prose (Constant Contact: ~200 words gets
+# the best click rate; Nielsen Norman: ~51 seconds per newsletter), one button 44px+ tall, moves shown with words
+# and arrows not colour alone, light backgrounds behind dark text for dark mode.
+# Not looking AI-made / templated: no coloured left-border cards, no uppercase letter-spaced labels, no pills,
+# gradients, shadows or emoji; sentence case headings; plain prose written like a person with concrete numbers;
+# one button, everything else plain links. Colours are the website's: navy and Nisba orange.
+# Kajabi's sanitiser drops <div> and <th>, so only p, span, strong, a, table/tr/td, h2, hr, br are used.
+NAVY, ORANGE, INK, GREY, GREEN, RED, LINE, SOFT = ("#081426", "#FF8E0F", "#1A1A1A", "#5F6368", "#1E7B4A",
+                                                   "#B3261E", "#E6E1D8", "#FBF7F0")
 SANS = "font-family:Helvetica,Arial,sans-serif;"
 SERIF = "font-family:Georgia,'Times New Roman',serif;"  # stands in for the site's Playfair Display
 CORE = ["Easy access", "Notice accounts", "6 month fixed", "1 year fixed", "2 year fixed", "3 year fixed",
-        "5 year fixed", "Cash ISA, easy access", "Cash ISA, fixed"]  # rows in the table; any bucket can be a card
-INTRO = ("This is the first of a new email from us. Every two weeks we check the Islamic savings accounts and "
-         "halal funds on Nisba so you do not have to, and send you the best rates and the biggest moves in one "
-         "short email. If nothing changes, we stay quiet.")
+        "5 year fixed", "Cash ISA, easy access", "Cash ISA, fixed"]  # rows in the table; any bucket can move
+INTRO = ("This is a new email from us. Every two weeks we check the Islamic savings accounts and halal funds "
+         "on Nisba and send you the best rates in one short email. If nothing changes, we stay quiet.")
 
 
 def esc(t):
@@ -189,30 +192,30 @@ def p(html, style=""):
 
 
 def h2(t):
-    return f'<h2 style="{SERIF}color:{NAVY};font-size:22px;line-height:1.3;font-weight:bold;margin:32px 0 12px 0;">{esc(t)}</h2>'
+    return f'<h2 style="{SERIF}color:{NAVY};font-size:21px;line-height:1.3;font-weight:bold;margin:30px 0 10px 0;">{esc(t)}</h2>'
+
+
+def link(text_html, url, bold=False):
+    if not url:
+        return text_html
+    return (f'<a href="{esc(url)}" style="color:{NAVY};text-decoration:underline;'
+            f'{"font-weight:bold;" if bold else ""}">{text_html}</a>')
 
 
 def button(text, url):
-    # navy text on orange: white on #FF8E0F fails contrast (about 2.2:1), navy passes easily
-    return (f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:20px 0 8px 0;"><tr>'
-            f'<td style="background:{ORANGE};border-radius:8px;">'
-            f'<a href="{esc(url)}" style="{SANS}display:inline-block;padding:15px 26px;color:{NAVY};font-size:16px;'
+    # navy text on orange: white on #FF8E0F fails contrast (about 2.2:1)
+    return (f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:18px 0 6px 0;"><tr>'
+            f'<td style="background:{ORANGE};border-radius:4px;">'
+            f'<a href="{esc(url)}" style="{SANS}display:inline-block;padding:14px 24px;color:{NAVY};font-size:16px;'
             f'font-weight:bold;text-decoration:none;">{esc(text)}</a></td></tr></table>')
 
 
 def td(html, style=""):
-    return f'<td style="{SANS}font-size:15px;color:{INK};padding:11px 10px;border-bottom:1px solid {LINE};{style}">{html}</td>'
-
-
-def change_tag(move):
-    if move > 0:
-        return f'<span style="color:{GREEN};font-weight:bold;white-space:nowrap;">&#9650; up {move:.2f}</span>'
-    return f'<span style="color:{RED};font-weight:bold;white-space:nowrap;">&#9660; down {abs(move):.2f}</span>'
+    return f'<td style="{SANS}font-size:15px;color:{INK};padding:10px 8px;border-bottom:1px solid {LINE};vertical-align:top;{style}">{html}</td>'
 
 
 def email(d, base, notes, fm, first=False, n_accounts=None, n_funds=None):
     since = fmt_date(base["taken_at"])
-    today = fmt_date(datetime.now(timezone.utc).isoformat())
     moved = [r for r in d["rows"] if r["changed"] and r["old"]]
     ups = sorted([r for r in moved if r["move"] > 0], key=lambda r: -r["move"])
     downs = sorted([r for r in moved if r["move"] < 0], key=lambda r: r["move"])
@@ -232,88 +235,87 @@ def email(d, base, notes, fm, first=False, n_accounts=None, n_funds=None):
         subject = "Your Nisba savings and funds update"
         preview = "Where the best Islamic savings rates stand, plus the biggest halal fund moves."
 
-    H = [f'<p style="{SANS}color:{GREY};font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 6px 0;">'
-         f'<strong style="color:{ORANGE};">Nisba</strong> &nbsp;Savings update &nbsp;&#183;&nbsp; {esc(today)}</p>',
-         f'<hr style="border:none;border-top:3px solid {ORANGE};width:48px;margin:0 0 22px 0;text-align:left;">',
-         p("Salam,")]
+    H = [p("Salam,")]
     if first:
         H.append(p(INTRO))
     if moved:
-        H.append(p(f"Here is what changed since {esc(since)}."))
-        H.append(h2("What moved"))
+        n = len(moved)
+        word = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}.get(n, str(n))
+        dirn = "went up" if not downs else ("came down" if not ups else "moved")
+        H.append(p(f"{word} of the best rates {dirn} since {esc(since)}:"))
+        items = ""
         for r in ups + downs:
-            n, o = r["new"], r["old"]
-            same = (o["bank"], o.get("platform")) == (n["bank"], n.get("platform"))
-            H.append(
-                f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 10px 0;">'
-                f'<tr><td style="background:{CREAM};border-left:4px solid {ORANGE};border-radius:6px;padding:14px 16px;">'
-                f'<p style="{SANS}margin:0;font-size:12px;color:{GREY};text-transform:uppercase;letter-spacing:1px;">{esc(r["label"])}</p>'
-                f'<p style="{SANS}margin:4px 0;font-size:26px;font-weight:bold;color:{NAVY};">{n["rate"]:.2f}% '
-                f'<span style="font-size:14px;">{change_tag(r["move"])}</span></p>'
-                f'<p style="{SANS}margin:0;font-size:15px;color:{INK};">'
-                f'{"with" if same else "now with"} <strong>{esc(who(n))}</strong>'
-                f'{"" if same else f", was {o["rate"]:.2f}% with {esc(who(o))}"}'
-                f'{"" if not same else f", was {o["rate"]:.2f}%"}</p></td></tr></table>')
+            nw, o = r["new"], r["old"]
+            same = (o["bank"], o.get("platform")) == (nw["bank"], nw.get("platform"))
+            arrow = "&#9650; up" if r["move"] > 0 else "&#9660; down"
+            colour = GREEN if r["move"] > 0 else RED
+            was = f"from {o['rate']:.2f}%" + ("" if same else f" with {esc(who(o))}")
+            items += (f'<tr><td style="{SANS}font-size:16px;line-height:1.5;color:{INK};padding:0 0 10px 0;">'
+                      f'<strong>{esc(r["label"])}:</strong> {nw["rate"]:.2f}% with '
+                      f'{link(esc(who(nw)), nw.get("link"))} '
+                      f'<span style="color:{colour};white-space:nowrap;">({arrow} {was})</span></td></tr>')
+        H.append(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{items}</table>')
     else:
-        H.append(p(f"The best savings rates have held steady since {esc(since)}. Here is where they stand."))
+        H.append(p(f"The best savings rates have held steady since {esc(since)}."))
 
     H.append(h2("Best rates right now"))
     rows = ""
     for r in d["rows"]:
         if r["label"] not in CORE:
             continue
-        n = r["new"]
-        hl = f"background:{CREAM};" if r["changed"] else ""
-        tag = ""  # the cards above already give the move; the shaded row is enough here
-        rows += ("<tr>" + td(esc(r["label"]), hl) +
-                 td(f'<strong style="color:{NAVY};font-size:16px;">{n["rate"]:.2f}%</strong>{tag}', hl + "white-space:nowrap;") +
-                 td(esc(who(n)), hl + f"color:{GREY};") + "</tr>")
-    head = "".join(f'<td style="{SANS}font-size:12px;color:{GREY};text-transform:uppercase;letter-spacing:1px;'
-                   f'padding:0 10px 8px 10px;border-bottom:2px solid {NAVY};">{h}</td>' for h in ("Account", "Rate", "With"))
+        nw = r["new"]
+        bg = f"background:{SOFT};" if r["changed"] else ""
+        mark = (f' <span style="color:{GREEN if r["move"] > 0 else RED};font-size:13px;">'
+                f'{"&#9650;" if r["move"] > 0 else "&#9660;"}</span>') if r["changed"] and r["old"] else ""
+        rows += ("<tr>" + td(esc(r["label"]), bg) +
+                 td(f'<strong style="color:{NAVY};">{nw["rate"]:.2f}%</strong>{mark}', bg + "white-space:nowrap;") +
+                 td(link(esc(who(nw)), nw.get("link")), bg) + "</tr>")
     H.append(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
-             f'style="border-collapse:collapse;"><tr>{head}</tr>{rows}</table>')
-    if moved:
-        H.append(p(f"Shaded rows moved since {esc(since)}.", f"font-size:13px;color:{GREY};margin:8px 0 0 0;"))
+             f'style="border-collapse:collapse;border-top:2px solid {NAVY};">{rows}</table>')
+    H.append(p("Tap a bank to go to the account. Rates can change at any time, so check the rate on the provider's "
+               "page before you apply." + (" Shaded rows moved since " + esc(since) + "." if moved else ""),
+               f"font-size:13px;color:{GREY};margin:8px 0 0 0;"))
     H.append(button(f"Compare all {n_accounts} accounts" if n_accounts else "Compare every account", SAVINGS_URL))
 
     if fm["top"] or d["new_funds"] or d["removed_funds"]:
-        H.append(h2("Halal funds: the biggest moves"))
+        H.append(h2("Halal funds"))
         if fm["top"]:
-            H.append(p(f"Price change in pounds since {esc(since)}, across the {fm['count']} funds on our list."))
+            H.append(p(f"The biggest price moves since {esc(since)} across the {fm['count']} funds on our list, in pounds."))
 
-            def fund_rows(xs, title, colour):
-                out = (f'<tr><td colspan="2" style="{SANS}font-size:12px;color:{colour};font-weight:bold;'
-                       f'text-transform:uppercase;letter-spacing:1px;padding:14px 10px 6px 10px;">{title}</td></tr>')
+            def fund_rows(xs, title, colour, arrow):
+                out = (f'<tr><td colspan="2" style="{SANS}font-size:15px;color:{colour};font-weight:bold;'
+                       f'padding:14px 8px 4px 8px;">{arrow} {title}</td></tr>')
                 for x in xs:
-                    out += ("<tr>" + td(f'{esc(x["name"])}<br><span style="font-size:13px;color:{GREY};">'
-                                        f'{esc(x.get("asset_class") or "Fund")} &#183; {esc(x["ticker"])}</span>') +
+                    out += ("<tr>" + td(f'{link(esc(x["name"]), x.get("factsheet"))}<br>'
+                                        f'<span style="font-size:13px;color:{GREY};">{esc(x.get("asset_class") or "Fund")}, {esc(x["ticker"])}</span>') +
                             td(f'<strong style="color:{colour};">{pct(x["change"])}</strong>', "text-align:right;white-space:nowrap;") + "</tr>")
                 return out
             H.append(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
-                     f'style="border-collapse:collapse;">{fund_rows(fm["top"], "&#9650; Up the most", GREEN)}'
-                     f'{fund_rows(fm["bottom"], "&#9660; Down the most", RED)}</table>')
-            H.append(p("A few weeks is a very short time for an investment, and past performance is not a guide to the future.",
-                       f"font-size:13px;color:{GREY};margin-top:10px;"))
+                     f'style="border-collapse:collapse;">{fund_rows(fm["top"], "Up the most", GREEN, "&#9650;")}'
+                     f'{fund_rows(fm["bottom"], "Down the most", RED, "&#9660;")}</table>')
+            H.append(p("Tap a fund for its factsheet. A few weeks is a very short time for an investment, and past "
+                       "performance is not a guide to the future.", f"font-size:13px;color:{GREY};margin-top:8px;"))
         if d["new_funds"]:
             H.append(p("<strong>New on the list:</strong> " + "; ".join(
-                f'{esc(x["name"])} ({esc(x.get("asset_class") or "fund")}, {x["fee"]:.2f}% a year)' for x in d["new_funds"])))
+                f'{link(esc(x["name"]), x.get("factsheet"))} ({esc(x.get("asset_class") or "fund")}, {x["fee"]:.2f}% a year)'
+                for x in d["new_funds"])))
         if d["removed_funds"]:
             H.append(p("<strong>Taken off the list:</strong> " + esc(", ".join(x["name"] for x in d["removed_funds"]))))
-        H.append(p(f'<a href="{FUNDS_URL}" style="color:{NAVY};font-weight:bold;">'
-                   f'See all {n_funds or ""} funds side by side &#8250;</a>'.replace("all  funds", "all the funds")))
+        H.append(p(link(f"See all {n_funds} funds side by side" if n_funds else "See all the funds side by side",
+                        FUNDS_URL, bold=True)))
     if notes:
         H.append(h2("Also new at Nisba"))
         H += [p(esc(line.lstrip("- ").strip())) for line in notes.splitlines() if line.strip()]
-    H += [f'<hr style="border:none;border-top:1px solid {LINE};margin:30px 0 22px 0;">',
+    H += [f'<hr style="border:none;border-top:1px solid {LINE};margin:28px 0 20px 0;">',
           p("A good rate is a tool, not a plan. What suits you depends on what the money is for and when you need it, "
             "which is what the Nisba six step framework walks you through."),
-          p("<strong>Is this useful?</strong> One click tells us: "
-            f'<a href="{FEEDBACK_URL}?vote=more" style="color:{NAVY};">More like this</a> &nbsp;|&nbsp; '
-            f'<a href="{FEEDBACK_URL}?vote=same" style="color:{NAVY};">Fine as it is</a> &nbsp;|&nbsp; '
-            f'<a href="{FEEDBACK_URL}?vote=less" style="color:{NAVY};">Less often, please</a>'),
-          p("Jzk<br>Ahmad and Adel, Nisba"),
-          p("Rates are expected profit rates read from each provider's own website and can change at any time. "
-            "Always check with the provider before you open an account or invest. Education only, not personalised "
+          p("Is this useful? One click tells us: "
+            f'{link("More like this", FEEDBACK_URL + "?vote=more")}, '
+            f'{link("fine as it is", FEEDBACK_URL + "?vote=same")} or '
+            f'{link("less often, please", FEEDBACK_URL + "?vote=less")}.'),
+          p("Jzk<br>Ahmad and Adel"),
+          p("Rates are expected profit rates read from each provider's own website. Some links to providers are "
+            "affiliate links, which may pay Nisba a fee at no cost to you. Education only, not personalised "
             "financial advice. Investing carries risk and you may get back less than you put in. "
             "You can stop these updates with the link at the bottom of this email.",
             f"font-size:12px;color:{GREY};line-height:1.5;")]
