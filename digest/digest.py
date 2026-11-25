@@ -272,8 +272,8 @@ def email(d, base, notes, fm, first=False, n_accounts=None, n_funds=None):
                  td(link(esc(who(nw)), nw.get("link")), bg) + "</tr>")
     H.append(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
              f'style="border-collapse:collapse;border-top:2px solid {NAVY};">{rows}</table>')
-    H.append(p("Tap a bank to go to the account. Rates can change at any time, so check the rate on the provider's "
-               "page before you apply." + (" Shaded rows moved since " + esc(since) + "." if moved else ""),
+    H.append(p("Tap a bank to go to the account. Some of these are affiliate links, which may pay Nisba a fee at no "
+               "cost to you. Rates can change at any time, so check the rate on the provider's page before you apply." + (" Shaded rows moved since " + esc(since) + "." if moved else ""),
                f"font-size:13px;color:{GREY};margin:8px 0 0 0;"))
     H.append(button(f"Compare all {n_accounts} accounts" if n_accounts else "Compare every account", SAVINGS_URL))
 
@@ -314,8 +314,7 @@ def email(d, base, notes, fm, first=False, n_accounts=None, n_funds=None):
             f'{link("fine as it is", FEEDBACK_URL + "?vote=same")} or '
             f'{link("less often, please", FEEDBACK_URL + "?vote=less")}.'),
           p("Jzk<br>Ahmad and Adel"),
-          p("Rates are expected profit rates read from each provider's own website. Some links to providers are "
-            "affiliate links, which may pay Nisba a fee at no cost to you. Education only, not personalised "
+          p("Rates are expected profit rates read from each provider's own website. Education only, not personalised "
             "financial advice. Investing carries risk and you may get back less than you put in. "
             "You can stop these updates with the link at the bottom of this email.",
             f"font-size:12px;color:{GREY};line-height:1.5;")]
