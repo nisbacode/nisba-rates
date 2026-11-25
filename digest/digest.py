@@ -4,19 +4,20 @@ Compares the live data (docs/rates.json, docs/funds.json) with the snapshot that
 last email that actually went out (digest/baseline.json), and writes a ready-to-send email.
 
   python digest/digest.py init     Set the baseline to today's data (first run only).
-  python digest/digest.py build    Write digest/out/summary.json, digest/out/email.md and
+  python digest/digest.py build    Write digest/out/summary.json, digest/out/email.html and
                                    digest/out/snapshot.json. summary.json says whether
                                    anything changed.
   python digest/digest.py sent     The last draft was sent: make digest/pending.json's
                                    snapshot the new baseline and remove pending.json.
 
 The email lists the best rate in each term bucket (BUCKETS) now against the baseline, plus new or
-removed funds and any lines in digest/notes.md (optional, hand written "other news"; "sent" clears it).
+removed funds, the top and bottom 3 fund price moves since the baseline
+(from docs/funds.json hist_gbp), and any lines in digest/notes.md (optional, hand written "other news"; "sent" clears it).
 summary.json "due" is true once the baseline is at least MIN_DAYS old, so the email goes out every
 two weeks; "suspicious" lists best rates that moved more than SUSPICIOUS_MOVE points (likely a data
 problem, do not draft).
 
-The weekly scheduled task creates the Kajabi broadcast draft from email.md, saves its id and
+The weekly scheduled task creates the Kajabi broadcast draft from email.html, saves its id and
 the snapshot in digest/pending.json, and runs "sent" the next week once Kajabi shows the
 broadcast as delivered. Until then the baseline stays put, so a skipped week is not lost.
 """
@@ -136,63 +137,166 @@ def fmt_date(iso):
     return f"{d.day} {d.strftime('%b %Y')}"
 
 
-def email(d, base, notes):
+def fund_moves(since_iso, n=3):
+    """Biggest GBP price moves on the funds list since the baseline date, from docs/funds.json weekly history."""
+    since = since_iso[:10]
+    out = []
+    for x in load(ROOT / "docs" / "funds.json")["funds"]:
+        h = x.get("hist_gbp") or []
+        start = [p for p in h if p[0] <= since]
+        if not start or not h or h[-1][0] <= start[-1][0] or not start[-1][1]:
+            continue
+        chg = (h[-1][1] / start[-1][1] - 1) * 100
+        out.append({"name": x["name"], "ticker": x["ticker"].split(".")[0], "asset_class": x.get("asset_class"),
+                    "change": round(chg, 1), "from": start[-1][0], "to": h[-1][0]})
+    out.sort(key=lambda r: -r["change"])
+    total = len(out)
+    seen, uniq = set(), []
+    for r in out:  # one line per fund: share classes (e.g. HINS and HIND) share a name
+        if r["name"] not in seen:
+            seen.add(r["name"]); uniq.append(r)
+    out = uniq
+    return {"top": out[:n], "bottom": out[-n:][::-1] if len(out) > n else [], "count": total}
+
+
+def pct(v):
+    return f"+{v:.1f}%" if v > 0 else f"{v:.1f}%"
+
+
+PURPLE, AMBER, CREAM, INK, GREY, GREEN, RED = "#5E3EAD", "#FF8E0F", "#FFF3E0", "#1A1A1A", "#6B6B6B", "#1E7B4A", "#B3261E"
+FONT = "font-family:Helvetica,Arial,sans-serif;"
+
+
+def esc(t):
+    return str(t).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def h2(t):
+    return (f'<h2 style="{FONT}color:{PURPLE};font-size:20px;line-height:1.3;margin:28px 0 10px 0;">{esc(t)}</h2>')
+
+
+def para(html, extra=""):
+    return f'<p style="{FONT}color:{INK};font-size:16px;line-height:1.55;margin:0 0 14px 0;{extra}">{html}</p>'
+
+
+def button(text, url):
+    return (f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:16px 0 8px 0;"><tr>'
+            f'<td style="background:{PURPLE};border-radius:6px;">'
+            f'<a href="{esc(url)}" style="{FONT}display:inline-block;padding:12px 22px;color:#ffffff;font-size:15px;'
+            f'font-weight:bold;text-decoration:none;">{esc(text)}</a></td></tr></table>')
+
+
+def table(head, rows, highlight):
+    """rows: lists of html cells; highlight: list of bools (row gets a cream background)."""
+    # Kajabi's sanitiser drops <th> and <div>, so headers are <td> and cards use <p>
+    th = "".join(f'<td align="left" style="{FONT}font-size:13px;color:#ffffff;background:{PURPLE};padding:8px 10px;">'
+                 f'<strong>{esc(h)}</strong></td>' for h in head)
+    body = ""
+    for cells, hl in zip(rows, highlight):
+        bg = CREAM if hl else "#ffffff"
+        body += "<tr>" + "".join(
+            f'<td style="{FONT}font-size:14px;color:{INK};padding:8px 10px;border-bottom:1px solid #EEE6F7;background:{bg};">{c}</td>'
+            for c in cells) + "</tr>"
+    return (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
+            f'style="border-collapse:collapse;margin:6px 0 6px 0;"><tr>{th}</tr>{body}</table>')
+
+
+def email(d, base, notes, fm):
+    since = fmt_date(base["taken_at"])
     moved = [r for r in d["rows"] if r["changed"] and r["old"]]
     ups = sorted([r for r in moved if r["move"] > 0], key=lambda r: -r["move"])
     downs = sorted([r for r in moved if r["move"] < 0], key=lambda r: r["move"])
     lead = (ups or downs or [None])[0]
     if lead:
-        subject = f"Nisba savings update: best {lead['label'].lower()} rate now {lead['new']['rate']:.2f}%"
+        word = "up" if lead["move"] > 0 else "down"
+        subject = f"Best {lead['label'].lower()} rate {word} to {lead['new']['rate']:.2f}%"
         k = len(moved)
-        preview = (f"{k} best rate{'s' if k > 1 else ''} moved since {fmt_date(base['taken_at'])}. "
-                   "Here is where the top Islamic savings rates stand.")
+        preview = f"{k} of the best Islamic savings rates moved since {since}, plus the biggest halal fund moves."
     elif d["new_funds"]:
-        subject = f"Nisba update: {len(d['new_funds'])} new halal fund{'s' if len(d['new_funds']) > 1 else ''} on the list"
-        preview = "Best Islamic savings rates unchanged. Here is what is new on the funds list."
+        subject = f"{len(d['new_funds'])} new halal fund{'s' if len(d['new_funds']) > 1 else ''} on the Nisba list"
+        preview = "Best savings rates held steady. Here is what is new on the funds list."
     else:
-        subject = "Nisba update: what is new this fortnight"
-        preview = "The latest from Nisba, plus the best Islamic savings rates right now."
+        subject = "Your Nisba savings and funds round up"
+        preview = "Where the best Islamic savings rates stand, plus the biggest halal fund moves."
 
-    L = ["Salam,", "",
-         f"Here are the best Islamic savings rates on Nisba right now, against our last update on {fmt_date(base['taken_at'])}."]
-    L += ["", "## Best savings rates", ""]
+    H = [para("Salam,"),
+         para(f"Here is your fortnightly round up: where the best Islamic savings rates stand today, and how the "
+              f"halal funds on our list have moved since our last update on {esc(since)}.")]
+    if moved:
+        H.append(h2("What moved"))
+        for r in ups + downs:
+            n, o = r["new"], r["old"]
+            colour, arrow = (GREEN, "&#9650;") if r["move"] > 0 else (RED, "&#9660;")
+            src = (f"now with {esc(who(n))}" if (o["bank"], o.get("platform")) != (n["bank"], n.get("platform"))
+                   else f"with {esc(who(n))}")
+            H.append(
+                f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 10px 0;">'
+                f'<tr><td style="background:{CREAM};border-left:4px solid {AMBER};border-radius:4px;padding:12px 14px;">'
+                f'<p style="{FONT}margin:0;font-size:13px;color:{GREY};text-transform:uppercase;letter-spacing:0.5px;">{esc(r["label"])}</p>'
+                f'<p style="{FONT}font-size:22px;font-weight:bold;color:{INK};margin:2px 0;">{n["rate"]:.2f}% '
+                f'<span style="font-size:14px;color:{colour};">{arrow} from {o["rate"]:.2f}%</span></p>'
+                f'<p style="{FONT}margin:0;font-size:14px;color:{INK};">{src}</p></td></tr></table>')
+    H.append(h2("Best rates right now"))
+    rows, hl = [], []
     for r in d["rows"]:
         n, o = r["new"], r["old"]
         if not o:
-            L.append(f"- **{r['label']}:** **{n['rate']:.2f}%** with {who(n)} (new on the list)")
+            ch = f'<span style="color:{PURPLE};font-weight:bold;">new</span>'
         elif not r["changed"]:
-            L.append(f"- **{r['label']}:** {n['rate']:.2f}% with {who(n)} (no change)")
+            ch = f'<span style="color:{GREY};">same</span>'
+        elif r["move"] > 0:
+            ch = f'<span style="color:{GREEN};font-weight:bold;">&#9650; {r["move"]:.2f}</span>'
         else:
-            arrow = "up" if r["move"] > 0 else "down"
-            was = f"{o['rate']:.2f}% with {who(o)}" if o["bank"] != n["bank"] or o.get("platform") != n.get("platform") \
-                else f"{o['rate']:.2f}%"
-            L.append(f"- **{r['label']}:** **{n['rate']:.2f}%** with {who(n)}, {arrow} from {was}")
-    L += ["", f"[Compare every account]({SAVINGS_URL})"]
-    if d["new_funds"] or d["removed_funds"]:
-        L += ["", "## Halal funds"]
+            ch = f'<span style="color:{RED};font-weight:bold;">&#9660; {abs(r["move"]):.2f}</span>'
+        rows.append([esc(r["label"]), f"<strong>{n['rate']:.2f}%</strong>", esc(who(n)), ch])
+        hl.append(r["changed"])
+    H.append(table(["Account", "Best rate", "With", "Change"], rows, hl))
+    H.append(button("Compare every account", SAVINGS_URL))
+
+    if fm["top"] or d["new_funds"] or d["removed_funds"]:
+        H.append(h2("Halal funds"))
+        if fm["top"]:
+            H.append(para(f"The biggest price moves on our list of {fm['count']} funds since {esc(since)}, in pounds:"))
+            rows = [[f'<span style="color:{GREEN};font-weight:bold;">Top</span>', f"{esc(x['name'])} ({esc(x['ticker'])})",
+                     esc(x.get("asset_class") or "fund"), f'<strong style="color:{GREEN};">{pct(x["change"])}</strong>']
+                    for x in fm["top"]]
+            rows += [[f'<span style="color:{RED};font-weight:bold;">Bottom</span>', f"{esc(x['name'])} ({esc(x['ticker'])})",
+                      esc(x.get("asset_class") or "fund"), f'<strong style="color:{RED};">{pct(x["change"])}</strong>']
+                     for x in fm["bottom"]]
+            H.append(table(["", "Fund", "Type", "Change"], rows, [False] * len(rows)))
+            H.append(para("A few weeks is a very short time for an investment, and past performance is not a guide to the future.",
+                          f"font-size:13px;color:{GREY};font-style:italic;margin-top:8px;"))
         if d["new_funds"]:
-            L += ["", "**New on the list**"] + [
-                f"- **{x['name']}** ({x['ticker'].split('.')[0]}): {x.get('asset_class') or 'fund'}, "
-                f"{x['fee']:.2f}% a year, available on {plats(x['platforms'])}" for x in d["new_funds"]]
+            H.append(para("<strong>New on the list</strong>"))
+            H.append("<ul style='margin:0 0 14px 18px;padding:0;'>" + "".join(
+                f'<li style="{FONT}font-size:15px;color:{INK};margin:0 0 6px 0;"><strong>{esc(x["name"])}</strong> '
+                f'({esc(x["ticker"].split(".")[0])}): {esc(x.get("asset_class") or "fund")}, {x["fee"]:.2f}% a year, '
+                f'available on {esc(plats(x["platforms"]))}</li>' for x in d["new_funds"]) + "</ul>")
         if d["removed_funds"]:
-            L += ["", "**Taken off the list**"] + [f"- {x['name']}" for x in d["removed_funds"]]
-        L += ["", f"[See all the funds side by side]({FUNDS_URL})"]
+            H.append(para("<strong>Taken off the list:</strong> " + esc(", ".join(x["name"] for x in d["removed_funds"]))))
+        H.append(button("See all the funds side by side", FUNDS_URL))
     if notes:
-        L += ["", "## Also new at Nisba", "", notes]
-    L += ["", "A good rate is a tool, not a plan. What suits you depends on what the money is for, "
-              "when you need it and how much risk you can take, which is what the Nisba six step framework walks you through.",
-          "", "Rates are expected profit rates read from each provider's own website and can change at any time. "
-              "Always check with the provider before you open an account or invest. Education only, not personalised "
-              "financial advice. Investing carries risk and you may get back less than you put in.",
-          "", "**Are these updates useful?** One click tells us: "
-              f"[More like this]({FEEDBACK_URL}?vote=more) | "
-              f"[Fine as they are]({FEEDBACK_URL}?vote=same) | "
-              f"[Less often, please]({FEEDBACK_URL}?vote=less)",
-          "", "We now send this every two weeks, or less often if nothing moves.",
-          "", "Jzk", "", "Ahmad and Adel  ", "Nisba"]
-    body = "\n".join(L) + "\n"
-    for bad in ("\u2014", "\u2013"):
-        assert bad not in body and bad not in subject and bad not in preview, "dash found"
+        H.append(h2("Also new at Nisba"))
+        H += [para(esc(line.lstrip("- ").strip())) for line in notes.splitlines() if line.strip()]
+    H += [f'<hr style="border:none;border-top:1px solid #EEE6F7;margin:28px 0 20px 0;">',
+          para("A good rate or a strong few weeks is a tool, not a plan. What suits you depends on what the money is for, "
+               "when you need it and how much risk you can take, which is what the Nisba six step framework walks you through."),
+          para("<strong>Are these updates useful?</strong> One click tells us: "
+               f'<a href="{FEEDBACK_URL}?vote=more" style="color:{PURPLE};">More like this</a> | '
+               f'<a href="{FEEDBACK_URL}?vote=same" style="color:{PURPLE};">Fine as they are</a> | '
+               f'<a href="{FEEDBACK_URL}?vote=less" style="color:{PURPLE};">Less often, please</a>'),
+          para("Jzk"),
+          para("Ahmad and Adel<br>Nisba"),
+          para("Rates are expected profit rates read from each provider's own website and can change at any time. "
+               "Always check with the provider before you open an account or invest. Education only, not personalised "
+               "financial advice. Investing carries risk and you may get back less than you put in. "
+               "We send this every two weeks, or less often if nothing moves.",
+               f"font-size:12px;color:{GREY};line-height:1.5;")]
+    body = "\n".join(H) + "\n"
+    for bad in ("\u2014", "\u2013", "{%", "|"):
+        assert bad not in subject and bad not in preview, "bad character in subject/preview"
+    for bad in ("\u2014", "\u2013", "{{", "{%"):
+        assert bad not in body, f"{bad!r} found in body"
     return subject, preview, body
 
 
@@ -213,6 +317,7 @@ def main():
         base, cur = load(BASELINE), snapshot()
         d = diff(base, cur)
         notes = NOTES.read_text().strip() if NOTES.exists() else ""
+        fm = fund_moves(base["taken_at"])
         moved = [r for r in d["rows"] if r["changed"]]
         age = (datetime.now(timezone.utc) - datetime.fromisoformat(base["taken_at"])).days
         suspicious = [f"{r['label']}: {r['old']['rate']:.2f}% to {r['new']['rate']:.2f}%"
@@ -223,11 +328,12 @@ def main():
                                         "old_with": r["old"] and who(r["old"]), "new": r["new"]["rate"],
                                         "new_with": who(r["new"])} for r in moved],
                    "new_funds": len(d["new_funds"]), "removed_funds": len(d["removed_funds"]),
-                   "notes": bool(notes), "suspicious": suspicious}
+                   "notes": bool(notes), "suspicious": suspicious,
+                   "fund_moves": {"top": fm["top"], "bottom": fm["bottom"]}}
         if summary["has_changes"]:
-            subject, preview, body = email(d, base, notes)
+            subject, preview, body = email(d, base, notes, fm)
             summary.update(subject=subject, preview=preview)
-            (OUT / "email.md").write_text(body)
+            (OUT / "email.html").write_text(body)
         (OUT / "snapshot.json").write_text(json.dumps(cur, indent=1, sort_keys=True))
         (OUT / "summary.json").write_text(json.dumps(summary, indent=1))
         print(json.dumps(summary, indent=1))
