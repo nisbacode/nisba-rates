@@ -286,18 +286,18 @@ def email(d, base, notes, fm, first=False, n_accounts=None, n_funds=None):
                 out = (f'<tr><td colspan="2" style="{SANS}font-size:15px;color:{colour};font-weight:bold;'
                        f'padding:14px 8px 4px 8px;">{arrow} {title}</td></tr>')
                 for x in xs:
-                    out += ("<tr>" + td(f'{link(esc(x["name"]), x.get("factsheet"))}<br>'
+                    out += ("<tr>" + td(f'{link(esc(x["name"]), FUNDS_URL)}<br>'
                                         f'<span style="font-size:13px;color:{GREY};">{esc(x.get("asset_class") or "Fund")}, {esc(x["ticker"])}</span>') +
                             td(f'<strong style="color:{colour};">{pct(x["change"])}</strong>', "text-align:right;white-space:nowrap;") + "</tr>")
                 return out
             H.append(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
                      f'style="border-collapse:collapse;">{fund_rows(fm["top"], "Up the most", GREEN, "&#9650;")}'
                      f'{fund_rows(fm["bottom"], "Down the most", RED, "&#9660;")}</table>')
-            H.append(p("Tap a fund for its factsheet. A few weeks is a very short time for an investment, and past "
+            H.append(p("A few weeks is a very short time for an investment, and past "
                        "performance is not a guide to the future.", f"font-size:13px;color:{GREY};margin-top:8px;"))
         if d["new_funds"]:
             H.append(p("<strong>New on the list:</strong> " + "; ".join(
-                f'{link(esc(x["name"]), x.get("factsheet"))} ({esc(x.get("asset_class") or "fund")}, {x["fee"]:.2f}% a year)'
+                f'{link(esc(x["name"]), FUNDS_URL)} ({esc(x.get("asset_class") or "fund")}, {x["fee"]:.2f}% a year)'
                 for x in d["new_funds"])))
         if d["removed_funds"]:
             H.append(p("<strong>Taken off the list:</strong> " + esc(", ".join(x["name"] for x in d["removed_funds"]))))
