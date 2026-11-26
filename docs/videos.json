@@ -1,7 +1,17 @@
 {
- "checked_at": "2026-11-25T17:36:38+00:00",
+ "checked_at": "2026-11-26T17:18:25+00:00",
  "channel": "https://www.youtube.com/@nisbainvest",
  "videos": [
+  {
+   "id": "Wno8bATw1pI",
+   "title": "Comment \u201cGuide\u201d to receive a free intro into Halal Investing #foryou #xycba #investing #muslim",
+   "published_at": "2026-11-25T20:43:45Z",
+   "url": "https://www.youtube.com/watch?v=Wno8bATw1pI",
+   "duration": "PT48S",
+   "is_short": true,
+   "thumbnail": "https://i.ytimg.com/vi/Wno8bATw1pI/hqdefault.jpg",
+   "description": ""
+  },
   {
    "id": "7nWcjSgNbzU",
    "title": "Thank you to everyone that came and we hope you guys benefited\ud83d\ude4f#investing #islamicfinance #london",
@@ -291,16 +301,6 @@
    "is_short": false,
    "thumbnail": "https://i.ytimg.com/vi/2b12BBc_LRk/hqdefault.jpg",
    "description": "In this video we go over the 6 steps to Halal Investing.\n\n\ud83d\udcd6 The book the video is based off: https://www.nisba.co.uk/playbook\n\n\u26a0\ufe0f Disclaimer: This video is for educational purposes only and should not be considered financial advice. Always do your own research before making any investment decisions."
-  },
-  {
-   "id": "nKl8Lzw2F3Y",
-   "title": "Which ETF shall we do next?                 #foryou #xybca #muslim #finance #etfs",
-   "published_at": "2026-09-08T21:32:14Z",
-   "url": "https://www.youtube.com/watch?v=nKl8Lzw2F3Y",
-   "duration": "PT1M18S",
-   "is_short": false,
-   "thumbnail": "https://i.ytimg.com/vi/nKl8Lzw2F3Y/hqdefault.jpg",
-   "description": ""
   }
  ]
 }
