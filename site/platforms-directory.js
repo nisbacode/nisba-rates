@@ -34,7 +34,7 @@ w:'Private market investing: an EIS venture fund, private equity, real estate, f
 f:'IFG.VC Limited, a subsidiary of Islamicfinanceguru Limited',
 r:'Authorised and regulated by the FCA.',
 p:'FSCS cover is not stated on its website.'},
-{n:'Kestrl',logo:'https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148749493/images/6486ec2-b6-0217-1fad-3d10df7427_logo-kestrl-white.png',dark:1,c:'Money app',s:'ar',url:'https://www.kestrl.io',
+{n:'Kestrl',logo:'https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/sites/2148749493/images/6486ec2-b6-0217-1fad-3d10df7427_logo-kestrl-white.png',dark:1,c:'Money app',s:'ar',url:'https://app.kestrl.io?type=referral&code=5G4UP',sp:1,aff:'Nisba may earn a referral reward if you sign up through this link.',
 w:'Muslim money app with budgeting, an e-money account and card, and a halal stock screener.',
 f:'Kestrl Ltd, which is not authorised itself',
 r:'The account and card are issued by AF Payments Limited (e-money, FRN 900440). Bank connections are provided by TrueLayer, with Kestrl acting as its agent.',
