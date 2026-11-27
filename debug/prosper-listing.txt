@@ -1,10 +1,7 @@
 [
- "alrayan-bank-1-year-fixed-term-deposit",
  "alrayan-bank-2-year-fixed-term-deposit",
  "alrayan-bank-3-year-fixed-term-deposit",
  "alrayan-bank-5-year-fixed-term-deposit",
- "alrayan-bank-6-month-fixed-term-deposit",
- "alrayan-bank-6-month-fixed-term-deposit-new-customers-only",
  "alrayan-bank-9-month-fixed-term-deposit",
  "alrayan-bank-easy-access",
  "blme-1-year-fixed-term-deposit",
